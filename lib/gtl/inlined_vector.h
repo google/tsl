@@ -13,26 +13,21 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_DEFAULT_INTEGRAL_TYPES_H_
-#define TENSORFLOW_TSL_PLATFORM_DEFAULT_INTEGRAL_TYPES_H_
+#ifndef TENSORFLOW_TSL_LIB_GTL_INLINED_VECTOR_H_
+#define TENSORFLOW_TSL_LIB_GTL_INLINED_VECTOR_H_
 
-#include <cstdint>
-
-// IWYU pragma: private, include "third_party/tensorflow/core/platform/types.h"
-// IWYU pragma: friend third_party/tensorflow/core/platform/types.h
+#include "absl/container/inlined_vector.h"  // IWYU pragma: export
+// TODO(kramerb): This is kept only because lots of targets transitively depend
+// on it. Remove all targets' dependencies.
+#include "tensorflow/tsl/platform/macros.h"
+#include "tensorflow/tsl/platform/types.h"
 
 namespace tsl {
+namespace gtl {
 
-typedef signed char int8;
-typedef short int16;
-typedef int int32;
-typedef ::std::int64_t int64;
+using absl::InlinedVector;
 
-typedef unsigned char uint8;
-typedef unsigned short uint16;
-typedef unsigned int uint32;
-typedef std::uint64_t uint64;
-
+}  // namespace gtl
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_DEFAULT_INTEGRAL_TYPES_H_
+#endif  // TENSORFLOW_TSL_LIB_GTL_INLINED_VECTOR_H_
