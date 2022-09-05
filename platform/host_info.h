@@ -13,15 +13,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_INIT_MAIN_H_
-#define TENSORFLOW_TSL_PLATFORM_INIT_MAIN_H_
+#ifndef TENSORFLOW_TSL_PLATFORM_HOST_INFO_H_
+#define TENSORFLOW_TSL_PLATFORM_HOST_INFO_H_
+
+#include "tensorflow/tsl/platform/types.h"
 
 namespace tsl {
 namespace port {
 
-void InitMain(const char* usage, int* argc, char*** argv);
+// Return the hostname of the machine on which this process is running.
+string Hostname();
+
+// Return the job name as a string if it exists, otherwise return an empty
+// string.
+string JobName();
+
+// Returns the Borg job UID as an int64_t if it exists. Otherwise return -1.
+int64_t JobUid();
 
 }  // namespace port
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_INIT_MAIN_H_
+#endif  // TENSORFLOW_TSL_PLATFORM_HOST_INFO_H_
