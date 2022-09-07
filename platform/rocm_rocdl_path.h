@@ -13,30 +13,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/rocm_rocdl_path.h"
+#ifndef TENSORFLOW_TSL_PLATFORM_ROCM_ROCDL_PATH_H_
+#define TENSORFLOW_TSL_PLATFORM_ROCM_ROCDL_PATH_H_
 
-#include <stdlib.h>
-
-#include "tensorflow/core/platform/path.h"
-
-#if !defined(PLATFORM_GOOGLE) && TENSORFLOW_USE_ROCM
-#include "rocm/rocm_config.h"
-#endif
-#include "tensorflow/tsl/platform/logging.h"
+#include "tensorflow/tsl/platform/types.h"
 
 namespace tsl {
 
-string RocmRoot() {
-#if TENSORFLOW_USE_ROCM
-  VLOG(3) << "ROCM root = " << TF_ROCM_TOOLKIT_PATH;
-  return TF_ROCM_TOOLKIT_PATH;
-#else
-  return "";
-#endif
-}
+// Returns the root directory of the ROCM SDK, which contains sub-folders such
+// as bin, lib, and rocdl.
+string RocmRoot();
 
-string RocdlRoot() {
-  return tensorflow::io::JoinPath(RocmRoot(), "amdgcn/bitcode");
-}
+// Returns the directory that contains ROCm-Device-Libs files in the ROCm SDK.
+string RocdlRoot();
 
 }  // namespace tsl
+
+#endif  // TENSORFLOW_TSL_PLATFORM_ROCM_ROCDL_PATH_H_
