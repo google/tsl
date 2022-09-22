@@ -271,6 +271,7 @@ cc_library(
         ":stringprintf",
         ":types",
         "//tsl/protobuf:error_codes_proto_impl_cc",
+        "//tsl/protobuf:status_proto_impl_cc",
         "@com_google_absl//absl/base",
         "@com_google_absl//absl/base:core_headers",
         "@com_google_absl//absl/status",
