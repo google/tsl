@@ -17,9 +17,6 @@ limitations under the License.
 
 namespace tsl {
 
-const char* kProtobufInt64Typename = "::tensorflow::protobuf_int64";
-const char* kProtobufUint64Typename = "::tensorflow::protobuf_uint64";
-
 TStringOutputStream::TStringOutputStream(tstring* target) : target_(target) {}
 
 bool TStringOutputStream::Next(void** data, int* size) {

@@ -45,10 +45,6 @@ limitations under the License.
 namespace tsl {
 
 namespace protobuf = ::google::protobuf;
-using protobuf_int64 = ::google::protobuf::int64;
-using protobuf_uint64 = ::google::protobuf::uint64;
-extern const char* kProtobufInt64Typename;
-extern const char* kProtobufUint64Typename;
 
 // Parses a protocol buffer contained in a string in the binary wire format.
 // Returns true on success. Note: Unlike protobuf's builtin ParseFromString,
