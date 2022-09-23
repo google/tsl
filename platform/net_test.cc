@@ -1,4 +1,4 @@
-/* Copyright 2016 The TensorFlow Authors. All Rights Reserved.
+/* Copyright 2015 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -13,15 +13,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_NET_H_
-#define TENSORFLOW_TSL_PLATFORM_NET_H_
+#include "tensorflow/tsl/platform/net.h"
+
+#include "tensorflow/tsl/platform/logging.h"
+#include "tensorflow/tsl/platform/test.h"
 
 namespace tsl {
 namespace internal {
 
-int PickUnusedPortOrDie();
+TEST(Net, PickUnusedPortOrDie) {
+  int port0 = PickUnusedPortOrDie();
+  int port1 = PickUnusedPortOrDie();
+  CHECK_GE(port0, 0);
+  CHECK_LT(port0, 65536);
+  CHECK_GE(port1, 0);
+  CHECK_LT(port1, 65536);
+  CHECK_NE(port0, port1);
+}
 
 }  // namespace internal
 }  // namespace tsl
-
-#endif  // TENSORFLOW_TSL_PLATFORM_NET_H_
