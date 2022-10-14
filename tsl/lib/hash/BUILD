@@ -1,9 +1,12 @@
 load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 load(
-    "//third_party/tensorflow:tensorflow.bzl",
+    "//tsl:tsl.bzl",
     "if_linux_x86_64",
-    "tf_cc_test",
     "tf_copts",
+)
+load(
+    "//tsl/platform:build_config.bzl",
+    "tsl_cc_test",
 )
 load(
     "//tsl/platform:rules_cc.bzl",
@@ -56,7 +59,7 @@ filegroup(
     visibility = ["//third_party/tensorflow/core/lib/hash:__pkg__"],
 )
 
-tf_cc_test(
+tsl_cc_test(
     name = "crc32c_test",
     size = "small",
     srcs = ["crc32c_test.cc"],

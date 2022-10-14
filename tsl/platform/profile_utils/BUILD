@@ -7,8 +7,8 @@ load(
     "cc_library",
 )
 load(
-    "//third_party/tensorflow:tensorflow.bzl",
-    "tf_copts",  # @unused
+    "//tsl:tsl.bzl",
+    "tf_copts",
 )
 
 package(

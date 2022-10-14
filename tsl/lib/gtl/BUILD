@@ -1,5 +1,8 @@
 load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
-load("//third_party/tensorflow:tensorflow.bzl", "tf_cc_tests")
+load(
+    "//tsl/platform:build_config.bzl",
+    "tsl_cc_test",
+)
 load(
     "//tsl/platform:rules_cc.bzl",
     "cc_library",
@@ -196,7 +199,7 @@ filegroup(
     ],
 )
 
-tf_cc_tests(
+tsl_cc_test(
     name = "tsl_lib_gtl_tests",
     srcs = [
         "compactptrset_test.cc",

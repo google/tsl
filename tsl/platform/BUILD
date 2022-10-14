@@ -7,7 +7,7 @@
 load("@bazel_skylib//lib:selects.bzl", "selects")
 load("//third_party/tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
 load(
-    "//third_party/tensorflow:tensorflow.bzl",
+    "//tsl:tsl.bzl",
     "tf_copts",
 )
 load(
