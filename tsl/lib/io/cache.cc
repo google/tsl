@@ -13,15 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/cache.h"
+#include "tsl/lib/io/cache.h"
 
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/raw_coding.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/raw_coding.h"
 
 namespace tsl {
 

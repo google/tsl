@@ -21,10 +21,10 @@ limitations under the License.
 #include <string>
 
 #include "absl/strings/match.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/stacktrace_handler.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/test_benchmark.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/stacktrace_handler.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/test_benchmark.h"
 
 GTEST_API_ int main(int argc, char** argv) {
   tsl::testing::InstallStacktraceHandler();

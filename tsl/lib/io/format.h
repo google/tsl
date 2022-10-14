@@ -20,9 +20,9 @@ limitations under the License.
 
 #include <string>
 
-#include "tensorflow/tsl/lib/io/table_builder.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
+#include "tsl/lib/io/table_builder.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/stringpiece.h"
 
 namespace tsl {
 class RandomAccessFile;

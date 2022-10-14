@@ -19,13 +19,13 @@ limitations under the License.
 #include <optional>
 
 #include "absl/container/flat_hash_map.h"
-#include "tensorflow/core/framework/dataset_options.pb.h"
-#include "tensorflow/core/protobuf/data_service.pb.h"
-#include "tensorflow/tsl/lib/monitoring/counter.h"
-#include "tensorflow/tsl/lib/monitoring/gauge.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/statusor.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "third_party/tensorflow/core/framework/dataset_options.pb.h"
+#include "third_party/tensorflow/core/protobuf/data_service.pb.h"
+#include "tsl/lib/monitoring/counter.h"
+#include "tsl/lib/monitoring/gauge.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/statusor.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace metrics {

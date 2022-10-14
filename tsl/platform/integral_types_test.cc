@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace {

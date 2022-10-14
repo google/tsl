@@ -12,17 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/platform/status_matchers.h"
+#include "tsl/platform/status_matchers.h"
 
 #include <sstream>
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/statusor.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/protobuf/error_codes.pb.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/statusor.h"
+#include "tsl/platform/test.h"
+#include "tsl/protobuf/error_codes.pb.h"
 
 namespace tsl {
 namespace testing {

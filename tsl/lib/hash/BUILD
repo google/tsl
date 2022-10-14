@@ -1,24 +1,24 @@
-load("//tensorflow:tensorflow.default.bzl", "filegroup")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 load(
-    "//tensorflow/tsl:tsl.bzl",
+    "//tsl:tsl.bzl",
     "if_linux_x86_64",
     "tf_copts",
 )
 load(
-    "//tensorflow/tsl/platform:build_config.bzl",
+    "//tsl/platform:build_config.bzl",
     "tsl_cc_test",
 )
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 
 package(
     default_visibility = [
         # tensorflow/tsl/lib/io/table_builder.cc uses crc functionality
-        "//tensorflow/tsl/lib/io:__pkg__",
+        "//tsl/lib/io:__pkg__",
         # tensorflow/core/lib/hash aliases hash for now
-        "//tensorflow/core/lib/hash:__pkg__",
+        "//third_party/tensorflow/core/lib/hash:__pkg__",
     ],
     licenses = ["notice"],
 )
@@ -33,10 +33,10 @@ cc_library(
     # -msse4.2 enables the use of crc32c compiler builtins.
     copts = tf_copts() + if_linux_x86_64(["-msse4.2"]),
     deps = [
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:cord",
-        "//tensorflow/tsl/platform:raw_coding",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform",
+        "//tsl/platform:cord",
+        "//tsl/platform:raw_coding",
+        "//tsl/platform:types",
     ],
 )
 
@@ -48,7 +48,7 @@ filegroup(
         "crc32c.h",
         "crc32c_accelerate.cc",
     ],
-    visibility = ["//tensorflow/core/lib/hash:__pkg__"],
+    visibility = ["//third_party/tensorflow/core/lib/hash:__pkg__"],
 )
 
 filegroup(
@@ -56,7 +56,7 @@ filegroup(
     srcs = [
         "crc32c.h",
     ],
-    visibility = ["//tensorflow/core/lib/hash:__pkg__"],
+    visibility = ["//third_party/tensorflow/core/lib/hash:__pkg__"],
 )
 
 tsl_cc_test(
@@ -65,9 +65,9 @@ tsl_cc_test(
     srcs = ["crc32c_test.cc"],
     deps = [
         ":crc32c",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_benchmark",
-        "//tensorflow/tsl/platform:test_main",
+        "//tsl/platform:logging",
+        "//tsl/platform:test",
+        "//tsl/platform:test_benchmark",
+        "//tsl/platform:test_main",
     ],
 )

@@ -20,9 +20,9 @@ limitations under the License.
 #include <vector>
 
 #include <gtest/gtest.h>  // IWYU pragma: export
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/types.h"
 
 // Includes gmock.h and enables the use of gmock matchers in tensorflow tests.
 //

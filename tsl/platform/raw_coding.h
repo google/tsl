@@ -18,8 +18,8 @@ limitations under the License.
 
 #include <string.h>
 
-#include "tensorflow/tsl/platform/byte_order.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/byte_order.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace core {

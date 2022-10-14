@@ -20,9 +20,9 @@ limitations under the License.
 #include <string>
 
 #include "absl/strings/str_cat.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/utils/math_utils.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/utils/math_utils.h"
 
 namespace tsl {
 namespace profiler {

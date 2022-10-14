@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/refcount.h"
+#include "tsl/platform/refcount.h"
 
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/threadpool.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/threadpool.h"
 
 namespace tsl {
 namespace core {

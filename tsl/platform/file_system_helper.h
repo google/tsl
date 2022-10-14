@@ -19,9 +19,9 @@ limitations under the License.
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/statusor.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/statusor.h"
 
 namespace tsl {
 

@@ -13,18 +13,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/subprocess.h"
+#include "tsl/platform/subprocess.h"
 
 #include <stdlib.h>
 #include <string.h>
 
 #include <algorithm>
 
-#include "tensorflow/tsl/lib/core/status_test_util.h"
-#include "tensorflow/tsl/platform/path.h"
-#include "tensorflow/tsl/platform/resource_loader.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/core/status_test_util.h"
+#include "tsl/platform/path.h"
+#include "tsl/platform/resource_loader.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/platform/test.h"
 
 #ifdef PLATFORM_WINDOWS
 #define WIFEXITED(code) ((code) != 3)

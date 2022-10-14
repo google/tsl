@@ -13,16 +13,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/framework/metrics.h"
+#include "tsl/framework/metrics.h"
 
 #include <cstdint>
 #include <string>
 
 #include "absl/strings/str_cat.h"
-#include "tensorflow/core/protobuf/data_service.pb.h"
-#include "tensorflow/tsl/lib/monitoring/counter.h"
-#include "tensorflow/tsl/lib/monitoring/gauge.h"
-#include "tensorflow/tsl/lib/monitoring/sampler.h"
+#include "third_party/tensorflow/core/protobuf/data_service.pb.h"
+#include "tsl/lib/monitoring/counter.h"
+#include "tsl/lib/monitoring/gauge.h"
+#include "tsl/lib/monitoring/sampler.h"
 
 namespace tsl {
 namespace metrics {

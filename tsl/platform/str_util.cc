@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/str_util.h"
+#include "tsl/platform/str_util.h"
 
 #include <cctype>
 #include <cstdint>
@@ -24,8 +24,8 @@ limitations under the License.
 #include "absl/strings/escaping.h"
 #include "absl/strings/match.h"
 #include "absl/strings/strip.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/stringpiece.h"
 
 namespace tsl {
 namespace str_util {

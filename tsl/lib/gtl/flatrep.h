@@ -20,8 +20,8 @@ limitations under the License.
 
 #include <utility>
 
-#include "tensorflow/tsl/platform/prefetch.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/prefetch.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace gtl {

@@ -13,13 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/util/use_cudnn.h"
+#include "tsl/util/use_cudnn.h"
 
 #include <cstdint>
 
-#include "tensorflow/tsl/platform/str_util.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
-#include "tensorflow/tsl/util/env_var.h"
+#include "tsl/platform/str_util.h"
+#include "tsl/platform/stringpiece.h"
+#include "tsl/util/env_var.h"
 
 #if GOOGLE_CUDA
 #include "third_party/gpus/cudnn/cudnn.h"

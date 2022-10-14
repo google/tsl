@@ -17,7 +17,7 @@ limitations under the License.
 
 #include <vector>
 
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
 
 namespace tsl {
 namespace profiler {

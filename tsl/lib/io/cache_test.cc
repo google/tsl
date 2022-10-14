@@ -13,14 +13,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/cache.h"
+#include "tsl/lib/io/cache.h"
 
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/platform/coding.h"
-#include "tensorflow/tsl/platform/raw_coding.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/coding.h"
+#include "tsl/platform/raw_coding.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 

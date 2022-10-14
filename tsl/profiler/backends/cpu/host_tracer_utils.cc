@@ -12,19 +12,19 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/profiler/backends/cpu/host_tracer_utils.h"
+#include "tsl/profiler/backends/cpu/host_tracer_utils.h"
 
 #include <string>
 #include <utility>
 
 #include "absl/strings/string_view.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/backends/cpu/traceme_recorder.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
-#include "tensorflow/tsl/profiler/utils/parse_annotation.h"
-#include "tensorflow/tsl/profiler/utils/tf_op_utils.h"
-#include "tensorflow/tsl/profiler/utils/xplane_builder.h"
-#include "tensorflow/tsl/profiler/utils/xplane_utils.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/backends/cpu/traceme_recorder.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/profiler/utils/parse_annotation.h"
+#include "tsl/profiler/utils/tf_op_utils.h"
+#include "tsl/profiler/utils/xplane_builder.h"
+#include "tsl/profiler/utils/xplane_utils.h"
 
 namespace tsl {
 namespace profiler {

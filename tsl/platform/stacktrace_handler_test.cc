@@ -16,8 +16,8 @@ limitations under the License.
 
 #include <csignal>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace {

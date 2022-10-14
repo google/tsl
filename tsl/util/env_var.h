@@ -16,9 +16,9 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_UTIL_ENV_VAR_H_
 #define TENSORFLOW_TSL_UTIL_ENV_VAR_H_
 
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/stringpiece.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

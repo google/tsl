@@ -13,13 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/hash.h"
+#include "tsl/platform/hash.h"
 
 #include <string.h>
 
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/raw_coding.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/raw_coding.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

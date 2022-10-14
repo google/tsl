@@ -18,11 +18,11 @@ limitations under the License.
 
 #include <unordered_map>
 
-#include "tensorflow/tsl/framework/allocator.h"
-#include "tensorflow/tsl/lib/gtl/inlined_vector.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/thread_annotations.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/framework/allocator.h"
+#include "tsl/lib/gtl/inlined_vector.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/thread_annotations.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

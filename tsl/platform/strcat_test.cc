@@ -13,13 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/strcat.h"
+#include "tsl/platform/strcat.h"
 
 #include <string>
 
-#include "tensorflow/tsl/platform/stringprintf.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/stringprintf.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/types.h"
 
 #ifdef _MSC_VER
 // ssize_t is not a standard C++ type.

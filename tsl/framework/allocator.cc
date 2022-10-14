@@ -13,17 +13,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/framework/allocator.h"
+#include "tsl/framework/allocator.h"
 
 #include <atomic>
 
-#include "tensorflow/tsl/framework/allocator_registry.h"
-#include "tensorflow/tsl/framework/tracking_allocator.h"
-#include "tensorflow/tsl/platform/mem.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/platform/stringprintf.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/framework/allocator_registry.h"
+#include "tsl/framework/tracking_allocator.h"
+#include "tsl/platform/mem.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/platform/stringprintf.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

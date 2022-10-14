@@ -1,15 +1,15 @@
 package_group(
     name = "friends",
-    includes = ["//tensorflow:internal"],
+    includes = ["//third_party/tensorflow:internal"],
 )
 
 package_group(
     name = "internal",
     packages = [
-        "//tensorflow/core/profiler/...",
-        "//tensorflow/python/eager/...",
-        "//tensorflow/python/profiler/...",
-        "//tensorflow/python/tpu/profiler/...",
-        "//tensorflow/tsl/profiler/...",
+        "//third_party/tensorflow/core/profiler/...",
+        "//third_party/tensorflow/python/eager/...",
+        "//third_party/tensorflow/python/profiler/...",
+        "//third_party/tensorflow/python/tpu/profiler/...",
+        "//tsl/profiler/...",
     ],
 )

@@ -18,7 +18,7 @@ limitations under the License.
 
 #include <stdint.h>
 
-#include "tensorflow/tsl/lib/io/iterator.h"
+#include "tsl/lib/io/iterator.h"
 
 namespace tsl {
 

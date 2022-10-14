@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/profile_utils/cpu_utils.h"
+#include "tsl/platform/profile_utils/cpu_utils.h"
 
 #include <fstream>
 #include <limits>
@@ -28,8 +28,8 @@ limitations under the License.
 #endif
 
 #include "absl/base/call_once.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/profile_utils/android_armv7a_cpu_utils_helper.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/profile_utils/android_armv7a_cpu_utils_helper.h"
 
 namespace tsl {
 namespace profile_utils {

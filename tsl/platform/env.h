@@ -23,17 +23,17 @@ limitations under the License.
 #include <unordered_map>
 #include <vector>
 
-#include "tensorflow/tsl/platform/env_time.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/file_system.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/numa.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/protobuf.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/env_time.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/file_system.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/numa.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/protobuf.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/stringpiece.h"
+#include "tsl/platform/types.h"
 
 // Delete leaked Windows definitions.
 #ifdef PLATFORM_WINDOWS

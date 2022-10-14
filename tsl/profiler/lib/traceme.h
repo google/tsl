@@ -20,15 +20,15 @@ limitations under the License.
 #include <utility>
 
 #include "absl/strings/string_view.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/lib/traceme_encode.h"  // IWYU pragma: export
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/lib/traceme_encode.h"  // IWYU pragma: export
 
 #if !defined(IS_MOBILE_PLATFORM)
-#include "tensorflow/tsl/profiler/backends/cpu/traceme_recorder.h"
-#include "tensorflow/tsl/profiler/utils/time_utils.h"
+#include "tsl/profiler/backends/cpu/traceme_recorder.h"
+#include "tsl/profiler/utils/time_utils.h"
 #endif
 
 namespace tsl {

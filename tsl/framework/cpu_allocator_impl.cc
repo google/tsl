@@ -15,16 +15,16 @@ limitations under the License.
 
 #include <atomic>
 
-#include "tensorflow/core/profiler/lib/scoped_memory_debug_annotation.h"
-#include "tensorflow/tsl/framework/allocator.h"
-#include "tensorflow/tsl/framework/allocator_registry.h"
-#include "tensorflow/tsl/framework/tracking_allocator.h"
-#include "tensorflow/tsl/platform/mem.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/platform/stringprintf.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/lib/traceme.h"
+#include "third_party/tensorflow/core/profiler/lib/scoped_memory_debug_annotation.h"
+#include "tsl/framework/allocator.h"
+#include "tsl/framework/allocator_registry.h"
+#include "tsl/framework/tracking_allocator.h"
+#include "tsl/platform/mem.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/platform/stringprintf.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/lib/traceme.h"
 
 namespace tsl {
 

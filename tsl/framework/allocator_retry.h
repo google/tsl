@@ -16,9 +16,9 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_FRAMEWORK_ALLOCATOR_RETRY_H_
 #define TENSORFLOW_TSL_FRAMEWORK_ALLOCATOR_RETRY_H_
 
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

@@ -13,14 +13,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/framework/cancellation.h"
+#include "tsl/framework/cancellation.h"
 
 #include <forward_list>
 
 #include "absl/memory/memory.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/status.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/status.h"
 
 namespace tsl {
 

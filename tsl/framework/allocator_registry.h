@@ -20,10 +20,10 @@ limitations under the License.
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/framework/allocator.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/numa.h"
+#include "tsl/framework/allocator.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/numa.h"
 
 namespace tensorflow {
 

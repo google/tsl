@@ -13,17 +13,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/format.h"
+#include "tsl/lib/io/format.h"
 
 #include <limits>
 
-#include "tensorflow/tsl/lib/hash/crc32c.h"
-#include "tensorflow/tsl/lib/io/block.h"
-#include "tensorflow/tsl/platform/coding.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/raw_coding.h"
-#include "tensorflow/tsl/platform/snappy.h"
+#include "tsl/lib/hash/crc32c.h"
+#include "tsl/lib/io/block.h"
+#include "tsl/platform/coding.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/raw_coding.h"
+#include "tsl/platform/snappy.h"
 
 namespace tsl {
 namespace table {

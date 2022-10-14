@@ -1,4 +1,4 @@
 package(
-    default_visibility = ["//tensorflow/tsl/profiler:internal"],
+    default_visibility = ["//tsl/profiler:internal"],
     licenses = ["notice"],
 )

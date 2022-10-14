@@ -13,13 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/snappy/snappy_inputstream.h"
+#include "tsl/lib/io/snappy/snappy_inputstream.h"
 
 #include <algorithm>
 
 #include "absl/memory/memory.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/snappy.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/snappy.h"
 
 namespace tsl {
 namespace io {

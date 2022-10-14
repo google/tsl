@@ -19,14 +19,14 @@ limitations under the License.
 #include <atomic>
 #include <functional>
 
-#include "tensorflow/tsl/lib/gtl/flatmap.h"
-#include "tensorflow/tsl/platform/hash.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/notification.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
-#include "tensorflow/tsl/platform/thread_annotations.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/lib/gtl/flatmap.h"
+#include "tsl/platform/hash.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/notification.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/stringpiece.h"
+#include "tsl/platform/thread_annotations.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

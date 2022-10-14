@@ -15,17 +15,17 @@ limitations under the License.
 
 // Unit tests for StatusOr
 
-#include "tensorflow/tsl/platform/statusor.h"
+#include "tsl/platform/statusor.h"
 
 #include <memory>
 #include <type_traits>
 #include <utility>
 #include <vector>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/test_benchmark.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/test_benchmark.h"
 
 namespace tsl {
 namespace {

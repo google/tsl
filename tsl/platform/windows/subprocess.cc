@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/subprocess.h"
+#include "tsl/platform/subprocess.h"
 
 #include <io.h>
 #include <signal.h>
@@ -24,8 +24,8 @@ limitations under the License.
 
 #include <vector>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/strcat.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/strcat.h"
 
 #define PIPE_BUF_SIZE 4096
 

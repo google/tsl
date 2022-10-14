@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/core/bitmap.h"
+#include "tsl/lib/core/bitmap.h"
 
-#include "tensorflow/tsl/lib/random/simple_philox.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/random/simple_philox.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace core {

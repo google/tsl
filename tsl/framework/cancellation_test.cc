@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/framework/cancellation.h"
+#include "tsl/framework/cancellation.h"
 
 #include <algorithm>
 #include <memory>
@@ -21,10 +21,10 @@ limitations under the License.
 #include <random>
 #include <vector>
 
-#include "tensorflow/tsl/platform/notification.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/threadpool.h"
+#include "tsl/platform/notification.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/threadpool.h"
 
 namespace tsl {
 

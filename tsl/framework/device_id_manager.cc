@@ -13,16 +13,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/framework/device_id_manager.h"
+#include "tsl/framework/device_id_manager.h"
 
 #include <unordered_map>
 
-#include "tensorflow/tsl/framework/device_id.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/status.h"
+#include "tsl/framework/device_id.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/status.h"
 
 namespace tsl {
 namespace {

@@ -29,14 +29,14 @@ limitations under the License.
 #include <time.h>
 #include <unistd.h>
 
-#include "tensorflow/tsl/platform/default/posix_file_system.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/file_system_helper.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/protobuf/error_codes.pb.h"
+#include "tsl/platform/default/posix_file_system.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/file_system_helper.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/protobuf/error_codes.pb.h"
 
 namespace tsl {
 

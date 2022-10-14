@@ -27,10 +27,10 @@ limitations under the License.
 #include "absl/container/flat_hash_set.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/utils/xplane_visitor.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/utils/xplane_visitor.h"
 
 namespace tsl {
 namespace profiler {

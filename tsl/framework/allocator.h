@@ -23,12 +23,12 @@ limitations under the License.
 
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
-#include "tensorflow/tsl/framework/numeric_types.h"
-#include "tensorflow/tsl/framework/type_traits.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/numa.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/framework/numeric_types.h"
+#include "tsl/framework/type_traits.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/numa.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/profiler/utils/xplane_visitor.h"
+#include "tsl/profiler/utils/xplane_visitor.h"
 
 #include <string>
 #include <utility>
@@ -21,9 +21,9 @@ limitations under the License.
 #include "absl/strings/str_cat.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace profiler {

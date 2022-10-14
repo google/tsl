@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/util/determinism.h"
+#include "tsl/util/determinism.h"
 
 #include "absl/strings/string_view.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/util/env_var.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/util/env_var.h"
 
 namespace tsl {
 

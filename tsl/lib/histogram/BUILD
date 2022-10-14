@@ -1,17 +1,17 @@
-load("//tensorflow:tensorflow.default.bzl", "filegroup")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 load(
-    "//tensorflow/tsl/platform:build_config.bzl",
+    "//tsl/platform:build_config.bzl",
     "tsl_cc_test",
 )
 
 package(
     default_visibility = [
-        "//tensorflow/core/lib/histogram:__pkg__",
-        "//tensorflow/tsl/lib/monitoring:__pkg__",
+        "//third_party/tensorflow/core/lib/histogram:__pkg__",
+        "//tsl/lib/monitoring:__pkg__",
     ],
     licenses = ["notice"],
 )
@@ -21,12 +21,12 @@ cc_library(
     srcs = ["histogram.cc"],
     hdrs = ["histogram.h"],
     deps = [
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:thread_annotations",
-        "//tensorflow/tsl/platform:types",
-        "//tensorflow/tsl/protobuf:histogram_proto_cc",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:thread_annotations",
+        "//tsl/platform:types",
+        "//tsl/protobuf:histogram_proto_cc",
     ],
     alwayslink = True,
 )
@@ -39,8 +39,8 @@ filegroup(
         "histogram.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/histogram:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/histogram:__pkg__",
     ],
 )
 
@@ -50,8 +50,8 @@ filegroup(
         "histogram.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/histogram:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/histogram:__pkg__",
     ],
 )
 
@@ -62,9 +62,9 @@ tsl_cc_test(
     ],
     deps = [
         ":histogram",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_main",
-        "//tensorflow/tsl/protobuf:histogram_proto_cc",
+        "//tsl/platform:logging",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+        "//tsl/protobuf:histogram_proto_cc",
     ],
 )

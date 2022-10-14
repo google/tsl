@@ -18,8 +18,8 @@ limitations under the License.
 
 #include <complex>
 
-#include "tensorflow/tsl/framework/fixedpoint_types.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/framework/fixedpoint_types.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

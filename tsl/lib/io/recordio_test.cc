@@ -13,16 +13,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/core/status_test_util.h"
-#include "tensorflow/tsl/lib/hash/crc32c.h"
-#include "tensorflow/tsl/lib/io/record_reader.h"
-#include "tensorflow/tsl/lib/io/record_writer.h"
-#include "tensorflow/tsl/lib/random/simple_philox.h"
-#include "tensorflow/tsl/platform/coding.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/str_util.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/core/status_test_util.h"
+#include "tsl/lib/hash/crc32c.h"
+#include "tsl/lib/io/record_reader.h"
+#include "tsl/lib/io/record_writer.h"
+#include "tsl/lib/random/simple_philox.h"
+#include "tsl/platform/coding.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/str_util.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace io {

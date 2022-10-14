@@ -15,14 +15,14 @@ limitations under the License.
 
 #include <memory>
 
-#include "tensorflow/tsl/lib/core/status_test_util.h"
-#include "tensorflow/tsl/lib/io/inputbuffer.h"
-#include "tensorflow/tsl/lib/io/random_inputstream.h"
-#include "tensorflow/tsl/lib/io/snappy/snappy_inputbuffer.h"
-#include "tensorflow/tsl/lib/io/snappy/snappy_inputstream.h"
-#include "tensorflow/tsl/lib/io/snappy/snappy_outputbuffer.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/core/status_test_util.h"
+#include "tsl/lib/io/inputbuffer.h"
+#include "tsl/lib/io/random_inputstream.h"
+#include "tsl/lib/io/snappy/snappy_inputbuffer.h"
+#include "tsl/lib/io/snappy/snappy_inputstream.h"
+#include "tsl/lib/io/snappy/snappy_outputbuffer.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 

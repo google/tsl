@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 // Testing configuration of denormal state.
-#include "tensorflow/tsl/platform/denormal.h"
+#include "tsl/platform/denormal.h"
 
 #include <cstring>
 #include <limits>
 
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace port {

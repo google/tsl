@@ -18,10 +18,10 @@ limitations under the License.
 
 #include <string>
 
-#include "tensorflow/tsl/platform/cord.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/cord.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace io {

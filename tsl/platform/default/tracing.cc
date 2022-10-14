@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/tracing.h"
+#include "tsl/platform/tracing.h"
 
 #include <stdlib.h>
 

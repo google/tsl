@@ -13,10 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/framework/tracking_allocator.h"
+#include "tsl/framework/tracking_allocator.h"
 
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/logging.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/logging.h"
 
 namespace tsl {
 

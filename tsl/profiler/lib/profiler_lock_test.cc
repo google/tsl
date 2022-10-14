@@ -12,11 +12,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/profiler/lib/profiler_lock.h"
+#include "tsl/profiler/lib/profiler_lock.h"
 
 #include <utility>
 
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace profiler {

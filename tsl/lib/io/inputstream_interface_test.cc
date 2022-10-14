@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/inputstream_interface.h"
+#include "tsl/lib/io/inputstream_interface.h"
 
-#include "tensorflow/tsl/lib/core/status_test_util.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/core/status_test_util.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace io {

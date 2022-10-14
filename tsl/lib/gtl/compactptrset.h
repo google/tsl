@@ -18,7 +18,7 @@ limitations under the License.
 
 #include <type_traits>
 
-#include "tensorflow/tsl/lib/gtl/flatset.h"
+#include "tsl/lib/gtl/flatset.h"
 
 namespace tsl {
 namespace gtl {

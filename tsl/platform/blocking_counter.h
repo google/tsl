@@ -18,8 +18,8 @@ limitations under the License.
 
 #include <atomic>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/mutex.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/mutex.h"
 
 namespace tsl {
 

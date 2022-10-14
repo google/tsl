@@ -13,15 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/util/env_var.h"
+#include "tsl/util/env_var.h"
 
 #include <stdlib.h>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/numbers.h"
-#include "tensorflow/tsl/platform/str_util.h"
-#include "tensorflow/tsl/platform/strcat.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/numbers.h"
+#include "tsl/platform/str_util.h"
+#include "tsl/platform/strcat.h"
 
 namespace tsl {
 

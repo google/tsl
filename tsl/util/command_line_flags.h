@@ -20,7 +20,7 @@ limitations under the License.
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

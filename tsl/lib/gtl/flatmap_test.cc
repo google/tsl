@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/gtl/flatmap.h"
+#include "tsl/lib/gtl/flatmap.h"
 
 #include <algorithm>
 #include <memory>
@@ -22,9 +22,9 @@ limitations under the License.
 #include <utility>
 #include <vector>
 
-#include "tensorflow/tsl/platform/hash.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/hash.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace gtl {

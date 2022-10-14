@@ -19,12 +19,12 @@ limitations under the License.
 #include <memory>
 #include <string>
 
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/snappy.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/snappy.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace io {

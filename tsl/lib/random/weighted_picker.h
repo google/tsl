@@ -29,9 +29,9 @@ limitations under the License.
 
 #include <assert.h>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace random {

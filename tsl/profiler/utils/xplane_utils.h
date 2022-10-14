@@ -24,11 +24,11 @@ limitations under the License.
 #include "absl/container/flat_hash_map.h"
 #include "absl/container/flat_hash_set.h"
 #include "absl/strings/string_view.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/utils/timespan.h"
-#include "tensorflow/tsl/profiler/utils/trace_utils.h"
-#include "tensorflow/tsl/profiler/utils/xplane_visitor.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/utils/timespan.h"
+#include "tsl/profiler/utils/trace_utils.h"
+#include "tsl/profiler/utils/xplane_visitor.h"
 
 namespace tsl {
 namespace profiler {

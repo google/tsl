@@ -20,9 +20,9 @@ limitations under the License.
 #include <map>
 #include <memory>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/thread_annotations.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/thread_annotations.h"
 
 namespace tsl {
 namespace core {

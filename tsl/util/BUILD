@@ -5,17 +5,17 @@
 #   to other TF components outside of TSL.
 
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 load(
-    "//tensorflow/tsl:tsl.bzl",
+    "//tsl:tsl.bzl",
     "check_deps",
     "tf_copts",
 )
-load("//tensorflow:tensorflow.default.bzl", "filegroup", "get_compatible_with_portable")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup", "get_compatible_with_portable")
 load(
-    "//tensorflow/tsl/platform:build_config_root.bzl",
+    "//tsl/platform:build_config_root.bzl",
     "if_static",
 )
 
@@ -48,8 +48,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow:__subpackages__",
-        "//tensorflow/core/util:__pkg__",
+        "//third_party/tensorflow:__subpackages__",
+        "//third_party/tensorflow/core/util:__pkg__",
     ],
 )
 
@@ -78,8 +78,8 @@ filegroup(
         "use_cudnn.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/util:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/util:__pkg__",
     ],
 )
 
@@ -90,8 +90,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow:__subpackages__",
-        "//tensorflow/core/util:__pkg__",
+        "//third_party/tensorflow:__subpackages__",
+        "//third_party/tensorflow/core/util:__pkg__",
     ],
 )
 
@@ -117,10 +117,10 @@ cc_library(
     srcs = ["determinism.cc"],
     hdrs = ["determinism.h"],
     copts = tf_copts(),
-    visibility = ["//tensorflow:__subpackages__"],
+    visibility = ["//third_party/tensorflow:__subpackages__"],
     deps = [
         ":env_var",
-        "//tensorflow/tsl/platform:mutex",
+        "//tsl/platform:mutex",
         "@com_google_absl//absl/strings",
     ],
     alwayslink = 1,
@@ -140,7 +140,7 @@ cc_library(
 alias(
     name = "determinism_for_kernels",
     actual = if_static(":determinism", ":determinism_hdr_lib"),
-    visibility = ["//tensorflow:__subpackages__"],
+    visibility = ["//third_party/tensorflow:__subpackages__"],
 )
 
 check_deps(
@@ -169,14 +169,14 @@ cc_library(
     srcs = ["env_var.cc"],
     hdrs = ["env_var.h"],
     deps = [
-        "//tensorflow/tsl/platform:errors",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:numbers",
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:str_util",
-        "//tensorflow/tsl/platform:strcat",
-        "//tensorflow/tsl/platform:stringpiece",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:errors",
+        "//tsl/platform:logging",
+        "//tsl/platform:numbers",
+        "//tsl/platform:status",
+        "//tsl/platform:str_util",
+        "//tsl/platform:strcat",
+        "//tsl/platform:stringpiece",
+        "//tsl/platform:types",
     ],
 )
 
@@ -190,18 +190,18 @@ cc_library(
     srcs = ["reporter.cc"],
     hdrs = ["reporter.h"],
     visibility = [
-        "//tensorflow/core:__subpackages__",
-        "//tensorflow/tsl:__subpackages__",
+        "//third_party/tensorflow/core:__subpackages__",
+        "//tsl:__subpackages__",
     ],
     deps = [
-        "//tensorflow/core/util:test_log_proto_impl_cc",
-        "//tensorflow/tsl/platform:env",
-        "//tensorflow/tsl/platform:env_impl",
-        "//tensorflow/tsl/platform:errors",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:str_util",
-        "//tensorflow/tsl/platform:types",
+        "//third_party/tensorflow/core/util:test_log_proto_impl_cc",
+        "//tsl/platform:env",
+        "//tsl/platform:env_impl",
+        "//tsl/platform:errors",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:str_util",
+        "//tsl/platform:types",
     ],
 )
 
@@ -210,11 +210,11 @@ cc_library(
     srcs = ["command_line_flags.cc"],
     hdrs = ["command_line_flags.h"],
     deps = [
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:str_util",
-        "//tensorflow/tsl/platform:stringpiece",
-        "//tensorflow/tsl/platform:stringprintf",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:str_util",
+        "//tsl/platform:stringpiece",
+        "//tsl/platform:stringprintf",
+        "//tsl/platform:types",
     ],
 )
 
@@ -224,7 +224,7 @@ filegroup(
     srcs = [
         "reporter.h",
     ],
-    visibility = ["//tensorflow/core/util:__pkg__"],
+    visibility = ["//third_party/tensorflow/core/util:__pkg__"],
 )
 
 filegroup(
@@ -234,8 +234,8 @@ filegroup(
         "reporter.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/util:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/util:__pkg__",
     ],
 )
 
@@ -247,7 +247,7 @@ filegroup(
         ":android_test_hdrs",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/util:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/util:__pkg__",
     ],
 )

@@ -1,22 +1,22 @@
 # Description:
 # profile_utils targets.
 
-load("//tensorflow:tensorflow.default.bzl", "filegroup")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 load(
-    "//tensorflow/tsl:tsl.bzl",
+    "//tsl:tsl.bzl",
     "tf_copts",
 )
 
 package(
     default_visibility = [
-        "//tensorflow/compiler/xla/stream_executor:__subpackages__",
-        "//tensorflow/core/platform:__subpackages__",
-        "//tensorflow/tsl:__pkg__",
-        "//tensorflow/tsl/platform/default:__pkg__",
+        "//third_party/tensorflow/compiler/xla/stream_executor:__subpackages__",
+        "//third_party/tensorflow/core/platform:__subpackages__",
+        "//tsl:__pkg__",
+        "//tsl/platform/default:__pkg__",
     ],
     licenses = ["notice"],
 )
@@ -38,8 +38,8 @@ filegroup(
         "clock_cycle_profiler.cc",
     ],
     visibility = [
-        "//tensorflow/core/platform:__subpackages__",
-        "//tensorflow/tsl/platform:__pkg__",
+        "//third_party/tensorflow/core/platform:__subpackages__",
+        "//tsl/platform:__pkg__",
     ],
 )
 
@@ -55,9 +55,9 @@ cc_library(
     ],
     copts = tf_copts(),
     deps = [
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:types",
         "@com_google_absl//absl/base",
     ],
     alwayslink = 1,

@@ -21,17 +21,17 @@ limitations under the License.
 #include <condition_variable>  // NOLINT
 #include <mutex>               // NOLINT
 
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/thread_annotations.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/thread_annotations.h"
+#include "tsl/platform/types.h"
 
 // Include appropriate platform-dependent implementation details of mutex etc.
 #if defined(PLATFORM_GOOGLE)
-#include "tensorflow/tsl/platform/google/mutex_data.h"
+#include "tsl/platform/google/mutex_data.h"
 #elif defined(PLATFORM_POSIX) || defined(PLATFORM_POSIX_ANDROID) ||    \
     defined(PLATFORM_GOOGLE_ANDROID) || defined(PLATFORM_POSIX_IOS) || \
     defined(PLATFORM_GOOGLE_IOS) || defined(PLATFORM_WINDOWS)
-#include "tensorflow/tsl/platform/default/mutex_data.h"
+#include "tsl/platform/default/mutex_data.h"
 #else
 #error Define the appropriate PLATFORM_<foo> macro for this platform
 #endif
@@ -312,11 +312,11 @@ inline Condition::Condition(const bool* flag)
 
 // Include appropriate platform-dependent implementation details of mutex etc.
 #if defined(PLATFORM_GOOGLE)
-#include "tensorflow/tsl/platform/google/mutex.h"
+#include "tsl/platform/google/mutex.h"
 #elif defined(PLATFORM_POSIX) || defined(PLATFORM_POSIX_ANDROID) ||    \
     defined(PLATFORM_GOOGLE_ANDROID) || defined(PLATFORM_POSIX_IOS) || \
     defined(PLATFORM_GOOGLE_IOS) || defined(PLATFORM_WINDOWS)
-#include "tensorflow/tsl/platform/default/mutex.h"
+#include "tsl/platform/default/mutex.h"
 #else
 #error Define the appropriate PLATFORM_<foo> macro for this platform
 #endif

@@ -1,5 +1,5 @@
-load("//tensorflow/tsl/platform:rules_cc.bzl", "cc_library")
-load("//tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
+load("//tsl/platform:rules_cc.bzl", "cc_library")
+load("//third_party/tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
 
 package(
     default_visibility = ["//visibility:public"],
@@ -26,8 +26,8 @@ cc_library(
     ],
     compatible_with = get_compatible_with_portable(),
     deps = [
-        "//tensorflow/tsl/framework:fixedpoint_types",
         "//third_party/eigen3",
+        "//tsl/framework:fixedpoint_types",
     ],
 )
 
@@ -47,8 +47,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow:__subpackages__",
-        "//tensorflow:internal",
+        "//third_party/tensorflow:__subpackages__",
+        "//third_party/tensorflow:internal",
     ],
 )
 

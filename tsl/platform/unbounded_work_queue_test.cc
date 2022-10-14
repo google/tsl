@@ -13,13 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/unbounded_work_queue.h"
+#include "tsl/platform/unbounded_work_queue.h"
 
 #include "absl/memory/memory.h"
-#include "tensorflow/tsl/platform/random.h"
-#include "tensorflow/tsl/platform/blocking_counter.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/random.h"
+#include "tsl/platform/blocking_counter.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace {

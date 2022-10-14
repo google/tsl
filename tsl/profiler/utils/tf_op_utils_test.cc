@@ -13,10 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/profiler/utils/tf_op_utils.h"
+#include "tsl/profiler/utils/tf_op_utils.h"
 
 #include "absl/strings/string_view.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace profiler {

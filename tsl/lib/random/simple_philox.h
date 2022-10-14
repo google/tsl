@@ -21,8 +21,8 @@ limitations under the License.
 
 #include <algorithm>
 
-#include "tensorflow/tsl/lib/random/philox_random.h"
-#include "tensorflow/tsl/lib/random/random_distributions.h"
+#include "tsl/lib/random/philox_random.h"
+#include "tsl/lib/random/random_distributions.h"
 
 namespace tsl {
 namespace random {

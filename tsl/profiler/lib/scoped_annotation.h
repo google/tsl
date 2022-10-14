@@ -23,10 +23,10 @@ limitations under the License.
 #include <utility>
 
 #include "absl/strings/string_view.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/types.h"
 
 #if !defined(IS_MOBILE_PLATFORM)
-#include "tensorflow/tsl/profiler/backends/cpu/annotation_stack.h"
+#include "tsl/profiler/backends/cpu/annotation_stack.h"
 #endif
 
 namespace tsl {

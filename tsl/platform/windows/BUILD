@@ -1,19 +1,19 @@
-load("//tensorflow:tensorflow.default.bzl", "filegroup")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 
 # Tensorflow windows-specific implementations of tensorflow/core/platform libraries.
 load(
-    "//tensorflow/tsl:tsl.bzl",
+    "//tsl:tsl.bzl",
     "tf_copts",
 )
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 
 package(
     default_visibility = [
-        "//tensorflow/core/platform:__pkg__",
-        "//tensorflow/tsl/platform:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
+        "//tsl/platform:__pkg__",
     ],
     licenses = ["notice"],
 )
@@ -23,17 +23,17 @@ cc_library(
     srcs = [
         "windows_file_system.cc",
         "windows_file_system.h",
-        "//tensorflow/tsl/platform:env.cc",
-        "//tensorflow/tsl/platform:file_system.cc",
-        "//tensorflow/tsl/platform:file_system_helper.cc",
-        "//tensorflow/tsl/platform:ram_file_system.h",
-        "//tensorflow/tsl/platform:threadpool.cc",
+        "//tsl/platform:env.cc",
+        "//tsl/platform:file_system.cc",
+        "//tsl/platform:file_system_helper.cc",
+        "//tsl/platform:ram_file_system.h",
+        "//tsl/platform:threadpool.cc",
     ],
     hdrs = [
-        "//tensorflow/tsl/platform:env.h",
-        "//tensorflow/tsl/platform:file_system.h",
-        "//tensorflow/tsl/platform:file_system_helper.h",
-        "//tensorflow/tsl/platform:threadpool.h",
+        "//tsl/platform:env.h",
+        "//tsl/platform:file_system.h",
+        "//tsl/platform:file_system_helper.h",
+        "//tsl/platform:threadpool.h",
     ],
     tags = [
         "manual",
@@ -43,34 +43,34 @@ cc_library(
     deps = [
         ":error_windows",
         ":wide_char",
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:blocking_counter",
-        "//tensorflow/tsl/platform:context",
-        "//tensorflow/tsl/platform:cord",
-        "//tensorflow/tsl/platform:denormal",
-        "//tensorflow/tsl/platform:env_time",
-        "//tensorflow/tsl/platform:errors",
-        "//tensorflow/tsl/platform:file_statistics",
-        "//tensorflow/tsl/platform:load_library",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:path",
-        "//tensorflow/tsl/platform:platform_port",
-        "//tensorflow/tsl/platform:protobuf",
-        "//tensorflow/tsl/platform:regexp",
-        "//tensorflow/tsl/platform:setround",
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:statusor",
-        "//tensorflow/tsl/platform:str_util",
-        "//tensorflow/tsl/platform:strcat",
-        "//tensorflow/tsl/platform:stringpiece",
-        "//tensorflow/tsl/platform:stringprintf",
-        "//tensorflow/tsl/platform:threadpool_interface",
-        "//tensorflow/tsl/platform:tracing",
-        "//tensorflow/tsl/platform:types",
-        "//tensorflow/tsl/protobuf:error_codes_proto_impl_cc",
         "//third_party/eigen3",
+        "//tsl/platform",
+        "//tsl/platform:blocking_counter",
+        "//tsl/platform:context",
+        "//tsl/platform:cord",
+        "//tsl/platform:denormal",
+        "//tsl/platform:env_time",
+        "//tsl/platform:errors",
+        "//tsl/platform:file_statistics",
+        "//tsl/platform:load_library",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:path",
+        "//tsl/platform:platform_port",
+        "//tsl/platform:protobuf",
+        "//tsl/platform:regexp",
+        "//tsl/platform:setround",
+        "//tsl/platform:status",
+        "//tsl/platform:statusor",
+        "//tsl/platform:str_util",
+        "//tsl/platform:strcat",
+        "//tsl/platform:stringpiece",
+        "//tsl/platform:stringprintf",
+        "//tsl/platform:threadpool_interface",
+        "//tsl/platform:tracing",
+        "//tsl/platform:types",
+        "//tsl/protobuf:error_codes_proto_impl_cc",
         "@com_google_absl//absl/time",
         "@com_google_absl//absl/types:optional",
     ],
@@ -94,14 +94,14 @@ cc_library(
 cc_library(
     name = "env_time",
     srcs = ["env_time.cc"],
-    hdrs = ["//tensorflow/tsl/platform:env_time.h"],
+    hdrs = ["//tsl/platform:env_time.h"],
     tags = [
         "manual",
         "no_oss",
         "nobuilder",
     ],
     deps = [
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:types",
     ],
 )
 
@@ -128,13 +128,13 @@ cc_library(
         "no_oss",
         "nobuilder",
     ],
-    deps = ["//tensorflow/tsl/platform:types"],
+    deps = ["//tsl/platform:types"],
 )
 
 cc_library(
     name = "load_library",
     srcs = ["load_library.cc"],
-    hdrs = ["//tensorflow/tsl/platform:load_library.h"],
+    hdrs = ["//tsl/platform:load_library.h"],
     tags = [
         "manual",
         "no_oss",
@@ -142,8 +142,8 @@ cc_library(
     ],
     deps = [
         ":wide_char",
-        "//tensorflow/tsl/platform:errors",
-        "//tensorflow/tsl/platform:status",
+        "//tsl/platform:errors",
+        "//tsl/platform:status",
     ],
 )
 
@@ -151,7 +151,7 @@ cc_library(
     name = "net",
     srcs = ["net.cc"],
     hdrs = [
-        "//tensorflow/tsl/platform:net.h",
+        "//tsl/platform:net.h",
     ],
     linkopts = ["-DEFAULTLIB:ws2_32.lib"],
     tags = [
@@ -161,8 +161,8 @@ cc_library(
     ],
     deps = [
         ":error_windows",
-        "//tensorflow/tsl/platform:errors",
-        "//tensorflow/tsl/platform:logging",
+        "//tsl/platform:errors",
+        "//tsl/platform:logging",
     ],
 )
 
@@ -170,16 +170,16 @@ cc_library(
     name = "platform_port",
     srcs = [
         "port.cc",
-        "//tensorflow/tsl/platform:cpu_info.cc",
+        "//tsl/platform:cpu_info.cc",
     ],
     hdrs = [
-        "//tensorflow/tsl/platform:cpu_info.h",
-        "//tensorflow/tsl/platform:demangle.h",
-        "//tensorflow/tsl/platform:host_info.h",
-        "//tensorflow/tsl/platform:init_main.h",
-        "//tensorflow/tsl/platform:mem.h",
-        "//tensorflow/tsl/platform:numa.h",
-        "//tensorflow/tsl/platform:snappy.h",
+        "//tsl/platform:cpu_info.h",
+        "//tsl/platform:demangle.h",
+        "//tsl/platform:host_info.h",
+        "//tsl/platform:init_main.h",
+        "//tsl/platform:mem.h",
+        "//tsl/platform:numa.h",
+        "//tsl/platform:snappy.h",
     ],
     copts = tf_copts(),
     defines = ["TF_USE_SNAPPY"],
@@ -189,11 +189,11 @@ cc_library(
         "nobuilder",
     ],
     deps = [
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:byte_order",
-        "//tensorflow/tsl/platform:dynamic_annotations",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform",
+        "//tsl/platform:byte_order",
+        "//tsl/platform:dynamic_annotations",
+        "//tsl/platform:logging",
+        "//tsl/platform:types",
         "@snappy",
     ],
 )
@@ -207,29 +207,29 @@ cc_library(
         "no_oss",
         "nobuilder",
     ],
-    deps = ["//tensorflow/tsl/platform:mutex"],
+    deps = ["//tsl/platform:mutex"],
 )
 
 cc_library(
     name = "stacktrace_handler",
     srcs = ["stacktrace_handler.cc"],
-    hdrs = ["//tensorflow/tsl/platform:stacktrace_handler.h"],
+    hdrs = ["//tsl/platform:stacktrace_handler.h"],
     tags = [
         "manual",
         "no_oss",
         "nobuilder",
     ],
     deps = [
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:stacktrace",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:mutex",
+        "//tsl/platform:stacktrace",
+        "//tsl/platform:types",
     ],
 )
 
 cc_library(
     name = "subprocess",
     srcs = ["subprocess.cc"],
-    hdrs = ["//tensorflow/tsl/platform:subprocess.h"],
+    hdrs = ["//tsl/platform:subprocess.h"],
     tags = [
         "manual",
         "no_oss",
@@ -237,12 +237,12 @@ cc_library(
     ],
     textual_hdrs = ["subprocess.h"],
     deps = [
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:strcat",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:strcat",
+        "//tsl/platform:types",
     ],
 )
 
@@ -264,5 +264,5 @@ filegroup(
 
 exports_files(
     srcs = ["intrinsics_port.h"],
-    visibility = ["//tensorflow/core/platform:__pkg__"],
+    visibility = ["//third_party/tensorflow/core/platform:__pkg__"],
 )

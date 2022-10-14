@@ -10,15 +10,15 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/platform/status.h"
+#include "tsl/platform/status.h"
 
 #include <unordered_map>
 
 #include "absl/status/status.h"
 #include "absl/strings/cord.h"
 #include "absl/strings/str_format.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 

@@ -13,28 +13,28 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/framework/bfc_allocator.h"
+#include "tsl/framework/bfc_allocator.h"
 
 #include <algorithm>
 #include <atomic>
 #include <utility>
 
 #include "absl/strings/string_view.h"
-#include "tensorflow/tsl/framework/allocator_retry.h"
-#include "tensorflow/tsl/lib/core/bits.h"
-#include "tensorflow/tsl/platform/file_system.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/numbers.h"
-#include "tensorflow/tsl/platform/str_util.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/framework/allocator_retry.h"
+#include "tsl/lib/core/bits.h"
+#include "tsl/platform/file_system.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/numbers.h"
+#include "tsl/platform/str_util.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/platform/types.h"
 #ifdef TENSORFLOW_MEM_DEBUG
-#include "tensorflow/tsl/stacktrace.h"
+#include "tsl/stacktrace.h"
 #endif
-#include "tensorflow/core/profiler/lib/scoped_memory_debug_annotation.h"
-#include "tensorflow/core/protobuf/bfc_memory_map.pb.h"
-#include "tensorflow/tsl/profiler/lib/traceme.h"
+#include "third_party/tensorflow/core/profiler/lib/scoped_memory_debug_annotation.h"
+#include "third_party/tensorflow/core/protobuf/bfc_memory_map.pb.h"
+#include "tsl/profiler/lib/traceme.h"
 
 namespace tsl {
 

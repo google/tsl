@@ -29,11 +29,11 @@ limitations under the License.
 #include "absl/strings/cord.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/stack_frame.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/protobuf/error_codes.pb.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/stack_frame.h"
+#include "tsl/platform/types.h"
+#include "tsl/protobuf/error_codes.pb.h"
 
 namespace tsl {
 

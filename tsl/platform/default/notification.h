@@ -22,8 +22,8 @@ limitations under the License.
 #include <chrono>              // NOLINT
 #include <condition_variable>  // NOLINT
 
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

@@ -22,11 +22,11 @@ limitations under the License.
 
 #include "absl/base/attributes.h"
 #include "absl/strings/str_join.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/str_util.h"
-#include "tensorflow/tsl/platform/strcat.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/str_util.h"
+#include "tsl/platform/strcat.h"
 
 namespace tsl {
 namespace error {

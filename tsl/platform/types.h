@@ -18,17 +18,17 @@ limitations under the License.
 
 #include <string>
 
-#include "tensorflow/tsl/platform/bfloat16.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/tstring.h"
+#include "tsl/platform/bfloat16.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/tstring.h"
 
 // Include appropriate platform-dependent implementations
 #if defined(PLATFORM_GOOGLE) || defined(GOOGLE_INTEGRAL_TYPES)
-#include "tensorflow/tsl/platform/google/integral_types.h"  // IWYU pragma: export
+#include "tsl/platform/google/integral_types.h"  // IWYU pragma: export
 #elif defined(PLATFORM_POSIX) || defined(PLATFORM_POSIX_ANDROID) ||    \
     defined(PLATFORM_GOOGLE_ANDROID) || defined(PLATFORM_POSIX_IOS) || \
     defined(PLATFORM_GOOGLE_IOS) || defined(PLATFORM_WINDOWS)
-#include "tensorflow/tsl/platform/default/integral_types.h"  // IWYU pragma: export
+#include "tsl/platform/default/integral_types.h"  // IWYU pragma: export
 #else
 #error Define the appropriate PLATFORM_<foo> macro for this platform
 #endif

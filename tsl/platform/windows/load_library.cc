@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/load_library.h"
+#include "tsl/platform/load_library.h"
 
 #include <Shlwapi.h>
 
@@ -28,8 +28,8 @@ limitations under the License.
 #include <algorithm>
 #include <string>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/windows/wide_char.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/windows/wide_char.h"
 
 #pragma comment(lib, "Shlwapi.lib")
 

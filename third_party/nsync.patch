@@ -1,0 +1,7 @@
+The "version" file conflicts with the C++20 "version" header in Windows builds.
+diff --git VERSION VERSION
+deleted file mode 100644
+--- VERSION
++++ /dev/null
+@@ -1 +0,0 @@
+-1.25.0

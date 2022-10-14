@@ -14,8 +14,8 @@ limitations under the License.
 ==============================================================================*/
 
 // clang-format off
-#include "tensorflow/tsl/lib/io/record_reader.h"
-#include "tensorflow/tsl/lib/io/record_writer.h"
+#include "tsl/lib/io/record_reader.h"
+#include "tsl/lib/io/record_writer.h"
 // clang-format on
 
 #include <zlib.h>
@@ -23,13 +23,13 @@ limitations under the License.
 #include <memory>
 #include <vector>
 
-#include "tensorflow/tsl/lib/core/status_test_util.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/core/status_test_util.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 

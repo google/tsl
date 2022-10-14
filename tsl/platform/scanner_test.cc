@@ -13,9 +13,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/scanner.h"
+#include "tsl/platform/scanner.h"
 
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace strings {

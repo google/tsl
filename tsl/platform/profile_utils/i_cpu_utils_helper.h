@@ -16,8 +16,8 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_PLATFORM_PROFILE_UTILS_I_CPU_UTILS_HELPER_H_
 #define TENSORFLOW_TSL_PLATFORM_PROFILE_UTILS_I_CPU_UTILS_HELPER_H_
 
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace profile_utils {

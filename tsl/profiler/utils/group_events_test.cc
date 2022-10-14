@@ -13,20 +13,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/profiler/utils/group_events.h"
+#include "tsl/profiler/utils/group_events.h"
 
 #include <optional>
 
 #include "absl/container/flat_hash_map.h"
 #include "absl/strings/string_view.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/utils/tf_xplane_visitor.h"
-#include "tensorflow/tsl/profiler/utils/xplane_builder.h"
-#include "tensorflow/tsl/profiler/utils/xplane_schema.h"
-#include "tensorflow/tsl/profiler/utils/xplane_test_utils.h"
-#include "tensorflow/tsl/profiler/utils/xplane_visitor.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/utils/tf_xplane_visitor.h"
+#include "tsl/profiler/utils/xplane_builder.h"
+#include "tsl/profiler/utils/xplane_schema.h"
+#include "tsl/profiler/utils/xplane_test_utils.h"
+#include "tsl/profiler/utils/xplane_visitor.h"
 
 namespace tsl {
 namespace profiler {

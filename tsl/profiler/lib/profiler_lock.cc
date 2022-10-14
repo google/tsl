@@ -12,14 +12,14 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/profiler/lib/profiler_lock.h"
+#include "tsl/profiler/lib/profiler_lock.h"
 
 #include <atomic>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/statusor.h"
-#include "tensorflow/tsl/util/env_var.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/statusor.h"
+#include "tsl/util/env_var.h"
 
 namespace tsl {
 namespace profiler {

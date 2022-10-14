@@ -13,13 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/buffered_inputstream.h"
+#include "tsl/lib/io/buffered_inputstream.h"
 
-#include "tensorflow/tsl/lib/core/status_test_util.h"
-#include "tensorflow/tsl/lib/io/random_inputstream.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/test_benchmark.h"
+#include "tsl/lib/core/status_test_util.h"
+#include "tsl/lib/io/random_inputstream.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/test_benchmark.h"
 
 namespace tsl {
 namespace io {

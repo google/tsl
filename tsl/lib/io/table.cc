@@ -13,16 +13,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/table.h"
+#include "tsl/lib/io/table.h"
 
-#include "tensorflow/tsl/lib/io/block.h"
-#include "tensorflow/tsl/lib/io/cache.h"
-#include "tensorflow/tsl/lib/io/format.h"
-#include "tensorflow/tsl/lib/io/table_options.h"
-#include "tensorflow/tsl/lib/io/two_level_iterator.h"
-#include "tensorflow/tsl/platform/coding.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
+#include "tsl/lib/io/block.h"
+#include "tsl/lib/io/cache.h"
+#include "tsl/lib/io/format.h"
+#include "tsl/lib/io/table_options.h"
+#include "tsl/lib/io/two_level_iterator.h"
+#include "tsl/platform/coding.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
 
 namespace tsl {
 namespace table {

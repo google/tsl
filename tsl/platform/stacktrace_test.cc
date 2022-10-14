@@ -14,12 +14,12 @@ limitations under the License.
 ==============================================================================*/
 // Testing proper operation of the stacktrace handler.
 
-#include "tensorflow/tsl/platform/stacktrace.h"
+#include "tsl/platform/stacktrace.h"
 
 #include <string>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace {

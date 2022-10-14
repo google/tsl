@@ -13,11 +13,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/util/reporter.h"
+#include "tsl/util/reporter.h"
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/str_util.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/str_util.h"
 
 namespace tsl {
 

@@ -1,23 +1,23 @@
 load(
-    "//tensorflow/tsl/platform:build_config.bzl",
+    "//tsl/platform:build_config.bzl",
     "tsl_cc_test",
 )
-load("//tensorflow:tensorflow.default.bzl", "filegroup", "get_compatible_with_portable")
-load("//tensorflow/tsl/platform:rules_cc.bzl", "cc_library")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup", "get_compatible_with_portable")
+load("//tsl/platform:rules_cc.bzl", "cc_library")
 
 package(
     default_visibility = [
         # tensorflow/core:lib effectively exposes all targets under tensorflow/core/lib/**
-        "//tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
         # tensorflow/core/platform/cloud depends on random.h
-        "//tensorflow/core/platform:__subpackages__",
+        "//third_party/tensorflow/core/platform:__subpackages__",
         # All of the following packages depend on random/simple_philox.h for tests
-        "//tensorflow/tsl/lib/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
-        "//tensorflow/tsl/lib/io:__pkg__",
-        "//tensorflow/core/lib/strings:__pkg__",
+        "//tsl/lib/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
+        "//tsl/lib/io:__pkg__",
+        "//third_party/tensorflow/core/lib/strings:__pkg__",
         # tensorflow/core/platform/random aliases this package
-        "//tensorflow/core/lib/random:__pkg__",
+        "//third_party/tensorflow/core/lib/random:__pkg__",
     ],
     licenses = ["notice"],
 )
@@ -43,10 +43,10 @@ cc_library(
         ":exact_uniform_int",
         ":philox_random",
         ":random_distributions_utils",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:types",
         "//third_party/eigen3",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:types",
         "@com_google_absl//absl/types:span",
     ],
     alwayslink = 1,
@@ -57,8 +57,8 @@ cc_library(
     hdrs = ["random_distributions_utils.h"],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core/lib/random:__pkg__",
-        "//tensorflow/lite:__subpackages__",
+        "//third_party/tensorflow/core/lib/random:__pkg__",
+        "//third_party/tensorflow/lite:__subpackages__",
     ],
     deps = [":philox_random"],
 )
@@ -68,9 +68,9 @@ cc_library(
     hdrs = ["philox_random.h"],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/random:__pkg__",
-        "//tensorflow/lite:__subpackages__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/random:__pkg__",
+        "//third_party/tensorflow/lite:__subpackages__",
     ],
 )
 
@@ -80,8 +80,8 @@ cc_library(
     hdrs = ["philox_random_test_utils.h"],
     deps = [
         ":philox_random",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:random",
+        "//tsl/platform:logging",
+        "//tsl/platform:random",
     ],
 )
 
@@ -91,9 +91,9 @@ cc_library(
     hdrs = ["weighted_picker.h"],
     deps = [
         ":philox",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:types",
     ],
     alwayslink = 1,
 )
@@ -125,8 +125,8 @@ filegroup(
         "simple_philox.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/random:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/random:__pkg__",
     ],
 )
 
@@ -138,8 +138,8 @@ filegroup(
         "weighted_picker.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/random:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/random:__pkg__",
     ],
 )
 
@@ -149,8 +149,8 @@ filegroup(
         "philox_random_test_utils.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/random:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/random:__pkg__",
     ],
 )
 
@@ -167,8 +167,8 @@ filegroup(
         "weighted_picker.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/random:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/random:__pkg__",
     ],
 )
 
@@ -178,11 +178,11 @@ tsl_cc_test(
     srcs = ["distribution_sampler_test.cc"],
     deps = [
         ":philox",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_benchmark",
-        "//tensorflow/tsl/platform:test_main",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:macros",
+        "//tsl/platform:test",
+        "//tsl/platform:test_benchmark",
+        "//tsl/platform:test_main",
+        "//tsl/platform:types",
     ],
 )
 
@@ -194,10 +194,10 @@ tsl_cc_test(
         ":philox",
         ":philox_random",
         ":philox_random_test_utils",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:random",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_main",
+        "//tsl/platform:logging",
+        "//tsl/platform:random",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
     ],
 )
 
@@ -209,11 +209,11 @@ tsl_cc_test(
         ":philox",
         ":philox_random",
         ":philox_random_test_utils",
-        "//tensorflow/tsl/lib/math:math_util",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:random",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_main",
+        "//tsl/lib/math:math_util",
+        "//tsl/platform:logging",
+        "//tsl/platform:random",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
     ],
 )
 
@@ -223,10 +223,10 @@ tsl_cc_test(
     srcs = ["simple_philox_test.cc"],
     deps = [
         ":philox",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_main",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+        "//tsl/platform:types",
     ],
 )
 
@@ -237,11 +237,11 @@ tsl_cc_test(
     deps = [
         ":philox",
         ":weighted_picker",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_benchmark",
-        "//tensorflow/tsl/platform:test_main",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:test",
+        "//tsl/platform:test_benchmark",
+        "//tsl/platform:test_main",
+        "//tsl/platform:types",
     ],
 )

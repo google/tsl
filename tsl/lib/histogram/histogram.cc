@@ -13,17 +13,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/histogram/histogram.h"
+#include "tsl/lib/histogram/histogram.h"
 
 #include <float.h>
 #include <math.h>
 
 #include <vector>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/protobuf/histogram.pb.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/types.h"
+#include "tsl/protobuf/histogram.pb.h"
 
 namespace tsl {
 namespace histogram {

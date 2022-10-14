@@ -1,17 +1,17 @@
 load(
-    "//tensorflow/tsl:tsl.bzl",
+    "//tsl:tsl.bzl",
     "if_google",
 )
 load(
-    "//tensorflow/tsl/platform:build_config.bzl",
+    "//tsl/platform:build_config.bzl",
     "tf_proto_library",
 )
 
 package(
     default_visibility = [
-        "//tensorflow:internal",
-        "//tensorflow/core:__subpackages__",
-        "//tensorflow_models:__subpackages__",
+        "//third_party/tensorflow:internal",
+        "//third_party/tensorflow/core:__subpackages__",
+        "//third_party/tensorflow_models:__subpackages__",
     ],
     features = if_google(["-parse_headers"]),
     licenses = ["notice"],

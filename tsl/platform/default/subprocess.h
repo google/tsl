@@ -22,9 +22,9 @@ limitations under the License.
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

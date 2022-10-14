@@ -15,13 +15,13 @@ limitations under the License.
 
 // Unit test cases for IntType.
 
-#include "tensorflow/tsl/lib/gtl/int_type.h"
+#include "tsl/lib/gtl/int_type.h"
 
 #include <memory>
 #include <unordered_map>
 
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 

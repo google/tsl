@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/two_level_iterator.h"
+#include "tsl/lib/io/two_level_iterator.h"
 
-#include "tensorflow/tsl/lib/io/block.h"
-#include "tensorflow/tsl/lib/io/format.h"
-#include "tensorflow/tsl/lib/io/iterator.h"
-#include "tensorflow/tsl/lib/io/table.h"
+#include "tsl/lib/io/block.h"
+#include "tsl/lib/io/format.h"
+#include "tsl/lib/io/iterator.h"
+#include "tsl/lib/io/table.h"
 
 namespace tsl {
 namespace table {

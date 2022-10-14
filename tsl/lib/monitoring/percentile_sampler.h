@@ -18,18 +18,18 @@ limitations under the License.
 
 // clang-format off
 // Required for IS_MOBILE_PLATFORM
-#include "tensorflow/tsl/platform/platform.h"
+#include "tsl/platform/platform.h"
 // clang-format on
 
 // We replace this implementation with a null implementation for mobile
 // platforms.
 #ifdef IS_MOBILE_PLATFORM
 
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/lib/monitoring/collection_registry.h"
-#include "tensorflow/tsl/lib/monitoring/metric_def.h"
-#include "tensorflow/tsl/lib/monitoring/types.h"
-#include "tensorflow/tsl/platform/macros.h"
+#include "tsl/platform/status.h"
+#include "tsl/lib/monitoring/collection_registry.h"
+#include "tsl/lib/monitoring/metric_def.h"
+#include "tsl/lib/monitoring/types.h"
+#include "tsl/platform/macros.h"
 
 namespace tsl {
 namespace monitoring {
@@ -82,13 +82,13 @@ PercentileSampler<NumLabels>* PercentileSampler<NumLabels>::New(
 #include <cmath>
 #include <map>
 
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/lib/monitoring/collection_registry.h"
-#include "tensorflow/tsl/lib/monitoring/metric_def.h"
-#include "tensorflow/tsl/lib/monitoring/types.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/thread_annotations.h"
+#include "tsl/platform/status.h"
+#include "tsl/lib/monitoring/collection_registry.h"
+#include "tsl/lib/monitoring/metric_def.h"
+#include "tsl/lib/monitoring/types.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/thread_annotations.h"
 
 namespace tsl {
 namespace monitoring {

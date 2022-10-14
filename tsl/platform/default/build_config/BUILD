@@ -1,11 +1,11 @@
 # Description:
 # Platform-specific build configurations.
 
-load("//tensorflow/tsl/platform:rules_cc.bzl", "cc_library")
-load("//tensorflow/tsl:tsl.bzl", "tf_copts")
+load("//tsl/platform:rules_cc.bzl", "cc_library")
+load("//tsl:tsl.bzl", "tf_copts")
 
 # TODO(jakeharmon): Determine if this will fail in TSL's github
-package(default_visibility = ["//tensorflow:internal"])
+package(default_visibility = ["//third_party/tensorflow:internal"])
 
 licenses(["notice"])  # Apache 2.0
 
@@ -54,7 +54,7 @@ cc_library(
     name = "proto_parsing",
     copts = tf_copts(),
     deps = [
-        "//tensorflow/core:protos_all_cc",
+        "//third_party/tensorflow/core:protos_all_cc",
     ],
 )
 
@@ -73,7 +73,7 @@ cc_library(
     deps = [
         ":gif",
         ":jpeg",
-        "//tensorflow/core:protos_all_cc",
+        "//third_party/tensorflow/core:protos_all_cc",
         "@com_googlesource_code_re2//:re2",
         "@farmhash_archive//:farmhash",
         "@fft2d",
@@ -120,7 +120,7 @@ cc_library(
         "@local_config_cuda//cuda:cudart",
     ],
     linkopts = select({
-        "//tensorflow/tsl:macos": [
+        "//tsl:macos": [
             "-Wl,-rpath,../local_config_cuda/cuda/lib",
             "-Wl,-rpath,../local_config_cuda/cuda/extras/CUPTI/lib",
         ],

@@ -13,13 +13,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/base64.h"
+#include "tsl/platform/base64.h"
 
 #include <cstring>
 #include <memory>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/stringpiece.h"
 
 namespace tsl {
 namespace {

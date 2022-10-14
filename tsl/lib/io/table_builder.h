@@ -26,9 +26,9 @@ limitations under the License.
 
 #include <stdint.h>
 
-#include "tensorflow/tsl/lib/io/table_options.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
+#include "tsl/lib/io/table_options.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/stringpiece.h"
 
 namespace tsl {
 class WritableFile;

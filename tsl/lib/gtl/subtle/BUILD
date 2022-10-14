@@ -1,7 +1,7 @@
 # Description:
 # gtl subtle packages.
 
-load("//tensorflow:tensorflow.default.bzl", "filegroup")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 
 package(
     licenses = ["notice"],
@@ -13,7 +13,7 @@ filegroup(
         "map_traits.h",
     ],
     visibility = [
-        "//tensorflow/core/lib/gtl/subtle:__pkg__",
-        "//tensorflow/tsl/lib/gtl:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl/subtle:__pkg__",
+        "//tsl/lib/gtl:__pkg__",
     ],
 )

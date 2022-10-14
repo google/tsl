@@ -19,8 +19,8 @@ limitations under the License.
 #include <memory>
 #include <vector>
 
-#include "tensorflow/tsl/profiler/lib/profiler_interface.h"
-#include "tensorflow/core/profiler/profiler_options.pb.h"
+#include "tsl/profiler/lib/profiler_interface.h"
+#include "third_party/tensorflow/core/profiler/profiler_options.pb.h"
 
 namespace tsl {
 namespace profiler {

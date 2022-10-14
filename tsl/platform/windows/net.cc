@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/net.h"
+#include "tsl/platform/net.h"
 
 #include <sys/types.h>
 #include <winsock2.h>
@@ -21,9 +21,9 @@ limitations under the License.
 #include <cstdlib>
 #include <unordered_set>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/windows/error_windows.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/windows/error_windows.h"
 
 #undef ERROR
 

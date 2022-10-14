@@ -18,7 +18,7 @@ limitations under the License.
 
 #include <string>
 
-#include "tensorflow/tsl/platform/protobuf.h"
+#include "tsl/platform/protobuf.h"
 
 namespace tensorflow {
 namespace crash_analysis {

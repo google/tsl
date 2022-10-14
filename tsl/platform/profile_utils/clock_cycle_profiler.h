@@ -18,9 +18,9 @@ limitations under the License.
 
 #include <algorithm>
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/profile_utils/cpu_utils.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/profile_utils/cpu_utils.h"
 
 namespace tsl {
 

@@ -13,10 +13,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/resource_loader.h"
+#include "tsl/platform/resource_loader.h"
 
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/path.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/path.h"
 #include "tools/cpp/runfiles/runfiles.h"
 
 using bazel::tools::cpp::runfiles::Runfiles;

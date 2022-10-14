@@ -13,16 +13,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/rocm_rocdl_path.h"
+#include "tsl/platform/rocm_rocdl_path.h"
 
 #include <stdlib.h>
 
-#include "tensorflow/tsl/platform/path.h"
+#include "tsl/platform/path.h"
 
 #if !defined(PLATFORM_GOOGLE) && TENSORFLOW_USE_ROCM
 #include "rocm/rocm_config.h"
 #endif
-#include "tensorflow/tsl/platform/logging.h"
+#include "tsl/platform/logging.h"
 
 namespace tsl {
 

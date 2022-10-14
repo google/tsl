@@ -24,7 +24,7 @@ class CollectionRegistryTestAccess;
 }  // namespace tensorflow
 // clang-format off
 // Required for IS_MOBILE_PLATFORM
-#include "tensorflow/tsl/platform/platform.h"
+#include "tsl/platform/platform.h"
 // clang-format on
 
 // We use a null implementation for mobile platforms.
@@ -34,8 +34,8 @@ class CollectionRegistryTestAccess;
 #include <map>
 #include <memory>
 
-#include "tensorflow/tsl/lib/monitoring/metric_def.h"
-#include "tensorflow/tsl/platform/macros.h"
+#include "tsl/lib/monitoring/metric_def.h"
+#include "tsl/platform/macros.h"
 
 namespace tsl {
 namespace monitoring {
@@ -106,17 +106,17 @@ class CollectionRegistry {
 #include <memory>
 #include <utility>
 
-#include "tensorflow/tsl/lib/monitoring/collected_metrics.h"
-#include "tensorflow/tsl/lib/monitoring/metric_def.h"
-#include "tensorflow/tsl/lib/monitoring/types.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
-#include "tensorflow/tsl/platform/thread_annotations.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/protobuf/histogram.pb.h"
+#include "tsl/lib/monitoring/collected_metrics.h"
+#include "tsl/lib/monitoring/metric_def.h"
+#include "tsl/lib/monitoring/types.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/stringpiece.h"
+#include "tsl/platform/thread_annotations.h"
+#include "tsl/platform/types.h"
+#include "tsl/protobuf/histogram.pb.h"
 
 namespace tsl {
 namespace monitoring {

@@ -15,9 +15,9 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_PROFILER_BACKENDS_CPU_HOST_TRACER_UTILS_H_
 #define TENSORFLOW_TSL_PROFILER_BACKENDS_CPU_HOST_TRACER_UTILS_H_
 
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/backends/cpu/traceme_recorder.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/backends/cpu/traceme_recorder.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
 
 namespace tsl {
 namespace profiler {

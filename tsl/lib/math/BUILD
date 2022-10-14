@@ -1,12 +1,12 @@
-load("//tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
+load("//third_party/tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
 load(
-    "//tensorflow/tsl/platform:build_config.bzl",
+    "//tsl/platform:build_config.bzl",
     "tsl_cc_test",
 )
 
 package(
     default_visibility = [
-        "//tensorflow:__subpackages__",
+        "//third_party/tensorflow:__subpackages__",
     ],
     licenses = ["notice"],
 )
@@ -18,11 +18,11 @@ cc_library(
     visibility = [
         "//platforms/performance/tf_sim/utils:__subpackages__",
         "//platforms/xla/service:__subpackages__",
-        "//tensorflow:__subpackages__",
+        "//third_party/tensorflow:__subpackages__",
     ],
     deps = [
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:types",
     ],
 )
 
@@ -34,11 +34,11 @@ tsl_cc_test(
     ],
     deps = [
         ":math_util",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_benchmark",
-        "//tensorflow/tsl/platform:test_main",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:test",
+        "//tsl/platform:test_benchmark",
+        "//tsl/platform:test_main",
+        "//tsl/platform:types",
     ],
 )
 
@@ -49,7 +49,7 @@ filegroup(
         "math_util.h",
     ],
     compatible_with = get_compatible_with_portable(),
-    visibility = ["//tensorflow/core:__pkg__"],
+    visibility = ["//third_party/tensorflow/core:__pkg__"],
 )
 
 exports_files([

@@ -20,9 +20,9 @@ limitations under the License.
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/file_system.h"
-#include "tensorflow/tsl/platform/file_system_helper.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/file_system.h"
+#include "tsl/platform/file_system_helper.h"
 
 namespace tsl {
 

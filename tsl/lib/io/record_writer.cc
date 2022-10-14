@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/record_writer.h"
+#include "tsl/lib/io/record_writer.h"
 
-#include "tensorflow/tsl/lib/hash/crc32c.h"
-#include "tensorflow/tsl/lib/io/compression.h"
-#include "tensorflow/tsl/platform/coding.h"
-#include "tensorflow/tsl/platform/env.h"
+#include "tsl/lib/hash/crc32c.h"
+#include "tsl/lib/io/compression.h"
+#include "tsl/platform/coding.h"
+#include "tsl/platform/env.h"
 
 namespace tsl {
 namespace io {

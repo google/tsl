@@ -23,10 +23,10 @@ limitations under the License.
 #include <iterator>
 #include <utility>
 
-#include "tensorflow/tsl/lib/gtl/flatrep.h"
-#include "tensorflow/tsl/platform/hash.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/lib/gtl/flatrep.h"
+#include "tsl/platform/hash.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace gtl {

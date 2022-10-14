@@ -5,13 +5,13 @@
 #   to other TF components outside of TSL.
 
 load("@bazel_skylib//lib:selects.bzl", "selects")
-load("//tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
+load("//third_party/tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
 load(
-    "//tensorflow/tsl:tsl.bzl",
+    "//tsl:tsl.bzl",
     "tf_copts",
 )
 load(
-    "//tensorflow/tsl/platform:build_config.bzl",
+    "//tsl/platform:build_config.bzl",
     "tf_cuda_libdevice_path_deps",
     "tf_fingerprint_deps",
     "tf_google_mobile_srcs_no_runtime",
@@ -25,7 +25,7 @@ load(
     "tsl_protobuf_deps",
 )
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 
@@ -43,8 +43,8 @@ exports_files(
         "stringpiece_test.cc",
     ],
     visibility = [
-        "//tensorflow/core/platform:__subpackages__",
-        "//tensorflow/tsl:__subpackages__",
+        "//third_party/tensorflow/core/platform:__subpackages__",
+        "//tsl:__subpackages__",
     ],
 )
 
@@ -252,7 +252,7 @@ cc_library(
         ":strcat",
         ":stringprintf",
         ":types",
-        "//tensorflow/tsl/protobuf:error_codes_proto_impl_cc",
+        "//tsl/protobuf:error_codes_proto_impl_cc",
         "@com_google_absl//absl/base",
         "@com_google_absl//absl/base:core_headers",
         "@com_google_absl//absl/status",
@@ -271,7 +271,7 @@ cc_library(
         ":status",
         ":statusor",
         ":test",
-        "//tensorflow/tsl/protobuf:error_codes_proto_impl_cc",
+        "//tsl/protobuf:error_codes_proto_impl_cc",
     ],
 )
 
@@ -332,8 +332,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
 )
 
@@ -345,8 +345,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
 )
 
@@ -418,10 +418,10 @@ filegroup(
         "stringprintf.h",
         "subprocess.h",
         "thread_annotations.h",
-        "//tensorflow/tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.h",
-        "//tensorflow/tsl/platform/profile_utils:clock_cycle_profiler.h",
-        "//tensorflow/tsl/platform/profile_utils:cpu_utils.h",
-        "//tensorflow/tsl/platform/profile_utils:i_cpu_utils_helper.h",
+        "//tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.h",
+        "//tsl/platform/profile_utils:clock_cycle_profiler.h",
+        "//tsl/platform/profile_utils:cpu_utils.h",
+        "//tsl/platform/profile_utils:i_cpu_utils_helper.h",
     ],
     compatible_with = get_compatible_with_portable(),
 )
@@ -533,9 +533,9 @@ filegroup(
         "threadpool_interface.h",
         "tracing.h",
     ] + selects.with_or({
-        "//tensorflow/tsl:fuchsia": tf_google_mobile_srcs_no_runtime(),
+        "//tsl:fuchsia": tf_google_mobile_srcs_no_runtime(),
         "//conditions:default": [
-            "//tensorflow/tsl/platform/default:mobile_srcs_no_runtime",
+            "//tsl/platform/default:mobile_srcs_no_runtime",
             "file_system_helper.cc",
             "threadpool.cc",
             "tracing.cc",
@@ -556,16 +556,16 @@ filegroup(
         "test_benchmark.h",
         "threadpool_options.h",
         "unbounded_work_queue.h",
-        "//tensorflow/tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.cc",
-        "//tensorflow/tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.h",
-        "//tensorflow/tsl/platform/profile_utils:cpu_utils.cc",
-        "//tensorflow/tsl/platform/profile_utils:cpu_utils.h",
-        "//tensorflow/tsl/platform/profile_utils:i_cpu_utils_helper.h",
+        "//tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.cc",
+        "//tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.h",
+        "//tsl/platform/profile_utils:cpu_utils.cc",
+        "//tsl/platform/profile_utils:cpu_utils.h",
+        "//tsl/platform/profile_utils:i_cpu_utils_helper.h",
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
 )
 
@@ -576,8 +576,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core/lib/gif:__pkg__",
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core/lib/gif:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
 )
 
@@ -594,10 +594,10 @@ filegroup(
             "jpeg.h",
         ],
     ) + [
-        "//tensorflow/tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.h",
-        "//tensorflow/tsl/platform/profile_utils:cpu_utils.h",
-        "//tensorflow/tsl/platform/profile_utils:i_cpu_utils_helper.h",
-        "//tensorflow/tsl/platform/profile_utils:clock_cycle_profiler.h",
+        "//tsl/platform/profile_utils:android_armv7a_cpu_utils_helper.h",
+        "//tsl/platform/profile_utils:cpu_utils.h",
+        "//tsl/platform/profile_utils:i_cpu_utils_helper.h",
+        "//tsl/platform/profile_utils:clock_cycle_profiler.h",
     ],
     compatible_with = get_compatible_with_portable(),
 )
@@ -641,7 +641,7 @@ exports_files(
         "tracing.h",
         "tracing.cc",
     ],
-    visibility = ["//tensorflow:__subpackages__"],
+    visibility = ["//third_party/tensorflow:__subpackages__"],
 )
 
 filegroup(
@@ -655,7 +655,7 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
     ],
 )
 
@@ -683,8 +683,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
 )
 
@@ -695,8 +695,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/jpeg:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/jpeg:__pkg__",
     ],
 )
 
@@ -717,8 +717,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/jpeg:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/jpeg:__pkg__",
     ],
 )
 
@@ -734,9 +734,9 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/jpeg:__pkg__",
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/jpeg:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
 )
 
@@ -751,9 +751,9 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gif:__pkg__",
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gif:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
 )
 
@@ -967,7 +967,7 @@ cc_library(
     name = "build_test",
     testonly = 1,
     visibility = [
-        "//tensorflow/core/platform:__pkg__",
+        "//third_party/tensorflow/core/platform:__pkg__",
     ],
     deps = [
         ":byte_order",
@@ -998,7 +998,7 @@ cc_library(
 cc_library(
     name = "cuda",
     deps = [
-        "//tensorflow/tsl/platform/default/build_config:cuda",
+        "//tsl/platform/default/build_config:cuda",
     ],
 )
 
@@ -1073,7 +1073,7 @@ filegroup(
         "str_util.h",
     ],
     compatible_with = get_compatible_with_portable(),
-    visibility = ["//tensorflow/core:__pkg__"],
+    visibility = ["//third_party/tensorflow/core:__pkg__"],
 )
 
 cc_library(
@@ -1251,7 +1251,7 @@ cc_library(
     srcs = ["test_main.cc"],
     copts = tf_copts(),
     linkopts = select({
-        "//tensorflow/tsl:windows": [],
+        "//tsl:windows": [],
         "//conditions:default": ["-lm"],
     }),
     deps = [
@@ -1304,7 +1304,7 @@ tsl_cc_test(
         ":statusor",
         ":test",
         ":test_main",
-        "//tensorflow/tsl/protobuf:error_codes_proto_impl_cc",
+        "//tsl/protobuf:error_codes_proto_impl_cc",
     ],
 )
 
@@ -1407,10 +1407,10 @@ tsl_cc_test(
     size = "small",
     srcs = ["subprocess_test.cc"],
     data = [
-        "//tensorflow/tsl/platform/testdata:test_echo",
-        "//tensorflow/tsl/platform/testdata:test_echo_argv_1",
-        "//tensorflow/tsl/platform/testdata:test_noop",
-        "//tensorflow/tsl/platform/testdata:test_stderr",
+        "//tsl/platform/testdata:test_echo",
+        "//tsl/platform/testdata:test_echo_argv_1",
+        "//tsl/platform/testdata:test_noop",
+        "//tsl/platform/testdata:test_stderr",
     ],
     deps = [
         ":path",
@@ -1419,7 +1419,7 @@ tsl_cc_test(
         ":subprocess",
         ":test",
         ":test_main",
-        "//tensorflow/tsl/lib/core:status_test_util",
+        "//tsl/lib/core:status_test_util",
     ],
 )
 

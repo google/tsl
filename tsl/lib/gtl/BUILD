@@ -1,32 +1,32 @@
-load("//tensorflow:tensorflow.default.bzl", "filegroup")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 load(
-    "//tensorflow/tsl/platform:build_config.bzl",
+    "//tsl/platform:build_config.bzl",
     "tsl_cc_test",
 )
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 
 package(
     default_visibility = [
         # tensorflow/core:lib effectively exposes all targets under tensorflow/core/lib/**
-        "//tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
         # tensorflow/core/lib/strings:proto_serialization uses on gtl:inlined_vector
-        "//tensorflow/core/lib/strings:__pkg__",
-        "//tensorflow/tsl/lib/strings:__pkg__",
+        "//third_party/tensorflow/core/lib/strings:__pkg__",
+        "//tsl/lib/strings:__pkg__",
         # tensorflow/core/framework uses map_util, and flatmap
-        "//tensorflow/core/framework:__pkg__",
-        "//tensorflow/tsl/framework:__pkg__",
+        "//third_party/tensorflow/core/framework:__pkg__",
+        "//tsl/framework:__pkg__",
         # tensorflow/core/util uses inlined_vector
-        "//tensorflow/core/util:__pkg__",
+        "//third_party/tensorflow/core/util:__pkg__",
         # tensorflow/core/tfrt/utils uses inlined_vector
-        "//tensorflow/core/tfrt/utils:__pkg__",
+        "//third_party/tensorflow/core/tfrt/utils:__pkg__",
         # tensorflow/examples/custom_ops_doc/simple_hash_table uses map_util
-        "//tensorflow/examples/custom_ops_doc/simple_hash_table:__pkg__",
-        "//tensorflow/compiler/xla:__subpackages__",
-        "//tensorflow/core/lib/gtl:__subpackages__",
-        "//tensorflow/tsl/profiler/utils:__pkg__",
+        "//third_party/tensorflow/examples/custom_ops_doc/simple_hash_table:__pkg__",
+        "//third_party/tensorflow/compiler/xla:__subpackages__",
+        "//third_party/tensorflow/core/lib/gtl:__subpackages__",
+        "//tsl/profiler/utils:__pkg__",
     ],
     licenses = ["notice"],
 )
@@ -44,9 +44,9 @@ cc_library(
     hdrs = ["flatmap.h"],
     deps = [
         ":flatrep",
-        "//tensorflow/tsl/platform:hash",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:hash",
+        "//tsl/platform:logging",
+        "//tsl/platform:types",
     ],
 )
 
@@ -54,8 +54,8 @@ cc_library(
     name = "flatrep",
     hdrs = ["flatrep.h"],
     deps = [
-        "//tensorflow/tsl/platform:prefetch",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:prefetch",
+        "//tsl/platform:types",
     ],
 )
 
@@ -64,9 +64,9 @@ cc_library(
     hdrs = ["flatset.h"],
     deps = [
         ":flatrep",
-        "//tensorflow/tsl/platform:hash",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:hash",
+        "//tsl/platform:logging",
+        "//tsl/platform:types",
     ],
 )
 
@@ -74,8 +74,8 @@ cc_library(
     name = "inlined_vector",
     hdrs = ["inlined_vector.h"],
     deps = [
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:macros",
+        "//tsl/platform:types",
         "@com_google_absl//absl/container:inlined_vector",
     ],
 )
@@ -84,8 +84,8 @@ cc_library(
     name = "int_type",
     hdrs = ["int_type.h"],
     deps = [
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:macros",
+        "//tsl/platform:types",
     ],
 )
 
@@ -98,7 +98,7 @@ cc_library(
     name = "map_util",
     srcs = [
         "map_util.h",
-        "//tensorflow/tsl/lib/gtl/subtle:map_traits",
+        "//tsl/lib/gtl/subtle:map_traits",
     ],
     hdrs = ["map_util.h"],
 )
@@ -113,8 +113,8 @@ filegroup(
         "iterator_range.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
     ],
 )
 
@@ -125,8 +125,8 @@ filegroup(
         "map_util.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
     ],
 )
 
@@ -135,8 +135,8 @@ filegroup(
     srcs = [
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
     ],
 )
 
@@ -145,8 +145,8 @@ filegroup(
     srcs = [
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
     ],
 )
 
@@ -159,9 +159,9 @@ filegroup(
         "inlined_vector.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
-        "//tensorflow/tsl:__subpackages__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
+        "//tsl:__subpackages__",
     ],
 )
 
@@ -172,11 +172,11 @@ filegroup(
         "int_type.h",
         "iterator_range.h",
         "map_util.h",
-        "//tensorflow/tsl/lib/gtl/subtle:map_traits",
+        "//tsl/lib/gtl/subtle:map_traits",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
     ],
 )
 
@@ -191,11 +191,11 @@ filegroup(
         "int_type.h",
         "iterator_range.h",
         "map_util.h",
-        "//tensorflow/tsl/lib/gtl/subtle:map_traits",
+        "//tsl/lib/gtl/subtle:map_traits",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/gtl:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/gtl:__pkg__",
     ],
 )
 
@@ -216,10 +216,10 @@ tsl_cc_test(
         ":int_type",
         ":iterator_range",
         ":map_util",
-        "//tensorflow/tsl/platform:hash",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:test",
-        "//tensorflow/tsl/platform:test_main",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:hash",
+        "//tsl/platform:macros",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+        "//tsl/platform:types",
     ],
 )

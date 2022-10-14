@@ -12,17 +12,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/profiler/lib/profiler_factory.h"
+#include "tsl/profiler/lib/profiler_factory.h"
 
 #include <functional>
 #include <utility>
 
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/profiler/lib/profiler_interface.h"
-#include "tensorflow/core/profiler/profiler_options.pb.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/test.h"
+#include "tsl/profiler/lib/profiler_interface.h"
+#include "third_party/tensorflow/core/profiler/profiler_options.pb.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
 
 namespace tsl {
 namespace profiler {

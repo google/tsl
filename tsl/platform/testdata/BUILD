@@ -4,7 +4,7 @@
 
 package(
     default_visibility = [
-        "//tensorflow/tsl/platform:__pkg__",
+        "//tsl/platform:__pkg__",
     ],
     licenses = ["notice"],
 )

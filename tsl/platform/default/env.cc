@@ -35,14 +35,14 @@ limitations under the License.
 #include <thread>
 #include <vector>
 
-#include "tensorflow/tsl/platform/default/posix_file_system.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/load_library.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/ram_file_system.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/protobuf/error_codes.pb.h"
+#include "tsl/platform/default/posix_file_system.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/load_library.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/ram_file_system.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/protobuf/error_codes.pb.h"
 
 namespace tsl {
 

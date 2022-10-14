@@ -15,12 +15,12 @@ limitations under the License.
 
 #include <condition_variable>
 
-#include "tensorflow/tsl/platform/cpu_info.h"
-#include "tensorflow/tsl/platform/env_time.h"
-#include "tensorflow/tsl/platform/mem.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/threadpool.h"
+#include "tsl/platform/cpu_info.h"
+#include "tsl/platform/env_time.h"
+#include "tsl/platform/mem.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/threadpool.h"
 
 namespace tsl {
 namespace port {

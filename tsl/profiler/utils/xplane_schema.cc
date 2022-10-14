@@ -13,17 +13,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/profiler/utils/xplane_schema.h"
+#include "tsl/profiler/utils/xplane_schema.h"
 
 #include <cstdint>
 
 #include "absl/container/flat_hash_map.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
-#include "tensorflow/tsl/lib/gtl/map_util.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/utils/tf_op_utils.h"
+#include "tsl/lib/gtl/map_util.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/utils/tf_op_utils.h"
 
 namespace tsl {
 namespace profiler {

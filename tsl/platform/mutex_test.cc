@@ -13,9 +13,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/mutex.h"
+#include "tsl/platform/mutex.h"
 
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace {

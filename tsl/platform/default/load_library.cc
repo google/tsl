@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/load_library.h"
+#include "tsl/platform/load_library.h"
 
 #include <dlfcn.h>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/status.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/status.h"
 
 namespace tsl {
 

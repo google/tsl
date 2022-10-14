@@ -20,10 +20,10 @@ limitations under the License.
 
 #include <array>
 
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/stringpiece.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 namespace tracing {
@@ -141,9 +141,9 @@ const char* GetLogDir();
 }  // namespace tsl
 
 #if defined(PLATFORM_GOOGLE)
-#include "tensorflow/tsl/platform/google/tracing_impl.h"
+#include "tsl/platform/google/tracing_impl.h"
 #else
-#include "tensorflow/tsl/platform/default/tracing_impl.h"
+#include "tsl/platform/default/tracing_impl.h"
 #endif
 
 #endif  // TENSORFLOW_TSL_PLATFORM_TRACING_H_

@@ -24,15 +24,15 @@ limitations under the License.
 #include <vector>
 
 #include "absl/container/flat_hash_set.h"
-#include "tensorflow/tsl/framework/allocator.h"
-#include "tensorflow/tsl/framework/allocator_retry.h"
-#include "tensorflow/tsl/framework/shared_counter.h"
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/numbers.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/platform/thread_annotations.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/framework/allocator.h"
+#include "tsl/framework/allocator_retry.h"
+#include "tsl/framework/shared_counter.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/numbers.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/platform/thread_annotations.h"
+#include "tsl/platform/types.h"
 
 namespace tensorflow {
 class MemoryDump;

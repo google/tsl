@@ -13,9 +13,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/resource.h"
+#include "tsl/platform/resource.h"
 
-#include "tensorflow/tsl/platform/stringpiece.h"
+#include "tsl/platform/stringpiece.h"
 
 namespace tsl {
 

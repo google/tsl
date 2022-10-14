@@ -13,22 +13,22 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/file_system_helper.h"
+#include "tsl/platform/file_system_helper.h"
 
 #include <deque>
 #include <string>
 #include <vector>
 
-#include "tensorflow/tsl/platform/cpu_info.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/file_system.h"
-#include "tensorflow/tsl/platform/mutex.h"
-#include "tensorflow/tsl/platform/path.h"
-#include "tensorflow/tsl/platform/platform.h"
-#include "tensorflow/tsl/platform/status.h"
-#include "tensorflow/tsl/platform/str_util.h"
-#include "tensorflow/tsl/platform/threadpool.h"
+#include "tsl/platform/cpu_info.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/file_system.h"
+#include "tsl/platform/mutex.h"
+#include "tsl/platform/path.h"
+#include "tsl/platform/platform.h"
+#include "tsl/platform/status.h"
+#include "tsl/platform/str_util.h"
+#include "tsl/platform/threadpool.h"
 
 namespace tsl {
 namespace internal {

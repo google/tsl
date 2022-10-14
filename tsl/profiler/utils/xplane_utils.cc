@@ -12,7 +12,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
-#include "tensorflow/tsl/profiler/utils/xplane_utils.h"
+#include "tsl/profiler/utils/xplane_utils.h"
 
 #include <algorithm>
 #include <cstdint>
@@ -27,19 +27,19 @@ limitations under the License.
 #include "absl/container/flat_hash_set.h"
 #include "absl/strings/match.h"
 #include "absl/strings/string_view.h"
-#include "tensorflow/core/profiler/protobuf/xplane.pb.h"
-#include "tensorflow/core/util/stats_calculator.h"
-#include "tensorflow/tsl/platform/fingerprint.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/protobuf.h"
-#include "tensorflow/tsl/platform/types.h"
-#include "tensorflow/tsl/profiler/lib/context_types.h"
-#include "tensorflow/tsl/profiler/utils/math_utils.h"
-#include "tensorflow/tsl/profiler/utils/tf_xplane_visitor.h"
-#include "tensorflow/tsl/profiler/utils/timespan.h"
-#include "tensorflow/tsl/profiler/utils/xplane_builder.h"
-#include "tensorflow/tsl/profiler/utils/xplane_schema.h"
-#include "tensorflow/tsl/profiler/utils/xplane_visitor.h"
+#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "third_party/tensorflow/core/util/stats_calculator.h"
+#include "tsl/platform/fingerprint.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/protobuf.h"
+#include "tsl/platform/types.h"
+#include "tsl/profiler/lib/context_types.h"
+#include "tsl/profiler/utils/math_utils.h"
+#include "tsl/profiler/utils/tf_xplane_visitor.h"
+#include "tsl/profiler/utils/timespan.h"
+#include "tsl/profiler/utils/xplane_builder.h"
+#include "tsl/profiler/utils/xplane_schema.h"
+#include "tsl/profiler/utils/xplane_visitor.h"
 
 namespace tsl {
 namespace profiler {

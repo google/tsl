@@ -1,6 +1,6 @@
-load("//tensorflow:tensorflow.default.bzl", "filegroup")
+load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 
@@ -8,18 +8,18 @@ package(
     default_visibility = [
         "//learning/brain/google/monitoring:__pkg__",
         # tensorflow/core:lib effectively exposes all targets under tensorflow/core/lib/**
-        "//tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
         # tensorflow/core/platform:monitoring depends on this package
-        "//tensorflow/core/platform:__subpackages__",
+        "//third_party/tensorflow/core/platform:__subpackages__",
         # tensorflow/compiler/xla/pjrt:metrics depends on this package
-        "//tensorflow/compiler/xla/pjrt:__subpackages__",
-        "//tensorflow/compiler/xla/service/gpu:__subpackages__",
+        "//third_party/tensorflow/compiler/xla/pjrt:__subpackages__",
+        "//third_party/tensorflow/compiler/xla/service/gpu:__subpackages__",
         # tensorflow/compiler/mlir/tfrt:tf_jitrt depends on this package
-        "//tensorflow/compiler/mlir/tfrt:__subpackages__",
-        "//tensorflow/compiler/xla/stream_executor:__subpackages__",
-        "//tensorflow/core/lib/monitoring:__subpackages__",
-        "//tensorflow/compiler/xla/service:__subpackages__",
-        "//tensorflow/tsl/framework:__subpackages__",
+        "//third_party/tensorflow/compiler/mlir/tfrt:__subpackages__",
+        "//third_party/tensorflow/compiler/xla/stream_executor:__subpackages__",
+        "//third_party/tensorflow/core/lib/monitoring:__subpackages__",
+        "//third_party/tensorflow/compiler/xla/service:__subpackages__",
+        "//tsl/framework:__subpackages__",
     ],
     licenses = ["notice"],
 )
@@ -30,13 +30,13 @@ cc_library(
     deps = [
         ":collection_registry",
         ":metric_def",
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:thread_annotations",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:status",
+        "//tsl/platform:thread_annotations",
+        "//tsl/platform:types",
     ],
 )
 
@@ -48,12 +48,12 @@ cc_library(
     deps = [
         ":collection_registry",
         ":metric_def",
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:thread_annotations",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:status",
+        "//tsl/platform:thread_annotations",
+        "//tsl/platform:types",
     ],
 )
 
@@ -64,14 +64,14 @@ cc_library(
     deps = [
         ":collection_registry",
         ":metric_def",
-        "//tensorflow/tsl/lib/histogram",
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:thread_annotations",
-        "//tensorflow/tsl/platform:types",
-        "//tensorflow/tsl/protobuf:histogram_proto_cc",
+        "//tsl/lib/histogram",
+        "//tsl/platform",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:status",
+        "//tsl/platform:thread_annotations",
+        "//tsl/platform:types",
+        "//tsl/protobuf:histogram_proto_cc",
     ],
 )
 
@@ -81,7 +81,7 @@ cc_library(
         "types.h",
     ],
     deps = [
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:types",
     ],
 )
 
@@ -90,13 +90,13 @@ cc_library(
     hdrs = ["metric_def.h"],
     visibility = [
         "//learning/brain/google/monitoring:__subpackages__",
-        "//tensorflow/core:__subpackages__",
+        "//third_party/tensorflow/core:__subpackages__",
     ],
     deps = [
         ":types",
-        "//tensorflow/tsl/platform:stringpiece",
-        "//tensorflow/tsl/platform:types",
-        "//tensorflow/tsl/protobuf:histogram_proto_cc",
+        "//tsl/platform:stringpiece",
+        "//tsl/platform:types",
+        "//tsl/protobuf:histogram_proto_cc",
     ],
 )
 
@@ -105,21 +105,21 @@ cc_library(
     srcs = ["collection_registry.cc"],
     hdrs = ["collection_registry.h"],
     visibility = [
-        "//tensorflow/core:__subpackages__",
+        "//third_party/tensorflow/core:__subpackages__",
     ],
     deps = [
         ":collected_metrics",
         ":metric_def",
         ":types",
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:env",
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:stringpiece",
-        "//tensorflow/tsl/platform:thread_annotations",
-        "//tensorflow/tsl/platform:types",
-        "//tensorflow/tsl/protobuf:histogram_proto_cc",
+        "//tsl/platform",
+        "//tsl/platform:env",
+        "//tsl/platform:logging",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:stringpiece",
+        "//tsl/platform:thread_annotations",
+        "//tsl/platform:types",
+        "//tsl/protobuf:histogram_proto_cc",
     ],
 )
 
@@ -131,7 +131,7 @@ cc_library(
     deps = [
         ":metric_def",
         ":types",
-        "//tensorflow/tsl/protobuf:histogram_proto_cc",
+        "//tsl/protobuf:histogram_proto_cc",
     ],
 )
 
@@ -159,10 +159,10 @@ cc_library(
         ":collection_registry",
         ":metric_def",
         ":types",
-        "//tensorflow/tsl/lib/monitoring:test_utils",
-        "//tensorflow/tsl/platform:errors",
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:statusor",
+        "//tsl/lib/monitoring:test_utils",
+        "//tsl/platform:errors",
+        "//tsl/platform:status",
+        "//tsl/platform:statusor",
         "@com_google_absl//absl/strings",
     ],
 )
@@ -175,11 +175,11 @@ cc_library(
         ":collection_registry",
         ":metric_def",
         ":types",
-        "//tensorflow/tsl/platform",
-        "//tensorflow/tsl/platform:macros",
-        "//tensorflow/tsl/platform:mutex",
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:thread_annotations",
+        "//tsl/platform",
+        "//tsl/platform:macros",
+        "//tsl/platform:mutex",
+        "//tsl/platform:status",
+        "//tsl/platform:thread_annotations",
     ],
 )
 
@@ -191,9 +191,9 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         ":types",
-        "//tensorflow/tsl/platform:errors",
-        "//tensorflow/tsl/platform:statusor",
-        "//tensorflow/tsl/protobuf:histogram_proto_cc",
+        "//tsl/platform:errors",
+        "//tsl/platform:statusor",
+        "//tsl/protobuf:histogram_proto_cc",
         "@com_google_absl//absl/algorithm:container",
         "@com_google_absl//absl/strings",
     ],
@@ -205,8 +205,8 @@ cc_library(
         "timed.h",
     ],
     deps = [
-        "//tensorflow/tsl/platform:env_time",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:env_time",
+        "//tsl/platform:types",
     ],
 )
 
@@ -225,8 +225,8 @@ filegroup(
         "types.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/monitoring:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/monitoring:__pkg__",
     ],
 )
 
@@ -246,8 +246,8 @@ filegroup(
         "types.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/monitoring:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/monitoring:__pkg__",
     ],
 )
 
@@ -266,7 +266,7 @@ filegroup(
         "types.h",
     ],
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/monitoring:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/monitoring:__pkg__",
     ],
 )

@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/table.h"
+#include "tsl/lib/io/table.h"
 
 #include <algorithm>
 #include <map>
@@ -21,16 +21,16 @@ limitations under the License.
 #include <vector>
 
 #include "absl/strings/escaping.h"
-#include "tensorflow/tsl/lib/io/block.h"
-#include "tensorflow/tsl/lib/io/block_builder.h"
-#include "tensorflow/tsl/lib/io/format.h"
-#include "tensorflow/tsl/lib/io/iterator.h"
-#include "tensorflow/tsl/lib/io/table_builder.h"
-#include "tensorflow/tsl/lib/random/simple_philox.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/snappy.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/io/block.h"
+#include "tsl/lib/io/block_builder.h"
+#include "tsl/lib/io/format.h"
+#include "tsl/lib/io/iterator.h"
+#include "tsl/lib/io/table_builder.h"
+#include "tsl/lib/random/simple_philox.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/snappy.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace table {

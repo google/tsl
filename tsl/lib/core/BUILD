@@ -4,9 +4,9 @@
 #   The libraries in this package are not allowed to have ANY dependencies
 #   to other TF components outside of TSL.
 
-load("//tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
+load("//third_party/tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
 load(
-    "//tensorflow/tsl/platform:rules_cc.bzl",
+    "//tsl/platform:rules_cc.bzl",
     "cc_library",
 )
 
@@ -25,7 +25,7 @@ filegroup(
         "bits.h",
     ],
     compatible_with = get_compatible_with_portable(),
-    visibility = ["//tensorflow/core:__pkg__"],
+    visibility = ["//third_party/tensorflow/core:__pkg__"],
 )
 
 filegroup(
@@ -37,8 +37,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/core:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/core:__pkg__",
     ],
 )
 
@@ -48,7 +48,7 @@ filegroup(
         "bitmap_test.cc",
     ],
     compatible_with = get_compatible_with_portable(),
-    visibility = ["//tensorflow/core:__pkg__"],
+    visibility = ["//third_party/tensorflow/core:__pkg__"],
 )
 
 filegroup(
@@ -58,7 +58,7 @@ filegroup(
         "bits.h",
     ],
     compatible_with = get_compatible_with_portable(),
-    visibility = ["//tensorflow/core:__pkg__"],
+    visibility = ["//third_party/tensorflow/core:__pkg__"],
 )
 
 filegroup(
@@ -68,8 +68,8 @@ filegroup(
     ],
     compatible_with = get_compatible_with_portable(),
     visibility = [
-        "//tensorflow/core:__pkg__",
-        "//tensorflow/core/lib/core:__pkg__",
+        "//third_party/tensorflow/core:__pkg__",
+        "//third_party/tensorflow/core/lib/core:__pkg__",
     ],
 )
 
@@ -79,7 +79,7 @@ cc_library(
     hdrs = ["bitmap.h"],
     compatible_with = get_compatible_with_portable(),
     deps = [
-        "//tensorflow/tsl/platform:logging",
+        "//tsl/platform:logging",
     ],
     alwayslink = 1,
 )
@@ -89,8 +89,8 @@ cc_library(
     testonly = 1,
     hdrs = ["status_test_util.h"],
     deps = [
-        "//tensorflow/tsl/platform:status",
-        "//tensorflow/tsl/platform:test",
+        "//tsl/platform:status",
+        "//tsl/platform:test",
     ],
 )
 
@@ -98,7 +98,7 @@ cc_library(
     name = "bits",
     hdrs = ["bits.h"],
     deps = [
-        "//tensorflow/tsl/platform:logging",
-        "//tensorflow/tsl/platform:types",
+        "//tsl/platform:logging",
+        "//tsl/platform:types",
     ],
 )

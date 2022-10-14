@@ -13,15 +13,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/core/status_test_util.h"
-#include "tensorflow/tsl/lib/io/random_inputstream.h"
-#include "tensorflow/tsl/lib/io/zlib_compression_options.h"
-#include "tensorflow/tsl/lib/io/zlib_inputstream.h"
-#include "tensorflow/tsl/lib/io/zlib_outputbuffer.h"
-#include "tensorflow/tsl/platform/env.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/strcat.h"
-#include "tensorflow/tsl/platform/test.h"
+#include "tsl/lib/core/status_test_util.h"
+#include "tsl/lib/io/random_inputstream.h"
+#include "tsl/lib/io/zlib_compression_options.h"
+#include "tsl/lib/io/zlib_inputstream.h"
+#include "tsl/lib/io/zlib_outputbuffer.h"
+#include "tsl/platform/env.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/strcat.h"
+#include "tsl/platform/test.h"
 
 namespace tsl {
 namespace io {

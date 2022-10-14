@@ -17,10 +17,10 @@ limitations under the License.
 #include <unordered_map>
 #include <vector>
 
-#include "tensorflow/tsl/platform/hash.h"
-#include "tensorflow/tsl/platform/logging.h"
-#include "tensorflow/tsl/platform/test.h"
-#include "tensorflow/tsl/platform/test_benchmark.h"
+#include "tsl/platform/hash.h"
+#include "tsl/platform/logging.h"
+#include "tsl/platform/test.h"
+#include "tsl/platform/test_benchmark.h"
 
 namespace tsl {
 

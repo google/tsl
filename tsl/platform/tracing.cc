@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/platform/tracing.h"
+#include "tsl/platform/tracing.h"
 
 #include <array>
 #include <atomic>
 
-#include "tensorflow/tsl/platform/hash.h"
+#include "tsl/platform/hash.h"
 
 namespace tsl {
 namespace tracing {

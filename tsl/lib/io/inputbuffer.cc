@@ -13,12 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#include "tensorflow/tsl/lib/io/inputbuffer.h"
+#include "tsl/lib/io/inputbuffer.h"
 
 #include <algorithm>
 
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/logging.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/logging.h"
 
 namespace tsl {
 namespace io {

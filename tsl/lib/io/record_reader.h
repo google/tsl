@@ -16,17 +16,17 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_LIB_IO_RECORD_READER_H_
 #define TENSORFLOW_TSL_LIB_IO_RECORD_READER_H_
 
-#include "tensorflow/tsl/lib/io/inputstream_interface.h"
-#include "tensorflow/tsl/platform/errors.h"
-#include "tensorflow/tsl/platform/stringpiece.h"
+#include "tsl/lib/io/inputstream_interface.h"
+#include "tsl/platform/errors.h"
+#include "tsl/platform/stringpiece.h"
 #if !defined(IS_SLIM_BUILD)
-#include "tensorflow/tsl/lib/io/snappy/snappy_compression_options.h"
-#include "tensorflow/tsl/lib/io/snappy/snappy_inputstream.h"
-#include "tensorflow/tsl/lib/io/zlib_compression_options.h"
-#include "tensorflow/tsl/lib/io/zlib_inputstream.h"
+#include "tsl/lib/io/snappy/snappy_compression_options.h"
+#include "tsl/lib/io/snappy/snappy_inputstream.h"
+#include "tsl/lib/io/zlib_compression_options.h"
+#include "tsl/lib/io/zlib_inputstream.h"
 #endif  // IS_SLIM_BUILD
-#include "tensorflow/tsl/platform/macros.h"
-#include "tensorflow/tsl/platform/types.h"
+#include "tsl/platform/macros.h"
+#include "tsl/platform/types.h"
 
 namespace tsl {
 class RandomAccessFile;
