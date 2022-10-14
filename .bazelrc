@@ -1,0 +1,2 @@
+# Enable bzlmod to manage external dependencies.
+common --experimental_enable_bzlmod
