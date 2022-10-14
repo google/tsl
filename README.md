@@ -12,9 +12,6 @@ This repo contains base utilities and cross-platform support for projects like
 
 ## Contacts
 
-Please see [TensorFlow](https://github.com/tensorflow/tensorflow) during
-migration.
-
 Discord TBA
 
 Community proposals TBA
