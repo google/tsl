@@ -63,8 +63,9 @@ implib_gen(
     name = "cuda_implib_gen",
     error_value = "CUDA_ERROR_SHARED_OBJECT_SYMBOL_NOT_FOUND",
     header = "cuda.h",
-    # No package, must load the driver's libcuda.so.1.
     shared_library = "lib/stubs/libcuda.so",
+    # Load the driver's libcuda.so.1, not the stub from runfiles or package.
+    use_runfile = False,
     visibility = ["//visibility:private"],
 )
 

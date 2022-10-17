@@ -1,9 +1,20 @@
 """Macro to create bazel repositories for external dependencies."""
 
 def dependencies():
+    # When adding or updating a dependency, please also update the mirror:
+    # /google/bin/releases/tensorflow-devinfra-team/cli_tools/tf_mirror <url>
+
+    http_archive(
+        name = "benchmark",
+        urls = mirror_urls("https://github.com/google/benchmark/archive/0baacde3618ca617da95375e0af13ce1baadea47.tar.gz"),
+        integrity = "sha256-C5IaO8OeNfQnXI3MZYryORwVD7lmECNBKHsEAf8ubyE=",
+        strip_prefix = "benchmark-0baacde3618ca617da95375e0af13ce1baadea47",
+        symlinks = {"//third_party:benchmark.BUILD": "BUILD"},
+    )
+
     http_archive(
         name = "farmhash",
-        url = "github.com/google/farmhash/archive/0d859a811870d10f53a594927d0d0b97573ad06d.tar.gz",
+        urls = mirror_urls("https://github.com/google/farmhash/archive/0d859a811870d10f53a594927d0d0b97573ad06d.tar.gz"),
         integrity = "sha256-GDks8HNuHWLsu41pXDFJa2UHhZ6MdVQdetC6CS3FIRU=",
         strip_prefix = "farmhash-0d859a811870d10f53a594927d0d0b97573ad06d",
         symlinks = {"//third_party:farmhash.BUILD": "BUILD"},
@@ -11,15 +22,24 @@ def dependencies():
 
     http_archive(
         name = "fft2d",
-        url = "github.com/petewarden/OouraFFT/archive/v1.0.tar.gz",
+        urls = mirror_urls("https://github.com/petewarden/OouraFFT/archive/v1.0.tar.gz"),
         integrity = "sha256-X02rwq4h4fU3Ql1YpJzcocSeoR2w1iceKksn6Wl1SOs=",
         strip_prefix = "OouraFFT-1.0",
         symlinks = {"//third_party:fft2d.BUILD": "BUILD"},
     )
 
     http_archive(
+        name = "gif",
+        urls = mirror_urls("http://pilotfiber.dl.sourceforge.net/project/giflib/giflib-5.2.1.tar.gz"),
+        integrity = "sha256-MdpVYvRMXxXWM0Cgmk/WK0jEViDNMC93ptms8Ad4eb0=",
+        strip_prefix = "giflib-5.2.1",
+        symlinks = {"//third_party:gif.BUILD": "BUILD"},
+        patches = ["//third_party:gif.patch"],
+    )
+
+    http_archive(
         name = "highwayhash",
-        url = "github.com/google/highwayhash/archive/c13d28517a4db259d738ea4886b1f00352a3cc33.tar.gz",
+        urls = mirror_urls("https://github.com/google/highwayhash/archive/c13d28517a4db259d738ea4886b1f00352a3cc33.tar.gz"),
         integrity = "sha256-wOK5kx+8zjv7zXmZw8EU9ASsD4uJd1pbvMvKpQGGjlg=",
         strip_prefix = "highwayhash-c13d28517a4db259d738ea4886b1f00352a3cc33",
         symlinks = {"//third_party:highwayhash.BUILD": "BUILD"},
@@ -27,7 +47,7 @@ def dependencies():
 
     http_archive(
         name = "hwloc",
-        url = "download.open-mpi.org/release/hwloc/v2.7/hwloc-2.7.1.tar.gz",
+        urls = mirror_urls("https://download.open-mpi.org/release/hwloc/v2.7/hwloc-2.7.1.tar.gz"),
         integrity = "sha256-TLCnge2YCwOtjEi+tXQHqmfEuQjkVyKVS5cwN5vH9tU=",
         strip_prefix = "hwloc-2.7.1",
         symlinks = {
@@ -35,12 +55,11 @@ def dependencies():
             "//third_party:hwloc.build_defs.bzl": "build_defs.bzl",
             "//third_party:hwloc.static-components.h": "hwloc/static-components.h",
         },
-        patches = ["//third_party:hwloc.patch"],
     )
 
     http_archive(
         name = "implib_so",
-        url = "github.com/yugr/Implib.so/archive/1c65670f2ffba77d1985a8b32e3f4529fe70291e.tar.gz",
+        urls = mirror_urls("https://github.com/yugr/Implib.so/archive/1c65670f2ffba77d1985a8b32e3f4529fe70291e.tar.gz"),
         integrity = "sha256-0MqCHgjKUcBBhfQtWabFztKCIJcDAcgQ46iWqsXNXRo=",
         strip_prefix = "Implib.so-1c65670f2ffba77d1985a8b32e3f4529fe70291e",
         symlinks = {
@@ -51,16 +70,44 @@ def dependencies():
     )
 
     http_archive(
+        name = "libjpeg_turbo",
+        urls = mirror_urls("https://github.com/libjpeg-turbo/libjpeg-turbo/archive/2.1.0.tar.gz"),
+        integrity = "sha256-1rd5CSfWWBCN/TvuLwxmopJMUe5/nckw9ixFL0pjjFI=",
+        strip_prefix = "libjpeg-turbo-2.1.0",
+        symlinks = {"//third_party:libjpeg_turbo.BUILD": "BUILD"},
+    )
+
+    http_archive(
+        name = "nasm",
+        urls = mirror_urls("https://www.nasm.us/pub/nasm/releasebuilds/2.14.02/nasm-2.14.02.tar.bz2"),
+        integrity = "sha256-NP0mxwonep/dVMtezzibre2vSAR7Jp0QCPvIGbJOgLw=",
+        strip_prefix = "nasm-2.14.02",
+        symlinks = {
+            "//third_party:nasm.BUILD": "BUILD",
+            "//third_party:nasm.config.h": "config/config.h",
+        },
+    )
+
+    http_archive(
         name = "nsync",
-        url = "github.com/google/nsync/archive/1.25.0.tar.gz",
+        urls = mirror_urls("https://github.com/google/nsync/archive/1.25.0.tar.gz"),
         integrity = "sha256-K+nb/M5BfHq8wqpv7jUc1NKSUY1pJXfnSixsBbBJ5EI=",
         strip_prefix = "nsync-1.25.0",
         patches = ["//third_party:nsync.patch"],
     )
 
     http_archive(
+        name = "png",
+        urls = mirror_urls("https://github.com/glennrp/libpng/archive/v1.6.37.tar.gz"),
+        integrity = "sha256-ynSg2s4XmoQiGHZxrul904krU+FoYnFFJxytW1rIEwc=",
+        strip_prefix = "libpng-1.6.37",
+        symlinks = {"//third_party:png.BUILD": "BUILD"},
+        patches = ["//third_party:png.patch"],
+    )
+
+    http_archive(
         name = "snappy",
-        url = "github.com/google/snappy/archive/1.1.8.tar.gz",
+        urls = mirror_urls("https://github.com/google/snappy/archive/1.1.8.tar.gz"),
         integrity = "sha256-FrZ38HgyphKwg2F42383TkFPlGV8E45pk8v8XcxYZR8=",
         strip_prefix = "snappy-1.1.8",
         symlinks = {"//third_party:snappy.BUILD": "BUILD"},
@@ -71,11 +118,13 @@ def dependencies():
         package = "nvidia.cudnn",
         symlinks = {"//third_party:cudnn.BUILD": "BUILD"},
     )
+
     _py_package(
         name = "nccl",
         package = "nvidia.nccl",
         symlinks = {"//third_party:nccl.BUILD": "BUILD"},
     )
+
     _cuda(name = "cuda")
 
 mirrors = struct(
@@ -84,20 +133,21 @@ mirrors = struct(
     tensorflow = "https://mirror.tensorflow.org/",
 )
 
+def mirror_urls(url, mirror = mirrors.tensorflow):
+    return [mirror + url.removeprefix("http://").removeprefix("https://"), url]
+
 def _http_archive(
         ctx,
-        url,
-        mirror = mirrors.tensorflow,
-        strip_prefix = "",
+        urls,
+        integrity,
         symlinks = {},
         patches = [],
         patch_strip = 0,
         **kwargs):
     ctx.download_and_extract(
-        # Keep the mirror up-to-date manually (see b/154869892) with:
-        # /google/bin/releases/tensorflow-devinfra-team/cli_tools/tf_mirror <url>
-        url = [mirror + url, "https://" + url],
-        stripPrefix = strip_prefix,
+        url = urls,
+        integrity = integrity,
+        stripPrefix = kwargs.pop("strip_prefix", ""),
         **kwargs
     )
     for label, symlink in symlinks.items():
@@ -108,16 +158,15 @@ def _http_archive(
 http_archive = repository_rule(
     implementation = lambda ctx: _http_archive(
         ctx = ctx,
-        url = ctx.attr.url,
-        mirror = ctx.attr.mirror,
+        urls = ctx.attr.urls,
+        integrity = ctx.attr.integrity,
         strip_prefix = ctx.attr.strip_prefix,
         symlinks = ctx.attr.symlinks,
         patches = ctx.attr.patches,
         patch_strip = ctx.attr.patch_strip,
     ),
     attrs = {
-        "url": attr.string(mandatory = True),
-        "mirror": attr.string(default = mirrors.tensorflow),
+        "urls": attr.string_list(mandatory = True),
         "integrity": attr.string(mandatory = True),
         "strip_prefix": attr.string(),
         "symlinks": attr.label_keyed_string_dict(allow_files = True),
@@ -176,14 +225,14 @@ def _cuda_impl(ctx):
             version = version,
         )
         url = "{repo}/{name}/linux-x86_64/{archive}.tar.xz".format(
-            repo = "developer.download.nvidia.com/compute/cuda/redist",
+            repo = "https://developer.download.nvidia.com/compute/cuda/redist",
             name = name,
             archive = archive,
         )
         ctx.delete("LICENSE")  # LICENSE files are all identical
         _http_archive(
             ctx = ctx,
-            url = url,
+            urls = mirror_urls(url),
             integrity = integrity,
             strip_prefix = archive,
         )

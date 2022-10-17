@@ -10,15 +10,11 @@ def _implib_gen_impl(ctx):
     ]
     prefix = input.basename.split(".", 1)[0]
 
-    if ctx.attr.package:
-        rootpath = input.short_path
-        packagepath = paths.join(
-            ctx.attr.package.replace(".", "/"),
-            input.basename,
-        )
-    else:
-        rootpath = ""
-        packagepath = ""
+    rootpath = input.short_path if ctx.attr.use_runfile else ""
+    packagepath = paths.join(
+        ctx.attr.package.replace(".", "/"),
+        input.basename,
+    ) if ctx.attr.package else ""
 
     ctx.actions.expand_template(
         template = ctx.file._template,
@@ -63,8 +59,12 @@ implib_gen = rule(
             mandatory = True,
             doc = "Header which provides the 'error_value'.",
         ),
+        "use_runfile": attr.bool(
+            default = True,
+            doc = "Whether to add shared_library path to the dlopen paths.",
+        ),
         "package": attr.string(
-            doc = "Python dist-package directory.",
+            doc = "Python dist-package directory to add to dlopen paths.",
         ),
         "_implib_gen": attr.label(
             executable = True,
