@@ -29,11 +29,9 @@ cc_library(
     name = "nccl",
     srcs = [":implib_gen"],
     hdrs = glob(["include/**"]),
-    linkopts = [
-        "-ldl",
-        # Find shared library in the sibling site-package.
-        "-Wl,-rpath=../nvidia/nccl/lib",
-    ],
+    data = glob(["lib/*"]),
+    linkopts = ["-ldl"],
+    linkstatic = True,
     strip_include_prefix = "include",
     deps = ["@cuda//:cuda_headers"],
 )
@@ -42,6 +40,7 @@ implib_gen(
     name = "implib_gen",
     error_value = "ncclSystemError",
     header = "nccl.h",
+    package = "nvidia.nccl.lib",
     shared_library = "lib/libnccl.so.2",
     visibility = ["//visibility:private"],
 )

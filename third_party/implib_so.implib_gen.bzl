@@ -1,5 +1,7 @@
 """Rule to generate source files which dynamically load a shared object."""
 
+load("@bazel_skylib//lib:paths.bzl", "paths")
+
 def _implib_gen_impl(ctx):
     input = ctx.file.shared_library
     dlopen, init, tramp = [
@@ -7,11 +9,24 @@ def _implib_gen_impl(ctx):
         for suffix in [".dlopen.cc", ".init.c", ".tramp.S"]
     ]
     prefix = input.basename.split(".", 1)[0]
+
+    if ctx.attr.package:
+        rootpath = input.short_path
+        packagepath = paths.join(
+            ctx.attr.package.replace(".", "/"),
+            input.basename,
+        )
+    else:
+        rootpath = ""
+        packagepath = ""
+
     ctx.actions.expand_template(
         template = ctx.file._template,
         substitutions = {
             "header.h": ctx.attr.header,
             "prefix": prefix,
+            "rootpath": rootpath,
+            "packagepath": packagepath,
             "ERROR_VALUE": ctx.attr.error_value,
         },
         output = dlopen,
@@ -47,6 +62,9 @@ implib_gen = rule(
         "header": attr.string(
             mandatory = True,
             doc = "Header which provides the 'error_value'.",
+        ),
+        "package": attr.string(
+            doc = "Python dist-package directory.",
         ),
         "_implib_gen": attr.label(
             executable = True,

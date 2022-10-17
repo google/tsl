@@ -30,11 +30,9 @@ cc_library(
     name = "cudnn",
     srcs = [":implib_gen"],
     hdrs = glob(["include/**"]),
-    linkopts = [
-        "-ldl",
-        # Find shared library in the sibling site-package.
-        "-Wl,-rpath=../nvidia/cudnn/lib",
-    ],
+    data = glob(["lib/*"]),
+    linkopts = ["-ldl"],
+    linkstatic = True,
     strip_include_prefix = "include",
     deps = ["@cuda//:cuda_headers"],
 )
@@ -43,6 +41,7 @@ implib_gen(
     name = "implib_gen",
     error_value = "CUDNN_STATUS_NOT_INITIALIZED",
     header = "cudnn.h",
+    package = "nvidia.cudnn.lib",
     shared_library = "lib/libcudnn.so.8",
     visibility = ["//visibility:private"],
 )
