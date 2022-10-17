@@ -1,5 +1,5 @@
 load("//tsl/platform:build_config.bzl", "tsl_cc_test")
-load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
+load("//tsl:tsl.default.bzl", "filegroup")
 load(
     "//tsl/platform:rules_cc.bzl",
     "cc_library",

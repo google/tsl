@@ -1,4 +1,4 @@
-load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
+load("//tsl:tsl.default.bzl", "filegroup")
 
 # Tensorflow windows-specific implementations of tensorflow/core/platform libraries.
 load(

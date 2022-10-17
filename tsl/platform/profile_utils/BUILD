@@ -1,7 +1,7 @@
 # Description:
 # profile_utils targets.
 
-load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
+load("//tsl:tsl.default.bzl", "filegroup")
 load(
     "//tsl/platform:rules_cc.bzl",
     "cc_library",

@@ -1,5 +1,5 @@
 load("//tsl/platform:rules_cc.bzl", "cc_library")
-load("//third_party/tensorflow:tensorflow.default.bzl", "get_compatible_with_portable")
+load("//tsl:tsl.default.bzl", "get_compatible_with_portable")
 
 package(
     default_visibility = ["//visibility:public"],

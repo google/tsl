@@ -1,4 +1,4 @@
-load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
+load("//tsl:tsl.default.bzl", "filegroup")
 load(
     "//tsl:tsl.bzl",
     "if_linux_x86_64",

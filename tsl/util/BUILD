@@ -13,7 +13,7 @@ load(
     "check_deps",
     "tf_copts",
 )
-load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup", "get_compatible_with_portable")
+load("//tsl:tsl.default.bzl", "filegroup", "get_compatible_with_portable")
 load(
     "//tsl/platform:build_config_root.bzl",
     "if_static",

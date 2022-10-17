@@ -1,6 +1,6 @@
 # Tensorflow default + linux implementations of tensorflow/core/platform libraries.
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
-load("//third_party/tensorflow:tensorflow.default.bzl", "filegroup")
+load("//tsl:tsl.default.bzl", "filegroup")
 load("//tsl:tsl.bzl", "if_not_windows", "tf_copts")
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 
