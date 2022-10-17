@@ -316,6 +316,17 @@ cc_library(
     ],
 )
 
+tsl_cc_test(
+    name = "metrics_test",
+    srcs = ["metrics_test.cc"],
+    deps = [
+        "//third_party/tensorflow/core:framework",
+        "//tsl/lib/monitoring:cell_reader",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+    ],
+)
+
 cc_library(
     name = "fixedpoint_types",
     hdrs = ["fixedpoint_types.h"],

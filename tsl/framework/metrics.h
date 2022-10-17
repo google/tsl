@@ -137,7 +137,6 @@ void RecordTFDataServiceCrossTrainerCacheSizeBytes(size_t bytes);
 void RecordTFDataFilename(const string& name, const string& filename);
 
 // Records statistics of tf.data auto sharding.
-//
 // The `id` is a unique identifier of the input pipeline. The `policy`
 // identifies the auto-sharding policy used, the `num_workers` identifies the
 // number of workers, and `num_replicas` identifies the number of replicas.
@@ -173,6 +172,9 @@ void RecordGraphOutputTensors(const size_t size);
 
 // Records the number of cores requested by graphs with XLA SPMD enabled.
 void RecordTPUXlaSpmdCoresPerReplica(int64_t cores_per_replica);
+
+// Records the number of runs through a TPU compilation stage, pass pair
+void RecordTPUXlaCompileCount(const string& stage, const string& pass);
 
 void UpdateGraphExecTime(const uint64 running_time_usecs);
 void UpdateGraphPendingQueueLength(uint64 len);
@@ -259,7 +261,7 @@ class ScopedCounter final {
   // Returns nullopt otherwise.
   std::optional<uint64> DurationMicroSec() const {
     return started_ ? std::optional<uint64>(accumulated_time_ +
-                                            Env::Default()->NowMicros() -
+                                            tsl::Env::Default()->NowMicros() -
                                             start_time_)
                     : std::nullopt;
   }
@@ -267,7 +269,7 @@ class ScopedCounter final {
   // Temporarily stop the timer, but keep accumulated time.
   void AccumulateAndStop() {
     if (started_) {
-      accumulated_time_ = Env::Default()->NowMicros() - start_time_;
+      accumulated_time_ = tsl::Env::Default()->NowMicros() - start_time_;
       started_ = false;
     }
   }
@@ -277,7 +279,7 @@ class ScopedCounter final {
     if (started_) return;
 
     // Keep previously accumulated time if any.
-    start_time_ = Env::Default()->NowMicros();
+    start_time_ = tsl::Env::Default()->NowMicros();
     started_ = true;
   }
 
@@ -286,7 +288,7 @@ class ScopedCounter final {
  private:
   template <std::size_t... S>
   void ReportInternal(std::index_sequence<S...>) {
-    uint64 time_interval = Env::Default()->NowMicros() - start_time_;
+    uint64 time_interval = tsl::Env::Default()->NowMicros() - start_time_;
     time_interval += accumulated_time_;
     if (time_interval > 0) {
       counter_->GetCell(labels_[S]...)->IncrementBy(time_interval);
@@ -294,7 +296,7 @@ class ScopedCounter final {
   }
 
   void Init() {
-    start_time_ = Env::Default()->NowMicros();
+    start_time_ = tsl::Env::Default()->NowMicros();
     started_ = true;
     accumulated_time_ = 0;
   }

@@ -242,6 +242,10 @@ auto* xla_tpu_spmd_cores_per_replica = monitoring::Counter<1>::New(
     "/tensorflow/tpu/xla_spmd_cores_per_replica",
     "The number of cores used by XLA SPMD-replicated models.", "cores");
 
+auto* xla_tpu_compile_count = monitoring::Counter<2>::New(
+    "/platforms/xla/tpu/compile_count", "Number of XLA compilation pass runs.",
+    "stage", "pass");
+
 auto* bfc_allocator_delay =
     monitoring::Counter<0>::New("/tensorflow/core/bfc_allocator_delay",
                                 "The total time spent running each graph "
@@ -459,6 +463,10 @@ void RecordGraphOutputTensors(const size_t size) {
 void RecordTPUXlaSpmdCoresPerReplica(int64_t cores_per_replica) {
   xla_tpu_spmd_cores_per_replica->GetCell(absl::StrCat(cores_per_replica))
       ->IncrementBy(1);
+}
+
+void RecordTPUXlaCompileCount(const string& stage, const string& pass) {
+  xla_tpu_compile_count->GetCell(stage, pass)->IncrementBy(1);
 }
 
 void UpdateGraphExecTime(const uint64 running_time_usecs) {
