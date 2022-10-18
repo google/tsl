@@ -25,13 +25,6 @@ package(
     licenses = ["notice"],
 )
 
-filegroup(
-    name = "framework_internal_impl_srcs",
-    srcs = [
-        "metrics.cc",
-    ],
-)
-
 # Files needed for core:framework_internal_impl.
 filegroup(
     name = "framework_internal_private_hdrs",
@@ -41,7 +34,6 @@ filegroup(
         "cancellation.h",
         "device_type.h",
         "fixedpoint_types.h",
-        "metrics.h",
         "numeric_types.h",
         "tracking_allocator.h",
         "type_traits.h",
@@ -189,17 +181,13 @@ cc_library(
         "allocator_retry.cc",
         "allocator_retry.h",
         "bfc_allocator.cc",
-        # metric is provided by libtensorflow_framework right now, including the
-        # header here avoids to depend directly on the metric library, which
-        # would lead to duplicated symbols later. The migration to cc_shared_library
-        # should clean this all up.
-        "metrics.h",
     ],
     hdrs = ["bfc_allocator.h"],
     features = ["parse_headers"],
     visibility = ["//visibility:public"],
     deps = [
         ":allocator",
+        ":metrics",
         ":shared_counter",
         "//third_party/tensorflow/core:protos_all_cc",
         "//third_party/tensorflow/core/profiler/lib:scoped_memory_debug_annotation",
@@ -303,16 +291,7 @@ cc_library(
     srcs = ["metrics.cc"],
     hdrs = ["metrics.h"],
     deps = [
-        "//third_party/tensorflow/core:protos_all_cc",
-        "//third_party/tensorflow/core/protobuf:for_core_protos_cc",
         "//tsl/lib/monitoring:counter",
-        "//tsl/lib/monitoring:gauge",
-        "//tsl/lib/monitoring:sampler",
-        "//tsl/platform:env",
-        "//tsl/platform:statusor",
-        "//tsl/platform:types",
-        "@com_google_absl//absl/container:flat_hash_map",
-        "@com_google_absl//absl/strings",
     ],
 )
 
