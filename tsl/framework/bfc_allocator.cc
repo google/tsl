@@ -33,8 +33,8 @@ limitations under the License.
 #include "tsl/stacktrace.h"
 #endif
 #include "third_party/tensorflow/core/profiler/lib/scoped_memory_debug_annotation.h"
-#include "third_party/tensorflow/core/protobuf/bfc_memory_map.pb.h"
 #include "tsl/profiler/lib/traceme.h"
+#include "tsl/protobuf/bfc_memory_map.pb.h"
 
 namespace tsl {
 
