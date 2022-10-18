@@ -683,6 +683,7 @@ def tf_protos_all_impl():
         clean_dep("//third_party/tensorflow/core/protobuf:conv_autotuning_proto_cc_impl"),
         clean_dep("//third_party/tensorflow/core:protos_all_cc_impl"),
         clean_dep("//tsl/protobuf:protos_all_cc_impl"),
+        clean_dep("//tsl/util:test_log_proto_cc_impl"),
     ]
 
 def tf_protos_all():
