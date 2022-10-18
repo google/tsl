@@ -113,19 +113,25 @@ def dependencies():
         symlinks = {"//third_party:snappy.BUILD": "BUILD"},
     )
 
-    _py_package(
+    http_archive(
         name = "cudnn",
-        package = "nvidia.cudnn",
+        urls = mirror_urls("https://developer.download.nvidia.com/compute/redist/cudnn/v8.6.0/local_installers/11.8/cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz"),
+        integrity = "sha256-u8OW30cpTGV+3AnGAGdNYIyxv8gLgtz0VHBgwhcRFZ4=",
+        strip_prefix = "cudnn-linux-x86_64-8.6.0.163_cuda11-archive",
         symlinks = {"//third_party:cudnn.BUILD": "BUILD"},
     )
 
-    _py_package(
+    http_archive(
         name = "nccl",
-        package = "nvidia.nccl",
+        urls = mirror_urls("https://developer.download.nvidia.com/compute/redist/nccl/v2.11/nccl_2.11.4-1+cuda11.4_x86_64.txz"),
+        integrity = "sha256-Y5qG1/kKC5+BQ+8gRLnNzNfeUbKMzM4vmFLTvdDk0RQ=",
+        strip_prefix = "nccl_2.11.4-1+cuda11.4_x86_64",
         symlinks = {"//third_party:nccl.BUILD": "BUILD"},
     )
 
     _cuda(name = "cuda")
+
+    _remote_execution_configure(name = "local_config_remote_execution")
 
 mirrors = struct(
     bazel = "https://mirror.bazel.build/",
@@ -213,12 +219,14 @@ def _cuda_impl(ctx):
     for name, version, integrity in [
         ("cuda_cudart", "11.8.89", "sha256-VhKeDELfA+y1CnuyP8MoX6Oa8agY+IJrGDz3k1KQmLs="),
         ("cuda_cupti", "11.8.87", "sha256-suvFZyqnuJa1mGIA0TKTPDfnLfawv1rCXJyxjCwDBX8="),
+        ("cuda_nvrtc", "11.8.89", "sha256-S95r3WVQEQuRpbjkQlecJt3zpLydOAvtA9rui/cKUoY="),
         ("cuda_nvtx", "11.8.86", "sha256-0Ir1PkEW1VNREmgMb4pndHRMYlomC8WmQ5mjvjVwAgE="),
         ("cuda_nvcc", "11.8.89", "sha256-fuhFDbzBbp/l0qe1Z9bewiDFiUqUrGZARZ4GIx47OaU="),
         ("libcublas", "11.11.3.6", "sha256-BF5kVcn4eJscfO0ZlXx5BNI8Ih9NHXW7V0oshWrrrpg="),
         ("libcufft", "10.9.0.58", "sha256-6tygswpKLB90H96I1t1hFgTkiP21HGdoYeq8CNLEYS8="),
         ("libcurand", "10.3.0.86", "sha256-nTC+JRwaBGO1IgP2UU2sUGKETGBtE+I00ThugMg9snk="),
         ("libcusolver", "11.4.1.48", "sha256-7RNtlg0oAB/vH+iWqrVuo+aohpcKtzInTJMG4b7IjJY="),
+        ("libcusparse", "11.7.5.86", "sha256-klD+U51L1qN4WB3AtSjoz8QYtX8oVFvznXDK52IHXfc="),
     ]:
         archive = "{name}-linux-x86_64-{version}-archive".format(
             name = name,
@@ -238,3 +246,22 @@ def _cuda_impl(ctx):
         )
 
 _cuda = repository_rule(implementation = _cuda_impl)
+
+_REMOTE_GPU_TESTING = "REMOTE_GPU_TESTING"
+
+def _remote_execution_configure_impl(ctx):
+    # Write macro returning either 'remote-gpu' or 'local' depending on the
+    # --repo_env=REMOTE_GPU_TESTING value. This is necessary because tags
+    # are not configurable.
+    flag = ctx.os.environ.get(_REMOTE_GPU_TESTING, "").strip()
+    tag = "remote-gpu" if flag == "1" else "remote-gpu"
+    ctx.file(
+        "remote_execution.bzl",
+        "def gpu_test_tags():\n    return [\"%s\"]\n" % tag,
+    )
+    ctx.file("BUILD")
+
+_remote_execution_configure = repository_rule(
+    implementation = _remote_execution_configure_impl,
+    environ = [_REMOTE_GPU_TESTING],
+)

@@ -29,7 +29,7 @@ cc_library(
     name = "nccl",
     srcs = [":implib_gen"],
     hdrs = glob(["include/**"]),
-    data = glob(["lib/*"]),
+    data = glob(["lib/*.so*"]),
     linkopts = ["-ldl"],
     linkstatic = True,
     strip_include_prefix = "include",

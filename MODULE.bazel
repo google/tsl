@@ -19,6 +19,7 @@ use_repo(
     "hwloc",
     "implib_so",
     "libjpeg_turbo",
+    "local_config_remote_execution",
     "nccl",
     "nsync",
     "png",

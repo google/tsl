@@ -44,7 +44,7 @@ cc_library(
             name = name,
             srcs = [":{}_implib_gen".format(name)],
             hdrs = glob(["include/**"]),
-            data = glob(["lib/*.so"]),
+            data = glob(["lib/*.so*"]),
             linkopts = ["-ldl"],
             linkstatic = True,
             strip_include_prefix = "include",
@@ -56,6 +56,7 @@ cc_library(
         "cufft",
         "curand",
         "cusolver",
+        "cusparse",
     ]
 ]
 
@@ -102,5 +103,14 @@ implib_gen(
     header = "cusolver_common.h",
     package = "nvidia.cusolver.lib",
     shared_library = "lib/libcusolver.so",
+    visibility = ["//visibility:private"],
+)
+
+implib_gen(
+    name = "cusparse_implib_gen",
+    error_value = "CUSPARSE_STATUS_NOT_INITIALIZED",
+    header = "cusparse.h",
+    package = "nvidia.cusparse.lib",
+    shared_library = "lib/libcusparse.so",
     visibility = ["//visibility:private"],
 )
