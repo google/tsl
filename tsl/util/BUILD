@@ -3,27 +3,20 @@
 #
 #   The libraries in this package are not allowed to have ANY dependencies
 #   to other TF components outside of TSL.
+
+load(
+    "//tsl/platform:rules_cc.bzl",
+    "cc_library",
+)
 load(
     "//tsl:tsl.bzl",
     "check_deps",
     "tf_copts",
 )
-load(
-    "//tsl:tsl.default.bzl",
-    "filegroup",
-    "get_compatible_with_portable",
-)
-load(
-    "//tsl/platform:build_config.bzl",
-    "tf_proto_library",
-)
+load("//tsl:tsl.default.bzl", "filegroup", "get_compatible_with_portable")
 load(
     "//tsl/platform:build_config_root.bzl",
     "if_static",
-)
-load(
-    "//tsl/platform:rules_cc.bzl",
-    "cc_library",
 )
 
 package(
@@ -107,19 +100,6 @@ filegroup(
     srcs = [
         "ptr_util.h",
         "use_cudnn.h",
-    ],
-)
-
-tf_proto_library(
-    name = "test_log_proto",
-    srcs = ["test_log.proto"],
-    make_default_target_header_only = True,
-    visibility = [
-        "//third_party/tensorflow/core:__subpackages__",
-    ],
-    deps = [
-        "//google/protobuf:any",
-        "//google/protobuf:wrappers",
     ],
 )
 
@@ -214,7 +194,7 @@ cc_library(
         "//tsl:__subpackages__",
     ],
     deps = [
-        "test_log_proto_cc",
+        "//third_party/tensorflow/core/util:test_log_proto_impl_cc",
         "//tsl/platform:env",
         "//tsl/platform:env_impl",
         "//tsl/platform:errors",
