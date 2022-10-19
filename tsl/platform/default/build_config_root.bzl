@@ -24,14 +24,6 @@ def tf_exec_properties(kwargs):
         return GPU_TEST_PROPERTIES
     return {}
 
-def tf_additional_plugin_deps():
-    return select({
-        str(Label("//third_party/tensorflow:with_xla_support")): [
-            str(Label("//third_party/tensorflow/compiler/jit")),
-        ],
-        "//conditions:default": [],
-    })
-
 def tf_additional_profiler_deps():
     return []
 
@@ -51,23 +43,17 @@ def tf_additional_license_deps():
 # used for all framework_shared_object platforms including MacOS.
 def if_static(extra_deps, otherwise = [], macos = []):
     ret = {
-        str(Label("//third_party/tensorflow:framework_shared_object")): otherwise,
+        str(Label("//tsl:framework_shared_object")): otherwise,
         "//conditions:default": extra_deps,
     }
     if macos:
-        ret[str(Label("//third_party/tensorflow:macos_with_framework_shared_object"))] = macos
+        ret[str(Label("//tsl:macos_with_framework_shared_object"))] = macos
     return select(ret)
 
 def if_static_and_not_mobile(extra_deps, otherwise = []):
     return select({
-        str(Label("//third_party/tensorflow:framework_shared_object")): otherwise,
-        str(Label("//third_party/tensorflow:android")): otherwise,
-        str(Label("//third_party/tensorflow:ios")): otherwise,
+        str(Label("//tsl:framework_shared_object")): otherwise,
+        str(Label("//tsl:android")): otherwise,
+        str(Label("//tsl:ios")): otherwise,
         "//conditions:default": extra_deps,
-    })
-
-def if_dynamic_kernels(extra_deps, otherwise = []):
-    return select({
-        str(Label("//third_party/tensorflow:dynamic_loaded_kernels")): extra_deps,
-        "//conditions:default": otherwise,
     })
