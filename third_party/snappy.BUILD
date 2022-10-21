@@ -4,11 +4,6 @@ licenses(["notice"])  # BSD 3-Clause
 
 exports_files(["COPYING"])
 
-config_setting(
-    name = "windows",
-    values = {"cpu": "x64_windows"},
-)
-
 cc_library(
     name = "snappy",
     srcs = [
@@ -24,7 +19,7 @@ cc_library(
     ],
     hdrs = ["snappy.h"],
     copts = ["-DHAVE_CONFIG_H"] + select({
-        ":windows": [],
+        #"@org_tensorflow//tensorflow:windows": [],
         "//conditions:default": [
             "-fno-exceptions",
             "-Wno-sign-compare",
@@ -33,7 +28,7 @@ cc_library(
         ],
     }),
     defines = select({
-        ":windows": [],
+        #"@org_tensorflow//tensorflow:windows": [],
         "//conditions:default": ["HAVE_SYS_UIO_H"],
     }),
 )

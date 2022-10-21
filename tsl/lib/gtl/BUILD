@@ -18,6 +18,7 @@ package(
         # tensorflow/core/framework uses map_util, and flatmap
         "//third_party/tensorflow/core/framework:__pkg__",
         "//tsl/framework:__pkg__",
+        "//tsl/platform/cloud:__pkg__",
         # tensorflow/core/util uses inlined_vector
         "//third_party/tensorflow/core/util:__pkg__",
         # tensorflow/core/tfrt/utils uses inlined_vector

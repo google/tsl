@@ -1,7 +1,7 @@
 # Tensorflow default + linux implementations of tensorflow/core/platform libraries.
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("//tsl:tsl.default.bzl", "filegroup")
-load("//tsl:tsl.bzl", "if_not_windows", "tf_copts")
+load("//tsl:tsl.bzl", "if_not_windows", "tsl_copts")
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 
 package(
@@ -297,7 +297,7 @@ cc_library(
         "//tsl/platform:snappy.h",
         "//tsl/platform/profile_utils:cpu_utils.h",
     ],
-    copts = tf_copts(),
+    copts = tsl_copts(),
     defines = ["TF_USE_SNAPPY"] + select({
         # TF Additional NUMA defines
         "//tsl:with_numa_support": ["TENSORFLOW_USE_NUMA"],
@@ -521,6 +521,11 @@ bzl_library(
     visibility = ["//third_party/tensorflow:__subpackages__"],
 )
 
+bzl_library(
+    name = "rules_cc_bzl",
+    srcs = ["rules_cc.bzl"],
+)
+
 # Export source files needed for mobile builds, which do not use granular targets.
 filegroup(
     name = "additional_mobile_srcs_no_runtime",
@@ -559,8 +564,6 @@ filegroup(
         "mutex.h",
         "mutex_data.h",
         "notification.h",
-        "subprocess.cc",
-        "subprocess.h",
         "unbounded_work_queue.cc",
         "unbounded_work_queue.h",
     ],

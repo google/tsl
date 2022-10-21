@@ -17,7 +17,7 @@ limitations under the License.
 #define TENSORFLOW_TSL_PLATFORM_DEFAULT_DYNAMIC_ANNOTATIONS_H_
 
 // IWYU pragma: private, include "tsl/platform/dynamic_annotations.h"
-// IWYU pragma: friend tsl/platform/dynamic_annotations.h
+// IWYU pragma: friend third_party/tensorflow/tsl/platform/dynamic_annotations.h
 
 // Do nothing for this platform.
 

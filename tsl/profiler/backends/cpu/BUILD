@@ -33,7 +33,8 @@ cc_library(
         "//third_party/tensorflow/core/profiler:__pkg__",
         "//third_party/tensorflow/core/profiler/backends/cpu:__pkg__",
         "//third_party/tensorflow/python:__pkg__",
-        "//third_party/tensorlfow/tsl/profiler:__pkg__",
+        "//tsl/platform/cloud:__pkg__",
+        "//tsl/profiler:__pkg__",
     ],
     deps = [
         "//tsl/platform:env",

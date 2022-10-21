@@ -9,9 +9,9 @@ load(
 
 package(
     default_visibility = [
-        "//third_party/tensorflow:internal",
         "//third_party/tensorflow/core:__subpackages__",
         "//third_party/tensorflow_models:__subpackages__",
+        "//tsl:internal",
     ],
     features = if_google(["-parse_headers"]),
     licenses = ["notice"],

@@ -3,7 +3,7 @@ load("//tsl:tsl.default.bzl", "filegroup")
 # Tensorflow windows-specific implementations of tensorflow/core/platform libraries.
 load(
     "//tsl:tsl.bzl",
-    "tf_copts",
+    "tsl_copts",
 )
 load(
     "//tsl/platform:rules_cc.bzl",
@@ -181,7 +181,7 @@ cc_library(
         "//tsl/platform:numa.h",
         "//tsl/platform:snappy.h",
     ],
-    copts = tf_copts(),
+    copts = tsl_copts(),
     defines = ["TF_USE_SNAPPY"],
     tags = [
         "manual",
