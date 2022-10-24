@@ -1,7 +1,8 @@
 # Description:
 #   RPC communication interfaces and implementations for TensorFlow.
 
-load("//third_party/tensorflow/core/platform:rules_cc.bzl", "cc_library")
+load("//tsl/platform:rules_cc.bzl", "cc_library")
+load("//tsl/platform:build_config.bzl", "tsl_cc_test")
 load("//third_party/tensorflow:tensorflow.google.bzl", "tf_grpc_cc_dependencies")
 
 package(
@@ -25,5 +26,34 @@ cc_library(
     deps = [
         "//tsl/platform:mutex",
         "//tsl/platform:refcount",
+    ] + tf_grpc_cc_dependencies(),
+)
+
+cc_library(
+    name = "grpc_util",
+    srcs = ["grpc_util.cc"],
+    hdrs = ["grpc_util.h"],
+    deps = [
+        "//tsl/platform:random",
+        "//tsl/platform:status",
+        "//tsl/platform:stringpiece",
+        "//tsl/platform:stringprintf",
+        "//tsl/protobuf:distributed_runtime_payloads_proto_cc",
+    ] + tf_grpc_cc_dependencies(),
+)
+
+tsl_cc_test(
+    name = "grpc_util_test",
+    size = "small",
+    srcs = ["grpc_util_test.cc"],
+    tags = [
+        "no_mac",
+    ],
+    deps = [
+        ":grpc_util",
+        "//tsl/platform:errors",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+        "//tsl/protobuf:distributed_runtime_payloads_proto_cc_impl",
     ] + tf_grpc_cc_dependencies(),
 )
