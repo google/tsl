@@ -30,6 +30,7 @@ cc_library(
     hdrs = ["traceme_recorder.h"],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla/stream_executor:__subpackages__",
         "//third_party/tensorflow/core/profiler:__pkg__",
         "//third_party/tensorflow/core/profiler/backends/cpu:__pkg__",
         "//third_party/tensorflow/python:__pkg__",
