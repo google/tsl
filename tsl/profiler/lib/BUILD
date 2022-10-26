@@ -58,7 +58,6 @@ cc_library(
     name = "profiler_factory",
     hdrs = ["profiler_factory.h"],
     visibility = [
-        "//third_party/tensorflow/compiler/xla/backends/profiler:friends",
         "//third_party/tensorflow/core/profiler/lib:__pkg__",
     ],
     deps = [
@@ -110,7 +109,6 @@ cc_library(
     hdrs = ["profiler_interface.h"],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/tensorflow/compiler/xla/backends/profiler:friends",
         "//third_party/tensorflow/core/profiler:internal",
         "//tsl:internal",
     ],
