@@ -11,12 +11,16 @@ load(
 load(
     "//tsl:tsl.bzl",
     "check_deps",
-    "tf_copts",
+    "tsl_copts",
 )
 load("//tsl:tsl.default.bzl", "filegroup", "get_compatible_with_portable")
 load(
     "//tsl/platform:build_config_root.bzl",
     "if_static",
+)
+load(
+    "//tsl/platform:build_config.bzl",
+    "tsl_cc_test",
 )
 
 package(
@@ -33,6 +37,8 @@ filegroup(
         "command_line_flags.h",
         "determinism.cc",
         "determinism.h",
+        "device_name_utils.cc",
+        "device_name_utils.h",
         "env_var.cc",
         "env_var.h",
         "ptr_util.h",
@@ -57,8 +63,11 @@ filegroup(
     name = "framework_internal_private_hdrs",
     srcs = [
         "command_line_flags.h",
+        "device_name_utils.h",
         "env_var.h",
         "ptr_util.h",
+        "stat_summarizer_options.h",
+        "stats_calculator.h",
         "use_cudnn.h",
     ],
 )
@@ -66,6 +75,7 @@ filegroup(
 filegroup(
     name = "framework_internal_impl_srcs",
     srcs = [
+        "device_name_utils.cc",
         "use_cudnn.cc",
     ],
 )
@@ -98,7 +108,9 @@ filegroup(
 filegroup(
     name = "framework_srcs",
     srcs = [
+        "device_name_utils.h",
         "ptr_util.h",
+        "stat_summarizer_options.h",
         "use_cudnn.h",
     ],
 )
@@ -116,7 +128,7 @@ cc_library(
     name = "determinism",
     srcs = ["determinism.cc"],
     hdrs = ["determinism.h"],
-    copts = tf_copts(),
+    copts = tsl_copts(),
     visibility = ["//third_party/tensorflow:__subpackages__"],
     deps = [
         ":env_var",
@@ -202,6 +214,57 @@ cc_library(
         "//tsl/platform:mutex",
         "//tsl/platform:str_util",
         "//tsl/platform:types",
+    ],
+)
+
+cc_library(
+    name = "stats_calculator_portable",
+    srcs = [
+        "stats_calculator.cc",
+    ],
+    hdrs = [
+        "stat_summarizer_options.h",
+        "stats_calculator.h",
+    ],
+    copts = tsl_copts(),
+    visibility = [
+        "//third_party/tensorflow:internal",
+    ],
+)
+
+tsl_cc_test(
+    name = "stats_calculator_test",
+    srcs = ["stats_calculator_test.cc"],
+    deps = [
+        ":stats_calculator_portable",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+    ],
+)
+
+cc_library(
+    name = "device_name_utils",
+    srcs = ["device_name_utils.cc"],
+    hdrs = ["device_name_utils.h"],
+    deps = [
+        "//tsl/platform:errors",
+        "//tsl/platform:status",
+        "//tsl/platform:stringpiece",
+    ],
+)
+
+tsl_cc_test(
+    name = "device_name_utils_test",
+    size = "small",
+    srcs = ["device_name_utils_test.cc"],
+    deps = [
+        ":device_name_utils",
+        "//tsl/lib/core:status_test_util",
+        "//tsl/platform:errors",
+        "//tsl/platform:strcat",
+        "//tsl/platform:test",
+        "//tsl/platform:test_benchmark",
+        "//tsl/platform:test_main",
     ],
 )
 

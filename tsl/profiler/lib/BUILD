@@ -39,6 +39,22 @@ filegroup(
 )
 
 cc_library(
+    name = "profiler_controller",
+    srcs = ["profiler_controller.cc"],
+    hdrs = ["profiler_controller.h"],
+    visibility = [
+        "//third_party/tensorflow/core/profiler/lib:__pkg__",
+    ],
+    deps = [
+        ":profiler_interface",
+        "//third_party/tensorflow/core/profiler/protobuf:xplane_proto_cc",
+        "//tsl/platform:errors",
+        "//tsl/platform:logging",
+        "//tsl/platform:status",
+    ],
+)
+
+cc_library(
     name = "profiler_factory",
     hdrs = ["profiler_factory.h"],
     visibility = [
@@ -93,8 +109,8 @@ cc_library(
     hdrs = ["profiler_interface.h"],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/tensorflow:internal",
         "//third_party/tensorflow/core/profiler:internal",
+        "//tsl:internal",
     ],
     deps = [
         "//third_party/tensorflow/core/profiler/protobuf:xplane_proto_cc",

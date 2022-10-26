@@ -23,7 +23,7 @@ limitations under the License.
 #define TENSORFLOW_TSL_PLATFORM_DEFAULT_LOGGING_H_
 
 // IWYU pragma: private, include "tsl/platform/logging.h"
-// IWYU pragma: friend tsl/platform/logging.h
+// IWYU pragma: friend third_party/tensorflow/tsl/platform/logging.h
 
 #include <atomic>
 #include <limits>

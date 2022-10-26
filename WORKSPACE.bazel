@@ -1,4 +1,0 @@
-load(":workspace.bzl", "workspace")
-
-workspace()
-

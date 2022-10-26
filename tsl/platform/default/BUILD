@@ -1,7 +1,7 @@
 # Tensorflow default + linux implementations of tensorflow/core/platform libraries.
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("//tsl:tsl.default.bzl", "filegroup")
-load("//tsl:tsl.bzl", "if_not_windows", "tf_copts")
+load("//tsl:tsl.bzl", "if_not_windows", "tsl_copts")
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 
 package(
@@ -63,6 +63,35 @@ cc_library(
         "//tsl/platform:path",
         "//tsl/platform:types",
         "@local_config_cuda//cuda:cuda_headers",
+    ],
+)
+
+cc_library(
+    name = "dso_loader",
+    srcs = ["dso_loader.cc"] + select({
+        # include dynamic loading checker only for open source build
+        "//tsl:oss": ["dlopen_checker.cc"],
+        "//conditions:default": ["dlopen_checker_stub.cc"],
+    }),
+    hdrs = ["dso_loader.h"],
+    compatible_with = [],
+    copts = tsl_copts(),
+    tags = [
+        "manual",
+        "nobuilder",
+    ],
+    deps = [
+        "//third_party/tensorrt:nv_infer_headers",
+        "//tsl/platform:env",
+        "//tsl/platform:errors",
+        "//tsl/platform:logging",
+        "//tsl/platform:path",
+        "//tsl/platform:status",
+        "//tsl/platform:statusor",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/synchronization",
+        "@local_config_cuda//cuda:cuda_headers",
+        "@local_config_rocm//rocm:rocm_headers",
     ],
 )
 
@@ -297,7 +326,7 @@ cc_library(
         "//tsl/platform:snappy.h",
         "//tsl/platform/profile_utils:cpu_utils.h",
     ],
-    copts = tf_copts(),
+    copts = tsl_copts(),
     defines = ["TF_USE_SNAPPY"] + select({
         # TF Additional NUMA defines
         "//tsl:with_numa_support": ["TENSORFLOW_USE_NUMA"],
@@ -521,6 +550,11 @@ bzl_library(
     visibility = ["//third_party/tensorflow:__subpackages__"],
 )
 
+bzl_library(
+    name = "rules_cc_bzl",
+    srcs = ["rules_cc.bzl"],
+)
+
 # Export source files needed for mobile builds, which do not use granular targets.
 filegroup(
     name = "additional_mobile_srcs_no_runtime",
@@ -539,7 +573,6 @@ filegroup(
         "port.cc",
         "posix_file_system.cc",
         "posix_file_system.h",
-        "resource.cc",
         "stacktrace.h",
         "tracing_impl.h",
         "//tsl/platform/profile_utils:cpu_utils.h",
@@ -559,8 +592,6 @@ filegroup(
         "mutex.h",
         "mutex_data.h",
         "notification.h",
-        "subprocess.cc",
-        "subprocess.h",
         "unbounded_work_queue.cc",
         "unbounded_work_queue.h",
     ],

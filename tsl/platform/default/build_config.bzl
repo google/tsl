@@ -670,25 +670,16 @@ def tf_additional_lib_hdrs():
 def tf_additional_all_protos():
     return [clean_dep("//third_party/tensorflow/core:protos_all")]
 
-def tf_protos_all_impl():
-    return [
-        clean_dep("//third_party/tensorflow/core/protobuf:autotuning_proto_cc_impl"),
-        clean_dep("//third_party/tensorflow/core/protobuf:conv_autotuning_proto_cc_impl"),
-        clean_dep("//third_party/tensorflow/core:protos_all_cc_impl"),
-        clean_dep("//tsl/protobuf:protos_all_cc_impl"),
-    ]
-
 def tf_protos_all():
     return if_static(
-        extra_deps = tf_protos_all_impl(),
+        extra_deps = [
+            clean_dep("//third_party/tensorflow/core/protobuf:autotuning_proto_cc_impl"),
+            clean_dep("//third_party/tensorflow/core/protobuf:conv_autotuning_proto_cc_impl"),
+            clean_dep("//third_party/tensorflow/core:protos_all_cc_impl"),
+            clean_dep("//tsl/protobuf:protos_all_cc_impl"),
+        ],
         otherwise = [clean_dep("//third_party/tensorflow/core:protos_all_cc")],
     )
-
-def tf_protos_profiler_impl():
-    return [
-        clean_dep("//third_party/tensorflow/core/profiler/protobuf:xplane_proto_cc_impl"),
-        clean_dep("//third_party/tensorflow/core/profiler:profiler_options_proto_cc_impl"),
-    ]
 
 def tf_protos_profiler_service():
     return [
@@ -736,7 +727,7 @@ def tf_additional_core_deps():
         clean_dep("//tsl:ios"): [],
         clean_dep("//tsl:linux_s390x"): [],
         "//conditions:default": [
-            "//third_party/tensorflow/core/platform/cloud:gcs_file_system",
+            "//tsl/platform/cloud:gcs_file_system",
         ],
     })
 

@@ -1,6 +1,6 @@
 package_group(
     name = "friends",
-    includes = ["//third_party/tensorflow:internal"],
+    includes = ["//tsl:internal"],
 )
 
 package_group(

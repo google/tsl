@@ -8,7 +8,7 @@ load(
 )
 load(
     "//tsl:tsl.bzl",
-    "tf_copts",
+    "tsl_copts",
 )
 
 package(
@@ -53,7 +53,7 @@ cc_library(
     hdrs = [
         "cpu_utils.h",
     ],
-    copts = tf_copts(),
+    copts = tsl_copts(),
     deps = [
         "//tsl/platform:logging",
         "//tsl/platform:macros",
