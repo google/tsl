@@ -17,7 +17,7 @@ load(
     "tf_gpu_tests_tags",
 )
 load(
-    "//third_party/gpus/cuda:build_defs.bzl",
+    "@local_config_cuda//cuda:build_defs.bzl",
     "if_cuda",
 )
 
@@ -83,8 +83,8 @@ def tsl_gpu_cc_test(
         linkstatic = select({
             # TODO(allenl): Remove Mac static linking when Bazel 0.6 is out.
             clean_dep("//third_party/tensorflow:macos"): 1,
-            "//third_party/gpus/cuda:using_nvcc": 1,
-            "//third_party/gpus/cuda:using_clang": 1,
+            "@local_config_cuda//cuda:using_nvcc": 1,
+            "@local_config_cuda//cuda:using_clang": 1,
             "//conditions:default": 0,
         }),
         suffix = "_gpu",
@@ -109,8 +109,8 @@ def tsl_gpu_cc_test(
             linkstatic = select({
                 # TODO(allenl): Remove Mac static linking when Bazel 0.6 is out.
                 clean_dep("//third_party/tensorflow:macos"): 1,
-                "//third_party/gpus/cuda:using_nvcc": 1,
-                "//third_party/gpus/cuda:using_clang": 1,
+                "@local_config_cuda//cuda:using_nvcc": 1,
+                "@local_config_cuda//cuda:using_clang": 1,
                 "//conditions:default": 0,
             }),
             suffix = "_2gpu",
