@@ -364,6 +364,45 @@ def initialize_rbe_configs():
 
     sigbuild_tf_configs(
         name_container_map = {
+            "sigbuild-484302174": "docker://gcr.io/tensorflow-sigs/build@sha256:f0c6a93a37d9e328b8f2d54f83129c4b862f00ec21060c3d3a14dfa0dacc193c",
+            "sigbuild-484302174-python3.7": "docker://gcr.io/tensorflow-sigs/build@sha256:f0f2a9ba75339f0ad2cf36e351f8069a93305b9482909252ad7b3302d4d2d1a5",
+            "sigbuild-484302174-python3.8": "docker://gcr.io/tensorflow-sigs/build@sha256:e9562ac278e8796a3f36b8438bfc3bda397c12e905689d15eb05aec90a598859",
+            "sigbuild-484302174-python3.9": "docker://gcr.io/tensorflow-sigs/build@sha256:f0c6a93a37d9e328b8f2d54f83129c4b862f00ec21060c3d3a14dfa0dacc193c",
+            "sigbuild-484302174-python3.10": "docker://gcr.io/tensorflow-sigs/build@sha256:2bf46df446365e91dbbb064f4978932a03cd2779c662cd9dc30e9c4a3090bf6d",
+        },
+        # Unclear why LIBC is set to 2.19 here, and yet manylinux2010 is 2.12
+        # and manylinux2014 is 2.17.
+        env = {
+            "ABI_LIBC_VERSION": "glibc_2.19",
+            "ABI_VERSION": "gcc",
+            "BAZEL_COMPILER": "/usr/lib/llvm-14/bin/clang",
+            "BAZEL_HOST_SYSTEM": "i686-unknown-linux-gnu",
+            "BAZEL_TARGET_CPU": "k8",
+            "BAZEL_TARGET_LIBC": "glibc_2.19",
+            "BAZEL_TARGET_SYSTEM": "x86_64-unknown-linux-gnu",
+            "CC": "/usr/lib/llvm-14/bin/clang",
+            "CC_TOOLCHAIN_NAME": "linux_gnu_x86",
+            "CLEAR_CACHE": "1",
+            "CUDNN_INSTALL_PATH": "/usr/lib/x86_64-linux-gnu",
+            "CLANG_CUDA_COMPILER_PATH": "/usr/lib/llvm-14/bin/clang",
+            "HOST_CXX_COMPILER": "/usr/lib/llvm-14/bin/clang",
+            "HOST_C_COMPILER": "/usr/lib/llvm-14/bin/clang",
+            "PYTHON_BIN_PATH": "/usr/bin/python3",
+            "TENSORRT_INSTALL_PATH": "/usr/lib/x86_64-linux-gnu",
+            "TF_CUDA_CLANG": "1",
+            "TF_CUDA_COMPUTE_CAPABILITIES": "3.5,6.0",
+            "TF_CUDA_VERSION": "11.2",
+            "TF_CUDNN_VERSION": "8.1",
+            "TF_ENABLE_XLA": "1",
+            "TF_NEED_CUDA": "1",
+            "TF_NEED_TENSORRT": "1",
+            "TF_SYSROOT": "/dt9",
+            "TF_TENSORRT_VERSION": "7.2",
+        },
+    )
+
+    sigbuild_tf_configs(
+        name_container_map = {
             "sigbuild-r2.11": "docker://gcr.io/tensorflow-sigs/build@sha256:f69fc3aeab047c705406c0310ed50c8ca926988a34c1a19353cd4fa3f4865af7",
             "sigbuild-r2.11-python3.7": "docker://gcr.io/tensorflow-sigs/build@sha256:cc36072f817a6b511696f90c98198c06976eea6ab9cdb7bbe9299c4997aa16c6",
             "sigbuild-r2.11-python3.8": "docker://gcr.io/tensorflow-sigs/build@sha256:3b4836d210caa225ae0f6fe938259309c3553db50a0d11b84ef8ff8313b57d27",
