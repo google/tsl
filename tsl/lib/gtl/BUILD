@@ -27,6 +27,7 @@ package(
         "//third_party/tensorflow/examples/custom_ops_doc/simple_hash_table:__pkg__",
         "//third_party/tensorflow/compiler/xla:__subpackages__",
         "//third_party/tensorflow/core/lib/gtl:__subpackages__",
+        "//tsl/distributed_runtime/rpc:__pkg__",
         "//tsl/profiler/utils:__pkg__",
     ],
     licenses = ["notice"],
