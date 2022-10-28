@@ -1,7 +1,7 @@
 # Tensorflow default + linux implementations of tensorflow/core/platform libraries.
 load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("//tsl:tsl.default.bzl", "filegroup")
-load("//tsl:tsl.bzl", "if_not_windows", "tsl_copts")
+load("//tsl:tsl.bzl", "if_not_fuchsia", "if_not_windows", "tsl_copts")
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 
 package(
@@ -594,7 +594,10 @@ filegroup(
         "notification.h",
         "unbounded_work_queue.cc",
         "unbounded_work_queue.h",
-    ],
+    ] + if_not_fuchsia([
+        "subprocess.cc",
+        "subprocess.h",
+    ]),
     visibility = ["//third_party/tensorflow/core/platform:__pkg__"],
 )
 
