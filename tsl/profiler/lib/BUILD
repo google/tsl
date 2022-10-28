@@ -98,9 +98,9 @@ tf_cc_test(
         "//third_party/tensorflow/core:protos_all_cc",
         "//third_party/tensorflow/core:test",
         "//third_party/tensorflow/core:test_main",
-        "//third_party/tensorflow/core/profiler/protobuf:xplane_proto_cc",
         "//tsl/platform:macros",
         "//tsl/platform:status",
+        "//tsl/profiler/protobuf:xplane_proto_cc",
         "@com_google_absl//absl/memory",
     ],
 )
@@ -115,8 +115,8 @@ cc_library(
         "//tsl:internal",
     ],
     deps = [
-        "//third_party/tensorflow/core/profiler/protobuf:xplane_proto_cc",
         "//tsl/platform:status",
+        "//tsl/profiler/protobuf:xplane_proto_cc",
     ],
 )
 

@@ -16,7 +16,7 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_PROFILER_UTILS_TF_XPLANE_VISITOR_H_
 #define TENSORFLOW_TSL_PROFILER_UTILS_TF_XPLANE_VISITOR_H_
 
-#include "third_party/tensorflow/core/profiler/protobuf/xplane.pb.h"
+#include "tsl/profiler/protobuf/xplane.pb.h"
 #include "tsl/profiler/utils/xplane_schema.h"
 #include "tsl/profiler/utils/xplane_visitor.h"
 
@@ -24,7 +24,7 @@ namespace tsl {
 namespace profiler {
 
 inline XPlaneVisitor CreateTfXPlaneVisitor(
-  const tensorflow::profiler::XPlane* plane) {
+    const tensorflow::profiler::XPlane* plane) {
   return XPlaneVisitor(plane, {FindHostEventType, FindTfOpEventType},
                        {FindStatType});
 }
