@@ -39,7 +39,6 @@ tf_proto_library(
     name = "coordination_config_proto",
     srcs = ["coordination_config.proto"],
     cc_api_version = 2,
-    compatible_with = ["//buildenv/target:non_prod"],
     make_default_target_header_only = True,
 )
 
@@ -52,7 +51,6 @@ tf_proto_library(
     create_grpc_library = True,
     create_java_proto = False,
     create_service = True,
-    protodeps = ["//google/protobuf:any"],
 )
 
 tf_proto_library(
