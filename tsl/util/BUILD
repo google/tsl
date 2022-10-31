@@ -225,7 +225,6 @@ cc_library(
         "//tsl:__subpackages__",
     ],
     deps = [
-        "//third_party/tensorflow/core/util:test_log_proto_impl_cc",
         "//tsl/platform:env",
         "//tsl/platform:env_impl",
         "//tsl/platform:errors",
@@ -233,6 +232,7 @@ cc_library(
         "//tsl/platform:mutex",
         "//tsl/platform:str_util",
         "//tsl/platform:types",
+        "//tsl/protobuf:test_log_proto_cc",
     ],
 )
 

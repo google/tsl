@@ -66,6 +66,20 @@ tf_proto_library(
 )
 
 tf_proto_library(
+    name = "test_log_proto",
+    srcs = ["test_log.proto"],
+    make_default_target_header_only = True,
+    visibility = [
+        "//third_party/tensorflow/core:__subpackages__",
+        "//tsl/util:__pkg__",
+    ],
+    deps = [
+        "//google/protobuf:any",
+        "//google/protobuf:wrappers",
+    ],
+)
+
+tf_proto_library(
     name = "protos_all",
     create_go_proto = False,
     make_default_target_header_only = True,
@@ -76,6 +90,7 @@ tf_proto_library(
         ":error_codes_proto_impl",
         ":histogram_proto",
         ":rpc_options_proto",
+        ":test_log_proto",
     ],
     visibility = ["//visibility:public"],
 )
