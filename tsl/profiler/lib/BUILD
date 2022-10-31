@@ -96,10 +96,10 @@ tf_cc_test(
         ":profiler_factory",
         ":profiler_interface",
         "//third_party/tensorflow/core:protos_all_cc",
-        "//third_party/tensorflow/core:test",
-        "//third_party/tensorflow/core:test_main",
         "//tsl/platform:macros",
         "//tsl/platform:status",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
         "//tsl/profiler/protobuf:xplane_proto_cc",
         "@com_google_absl//absl/memory",
     ],
@@ -127,8 +127,10 @@ cc_library(
     copts = tf_profiler_copts(),
     visibility = ["//third_party/tensorflow/core/profiler:internal"],
     deps = [
-        "//third_party/tensorflow/core:lib",
-        "//third_party/tensorflow/core:lib_internal",
+        "//tsl/platform:errors",
+        "//tsl/platform:macros",
+        "//tsl/platform:statusor",
+        "//tsl/util:env_var",
     ],
 )
 
@@ -137,8 +139,8 @@ tf_cc_test(
     srcs = ["profiler_lock_test.cc"],
     deps = [
         ":profiler_lock",
-        "//third_party/tensorflow/core:test",
-        "//third_party/tensorflow/core:test_main",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
     ],
 )
 

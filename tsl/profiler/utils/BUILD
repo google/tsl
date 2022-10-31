@@ -256,8 +256,8 @@ tf_cc_test(
     srcs = ["parse_annotation_test.cc"],
     deps = [
         ":parse_annotation",
-        "//third_party/tensorflow/core:test",
-        "//third_party/tensorflow/core:test_main",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
         "@com_google_absl//absl/strings",
     ],
 )
@@ -316,8 +316,8 @@ tf_cc_test(
         ":xplane_schema",
         ":xplane_test_utils",
         ":xplane_visitor",
-        "//third_party/tensorflow/core:test",
-        "//third_party/tensorflow/core:test_main",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
         "//tsl/platform:types",
         "//tsl/profiler/protobuf:xplane_proto_cc",
         "@com_google_absl//absl/container:flat_hash_map",
@@ -344,8 +344,8 @@ tf_cc_test(
         ":tpu_xplane_utils",
         ":xplane_schema",
         ":xplane_utils",
-        "//third_party/tensorflow/core:test",
-        "//third_party/tensorflow/core:test_main",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
         "//tsl/profiler/protobuf:xplane_proto_cc",
     ],
 )
