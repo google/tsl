@@ -81,7 +81,6 @@ cc_library(
         "nobuilder",
     ],
     deps = [
-        "//third_party/tensorrt:nv_infer_headers",
         "//tsl/platform:env",
         "//tsl/platform:errors",
         "//tsl/platform:logging",
@@ -92,6 +91,7 @@ cc_library(
         "@com_google_absl//absl/synchronization",
         "@local_config_cuda//cuda:cuda_headers",
         "@local_config_rocm//rocm:rocm_headers",
+        "@local_config_tensorrt//:tensorrt_headers",
     ],
 )
 
