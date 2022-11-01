@@ -18,7 +18,7 @@ limitations under the License.
 
 #include <memory>
 
-#include "third_party/jsoncpp/json.h"
+#include "json/json.h"
 #include "tsl/platform/cloud/http_request.h"
 #include "tsl/platform/env.h"
 #include "tsl/platform/status.h"

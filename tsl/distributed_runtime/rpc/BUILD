@@ -76,7 +76,6 @@ cc_library(
     deps = [
         ":grpc_channel_common",
         ":grpc_util",
-        "//base",
         "@com_google_absl//absl/strings",
         "//tsl/lib/gtl:map_util",
         "//tsl/util:device_name_utils",

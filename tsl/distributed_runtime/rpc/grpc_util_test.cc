@@ -15,7 +15,7 @@ limitations under the License.
 
 #include "tsl/distributed_runtime/rpc/grpc_util.h"
 
-#include "net/grpc/public/include/grpcpp/grpcpp.h"
+#include "grpcpp/grpcpp.h"
 #include "tsl/platform/errors.h"
 #include "tsl/platform/test.h"
 

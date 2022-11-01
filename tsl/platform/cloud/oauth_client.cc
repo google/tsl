@@ -23,10 +23,10 @@ limitations under the License.
 #endif
 #include <fstream>
 
-#include "third_party/openssl/bio.h"
-#include "third_party/openssl/evp.h"
-#include "third_party/openssl/pem.h"
-#include "third_party/openssl/rsa.h"
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/pem.h>
+#include <openssl/rsa.h>
 #include "tsl/platform/base64.h"
 #include "tsl/platform/cloud/curl_http_request.h"
 #include "tsl/platform/env.h"

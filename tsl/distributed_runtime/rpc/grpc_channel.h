@@ -22,7 +22,7 @@ limitations under the License.
 #include <string>
 #include <vector>
 
-#include "net/grpc/public/include/grpcpp/grpcpp.h"
+#include "grpcpp/grpcpp.h"
 #include "tsl/distributed_runtime/rpc/grpc_util.h"
 #include "tsl/protobuf/rpc_options.pb.h"
 

@@ -16,12 +16,12 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_DISTRIBUTED_RUNTIME_RPC_GRPC_CALL_H_
 #define TENSORFLOW_TSL_DISTRIBUTED_RUNTIME_RPC_GRPC_CALL_H_
 
-#include "net/grpc/public/include/grpcpp/completion_queue.h"
-#include "net/grpc/public/include/grpcpp/impl/service_type.h"
-#include "net/grpc/public/include/grpcpp/server_builder.h"
-#include "net/grpc/public/include/grpcpp/server_context.h"
-#include "net/grpc/public/include/grpcpp/support/async_stream.h"
-#include "net/grpc/public/include/grpcpp/support/async_unary_call.h"
+#include "grpcpp/completion_queue.h"
+#include "grpcpp/impl/service_type.h"
+#include "grpcpp/server_builder.h"
+#include "grpcpp/server_context.h"
+#include "grpcpp/support/async_stream.h"
+#include "grpcpp/support/async_unary_call.h"
 #include "tsl/platform/mutex.h"
 #include "tsl/platform/refcount.h"
 

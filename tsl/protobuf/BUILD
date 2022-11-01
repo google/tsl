@@ -82,10 +82,6 @@ tf_proto_library(
         "//third_party/tensorflow/core:__subpackages__",
         "//tsl/util:__pkg__",
     ],
-    deps = [
-        "//google/protobuf:any",
-        "//google/protobuf:wrappers",
-    ],
 )
 
 tf_proto_library(

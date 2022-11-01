@@ -24,7 +24,7 @@ limitations under the License.
 #include <utility>
 
 #include "absl/strings/match.h"
-#include "third_party/jsoncpp/json.h"
+#include "json/json.h"
 #include "tsl/platform/base64.h"
 #include "tsl/platform/env.h"
 #include "tsl/platform/errors.h"

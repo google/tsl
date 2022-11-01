@@ -20,7 +20,7 @@ limitations under the License.
 #include <unordered_map>
 #include <vector>
 
-#include "third_party/curl/curl.h"
+#include <curl/curl.h>
 #include "tsl/platform/cloud/http_request.h"
 #include "tsl/platform/env.h"
 #include "tsl/platform/errors.h"

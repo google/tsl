@@ -37,7 +37,7 @@ limitations under the License.
 #include <io.h>  // for _mktemp
 #endif
 #include "absl/base/macros.h"
-#include "third_party/jsoncpp/json.h"
+#include "json/json.h"
 #include "tsl/platform/cloud/curl_http_request.h"
 #include "tsl/platform/cloud/file_block_cache.h"
 #include "tsl/platform/cloud/google_auth_provider.h"
@@ -2186,9 +2186,5 @@ RetryingGcsFileSystem::RetryingGcsFileSystem()
 // tpu_gcs_file_system is going to take over its responsibilities. The tpu file
 // system is a child of gcs file system with TPU-pod on GCS optimizations.
 // This option is set ON/OFF in the GCP TPU tensorflow config.
-#if !defined(TPU_GCS_FS)
-#include "base/googleinit.h"
-REGISTER_MODULE_INITIALIZER(gcs_file_system, {
-  REGISTER_FILE_SYSTEM("gs", ::tsl::RetryingGcsFileSystem);
-});
-#endif
+// Initialize gcs_file_system
+REGISTER_LEGACY_FILE_SYSTEM("gs", ::tsl::RetryingGcsFileSystem);

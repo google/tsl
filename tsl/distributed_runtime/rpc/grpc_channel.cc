@@ -20,7 +20,7 @@ limitations under the License.
 #include <map>
 #include <unordered_map>
 
-#include "net/grpc/public/include/grpcpp/create_channel.h"
+#include "grpcpp/create_channel.h"
 #include "absl/strings/escaping.h"
 #include "absl/strings/str_split.h"
 #include "tsl/distributed_runtime/rpc/grpc_channel_common.h"

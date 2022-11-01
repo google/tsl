@@ -8,7 +8,6 @@ cc_library(
     hdrs = ["traceme_recorder.h"],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/car/onboard/gpu:__subpackages__",
         "//third_party/tensorflow/core/profiler:internal",
         "//tsl/profiler:internal",
     ],

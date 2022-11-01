@@ -105,7 +105,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
         ":cudnn_version",
-        "//third_party/gpus/cudnn:cudnn_header",
+        "@local_config_cuda//cuda:cudnn_header",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -115,7 +115,7 @@ alias(
     name = "cudnn_lib",
     actual = select({
         "//tsl:oss": ":cudnn_stub",
-        "//conditions:default": "//third_party/gpus/cudnn:cudnn",
+        "//conditions:default": "@local_config_cuda//cuda:cudnn",
     }),
     visibility = ["//visibility:public"],
 )

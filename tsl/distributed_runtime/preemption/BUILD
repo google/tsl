@@ -14,8 +14,6 @@ cc_library(
     hdrs = ["preemption_notifier.h"],
     # copybara:uncomment compatible_with = ["//buildenv/target:gce"],
     deps = [
-        "//thread",
-        "//thread:signal",
         "//tsl/platform:env",
         "//tsl/platform:errors",
         "//tsl/platform:mutex",
@@ -32,8 +30,6 @@ tsl_cc_test(
     srcs = ["preemption_notifier_test.cc"],
     deps = [
         ":preemption_notifier",
-        "//thread",
-        "//thread:signal",
         "//tsl/platform:env",
         "//tsl/platform:env_impl",
         "//tsl/platform:errors",

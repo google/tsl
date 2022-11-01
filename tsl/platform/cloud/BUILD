@@ -113,7 +113,6 @@ cc_library(
         ":ram_file_block_cache",
         ":time_util",
         "//base:googleinit",
-        "//third_party/jsoncpp:json",
         "//tsl/lib/gtl:map_util",
         "//tsl/platform:env",
         "//tsl/platform:errors",
@@ -131,6 +130,7 @@ cc_library(
         "//tsl/platform:thread_annotations",
         "//tsl/profiler/lib:traceme",
         "@com_google_absl//absl/base:core_headers",
+        "@jsoncpp_git//:jsoncpp",
     ],
     alwayslink = 1,
 )
@@ -158,7 +158,6 @@ cc_library(
         ":ram_file_block_cache",
         ":time_util",
         "//base:googleinit",
-        "//third_party/jsoncpp:json",
         "//tsl/lib/gtl:map_util",
         "//tsl/platform:env",
         "//tsl/platform:errors",
@@ -176,6 +175,7 @@ cc_library(
         "//tsl/platform:thread_annotations",
         "//tsl/profiler/lib:traceme",
         "@com_google_absl//absl/base:core_headers",
+        "@jsoncpp_git//:jsoncpp",
     ],
     alwayslink = 1,
 )
@@ -202,7 +202,6 @@ cc_library(
     copts = tsl_copts(),
     deps = [
         ":http_request",
-        "//third_party/curl:curl_for_third_party",
         "//tsl/lib/gtl:map_util",
         "//tsl/platform:env",
         "//tsl/platform:errors",
@@ -214,6 +213,7 @@ cc_library(
         "//tsl/platform:stringpiece",
         "//tsl/platform:types",
         "//tsl/util:env_var",
+        "@curl",
     ],
 )
 
@@ -226,7 +226,6 @@ cc_library(
     copts = tsl_copts(),
     deps = [
         ":curl_http_request",
-        "//third_party/curl:curl_for_third_party",
         "//tsl/lib/core:status_test_util",
         "//tsl/platform:errors",
         "//tsl/platform:macros",
@@ -235,6 +234,7 @@ cc_library(
         "//tsl/platform:stringpiece",
         "//tsl/platform:test",
         "//tsl/platform:types",
+        "@curl",
     ],
 )
 
@@ -249,7 +249,6 @@ cc_library(
     deps = [
         ":compute_engine_metadata_client",
         ":oauth_client",
-        "//third_party/jsoncpp:json",
         "//tsl/platform:base64",
         "//tsl/platform:env",
         "//tsl/platform:errors",
@@ -259,6 +258,7 @@ cc_library(
         "//tsl/platform:status",
         "//tsl/platform:thread_annotations",
         "@com_google_absl//absl/strings",
+        "@jsoncpp_git//:jsoncpp",
     ],
 )
 
@@ -321,12 +321,12 @@ cc_library(
     deps = [
         ":curl_http_request",
         ":http_request",
-        "//third_party/jsoncpp:json",
-        "//third_party/openssl:crypto",
         "//tsl/platform:base64",
         "//tsl/platform:env",
         "//tsl/platform:errors",
         "//tsl/platform:status",
+        "@boringssl//:crypto",
+        "@jsoncpp_git//:jsoncpp",
     ],
 )
 
@@ -450,7 +450,6 @@ tsl_cc_test(
     deps = [
         ":http_request_fake",
         ":oauth_client",
-        "//third_party/openssl:crypto",
         "//tsl/lib/core:status_test_util",
         "//tsl/platform:base64",
         "//tsl/platform:env",
@@ -460,6 +459,7 @@ tsl_cc_test(
         "//tsl/platform:scanner",
         "//tsl/platform:test",
         "//tsl/platform:test_main",
+        "@boringssl//:crypto",
     ],
 )
 

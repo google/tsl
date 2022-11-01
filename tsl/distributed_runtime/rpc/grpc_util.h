@@ -19,7 +19,7 @@ limitations under the License.
 #include <memory>
 #include <string>
 
-#include "net/grpc/public/include/grpcpp/grpcpp.h"
+#include "grpcpp/grpcpp.h"
 #include "tsl/platform/status.h"
 #include "tsl/platform/stringpiece.h"
 #include "tsl/platform/stringprintf.h"

@@ -289,7 +289,7 @@ def tsl_gpu_library(deps = None, cuda_deps = None, copts = tsl_copts(), **kwargs
         kwargs.pop("default_copts", None)
     cc_library(
         deps = deps + if_cuda([
-            clean_dep("//tsl/platform:cuda"),  # use stub in oss
+            clean_dep("//third_party/tsl/cuda:cudart_stub"),
             "@local_config_cuda//cuda:cuda_headers",
         ]) + if_rocm_is_configured([
             "@local_config_rocm//rocm:rocm_headers",
