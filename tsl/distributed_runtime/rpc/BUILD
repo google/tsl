@@ -2,7 +2,7 @@
 #   RPC communication interfaces and implementations for TensorFlow.
 
 load("//tsl/platform:rules_cc.bzl", "cc_library")
-load("//tsl/platform:build_config.bzl", "tsl_cc_test")
+load("//tsl/platform:build_config.bzl", "tf_proto_library", "tsl_cc_test")
 load("//tsl:tsl.default.bzl", "tsl_grpc_cc_dependencies")
 
 package(
@@ -38,6 +38,7 @@ cc_library(
         "//tsl/platform:status",
         "//tsl/platform:stringpiece",
         "//tsl/platform:stringprintf",
+        "//tsl/platform:protobuf",
         "//tsl/protobuf:distributed_runtime_payloads_proto_cc",
     ] + tsl_grpc_cc_dependencies(),
 )
@@ -50,9 +51,11 @@ tsl_cc_test(
         "no_mac",
     ],
     deps = [
+        ":test_request_proto_cc_impl",
         ":grpc_util",
         "//tsl/platform:errors",
         "//tsl/platform:test",
+        "//tsl/platform:test_benchmark",
         "//tsl/platform:test_main",
         "//tsl/protobuf:distributed_runtime_payloads_proto_cc_impl",
     ] + tsl_grpc_cc_dependencies(),
@@ -108,4 +111,43 @@ tsl_cc_test(
         "//tsl/protobuf:rpc_options_proto_cc_impl",
         "//tsl/util:device_name_utils",
     ],
+)
+
+cc_library(
+    name = "grpc_state",
+    hdrs = ["grpc_state.h"],
+    deps = [
+        ":grpc_client_cq_tag",
+        ":grpc_util",
+        "//tsl/distributed_runtime:call_options",
+        "//tsl/platform:errors",
+        "//tsl/platform:status",
+        "//tsl/platform:strcat",
+        "//tsl/platform:env",
+        "//tsl/util:env_var",
+    ] + tsl_grpc_cc_dependencies(),
+)
+
+cc_library(
+    name = "grpc_client_cq_tag",
+    srcs = [],
+    hdrs = ["grpc_client_cq_tag.h"],
+    deps = [
+        "//tsl/platform:macros",
+    ],
+)
+
+tf_proto_library(
+    name = "test_request_proto",
+    testonly = 1,
+    srcs = ["test_request.proto"],
+    create_java_proto = False,
+)
+
+filegroup(
+    name = "c_srcs",
+    data = glob([
+        "**/*.cc",
+        "**/*.h",
+    ]),
 )
