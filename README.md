@@ -18,6 +18,8 @@ Community proposals TBA
 
 Community meetings TBA
 
+Additional contacts TBA
+
 ## Code of Conduct
 
 While under TensorFlow governance, all community spaces are subject to the
