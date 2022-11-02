@@ -79,12 +79,12 @@ int64_t ComputeBackoffMicroseconds(int current_retry_attempt, int64_t min_delay,
 ::grpc::Status GrpcMaybeUnparseProto(const protobuf::Message& src,
                                      grpc::ByteBuffer* dst) {
   bool own_buffer;
-  return ::grpc::GenericSerialize<::grpc::CordProtoBufferWriter,
+  return ::grpc::GenericSerialize<::grpc::ProtoBufferWriter,
                                   protobuf::Message>(src, dst, &own_buffer);
 }
 
 bool GrpcMaybeParseProto(::grpc::ByteBuffer* src, protobuf::Message* dst) {
-  ::grpc::CordProtoBufferReader reader(src);
+  ::grpc::ProtoBufferReader reader(src);
   return dst->ParseFromZeroCopyStream(&reader);
 }
 
