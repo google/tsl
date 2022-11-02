@@ -93,7 +93,7 @@
 #     release_gpu_windows:             Toolchain and CUDA options for Windows GPU builds.
 
 # Default build options. These are applied first and unconditionally.
-
+# Do not submit, just a comment to force a ci rebuild
 # For projects which use TensorFlow as part of a Bazel build process, putting
 # nothing in a bazelrc will default to a monolithic build. The following line
 # opts in to modular op registration support by default.
