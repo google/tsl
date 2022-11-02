@@ -42,3 +42,22 @@ tsl_cc_test(
         "@com_google_absl//absl/time",
     ],
 )
+
+cc_library(
+    name = "preemption_sync_manager",
+    srcs = ["preemption_sync_manager.cc"],
+    hdrs = ["preemption_sync_manager.h"],
+    deps = [
+        ":preemption_notifier",
+        "//tsl/distributed_runtime:call_options",
+        "//tsl/distributed_runtime/coordination:coordination_service_agent",
+        "//tsl/platform:env",
+        "//tsl/platform:mutex",
+        "//tsl/platform:status",
+        "//tsl/platform:statusor",
+        "//tsl/protobuf:coordination_service_proto_cc",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/synchronization",
+        "@com_google_absl//absl/time",
+    ],
+)
