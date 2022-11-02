@@ -173,6 +173,28 @@ tsl_cc_test(
     ],
 )
 
+cc_library(
+    name = "coordination_service_rpc_handler",
+    srcs = ["coordination_service_rpc_handler.cc"],
+    hdrs = [
+        "coordination_service_rpc_handler.h",
+    ],
+    deps = [
+        ":coordination_service",
+        ":coordination_service_agent",
+        ":coordination_service_error_util",
+        "//tsl/platform:casts",
+        "//tsl/platform:errors",
+        "//tsl/platform:mutex",
+        "//tsl/platform:status",
+        "//tsl/platform:statusor",
+        "//tsl/platform:thread_annotations",
+        "//tsl/protobuf:coordination_service_proto_cc",
+        "@com_google_absl//absl/algorithm:container",
+        "@com_google_absl//absl/time",
+    ],
+)
+
 filegroup(
     name = "pywrap_required_hdrs",
     srcs = [
