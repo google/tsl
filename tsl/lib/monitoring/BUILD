@@ -20,6 +20,7 @@ package(
         "//third_party/tensorflow/core/lib/monitoring:__subpackages__",
         "//third_party/tensorflow/compiler/xla/service:__subpackages__",
         "//tsl/framework:__subpackages__",
+        "//tsl/distributed_runtime:__subpackages__",
     ],
     licenses = ["notice"],
 )

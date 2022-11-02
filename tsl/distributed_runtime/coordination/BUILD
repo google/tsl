@@ -126,6 +126,53 @@ tsl_cc_test(
     ],
 )
 
+tsl_gpu_library(
+    name = "coordination_service_agent",
+    srcs = ["coordination_service_agent.cc"],
+    hdrs = ["coordination_service_agent.h"],
+    deps = [
+        ":coordination_client",
+        ":coordination_service_error_util",
+        "//tsl/distributed_runtime:call_options",
+        "//tsl/framework:cancellation",
+        "//tsl/lib/monitoring:gauge",
+        "//tsl/platform:env",
+        "//tsl/platform:errors",
+        "//tsl/platform:mutex",
+        "//tsl/platform:random",
+        "//tsl/platform:status",
+        "//tsl/platform:statusor",
+        "//tsl/platform:thread_annotations",
+        "//tsl/protobuf:coordination_config_proto_cc",
+        "//tsl/protobuf:coordination_service_proto_cc",
+        "@com_google_absl//absl/container:flat_hash_set",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/synchronization",
+        "@com_google_absl//absl/time",
+    ],
+)
+
+tsl_cc_test(
+    name = "coordination_service_agent_test",
+    srcs = ["coordination_service_agent_test.cc"],
+    deps = [
+        ":coordination_client",
+        ":coordination_service_agent",
+        "//tsl/distributed_runtime:call_options",
+        "//tsl/lib/core:status_test_util",
+        "//tsl/platform:env",
+        "//tsl/platform:env_impl",
+        "//tsl/platform:errors",
+        "//tsl/platform:status",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+        "//tsl/protobuf:coordination_config_proto_cc_impl",
+        "//tsl/protobuf:coordination_service_proto_cc_impl",
+        "@com_google_absl//absl/memory",
+        "@com_google_absl//absl/time",
+    ],
+)
+
 filegroup(
     name = "pywrap_required_hdrs",
     srcs = [
