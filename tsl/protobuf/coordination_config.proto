@@ -9,6 +9,7 @@ option go_package = "github.com/tensorflow/tensorflow/tensorflow/go/core/protobu
 message CoordinatedJob {
   string name = 1;
   int32 num_tasks = 2;
+  int32 a_failure = 2;
 }
 
 // Coordination service configuration parameters.
