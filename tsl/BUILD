@@ -455,13 +455,13 @@ bzl_library(
     ],
 )
 
-# copybara:uncomment_begin(oss-only)
-# cc_library(
-#     name = "grpc++",
-#     visibility = ["//visibility:public"],
-#     deps = select({
-#         ":linux_s390x": ["@com_github_grpc_grpc//:grpc++_unsecure"],
-#         "//conditions:default": ["@com_github_grpc_grpc//:grpc++"],
-#     }),
-# )
-# copybara:uncomment_end
+# copybara:comment_begin(oss-only)
+cc_library(
+    name = "grpc++",
+    visibility = ["//visibility:public"],
+    deps = select({
+        ":linux_s390x": ["@com_github_grpc_grpc//:grpc++_unsecure"],
+        "//conditions:default": ["@com_github_grpc_grpc//:grpc++"],
+    }),
+)
+# copybara:comment_end

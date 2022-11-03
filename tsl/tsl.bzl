@@ -385,4 +385,4 @@ def if_not_mobile_or_arm_or_lgpl_restricted(a):
     })
 
 def tsl_grpc_cc_dependencies():
-    return ["//third_party/tensorflow:grpc++"]
+    return ["//tsl:grpc++"]
