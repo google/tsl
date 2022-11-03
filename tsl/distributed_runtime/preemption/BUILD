@@ -1,5 +1,6 @@
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 load("//tsl/platform:build_config.bzl", "tsl_cc_test")
+load("//tsl:tsl.default.bzl", "tsl_grpc_cc_dependencies")
 
 package(
     default_visibility = [
@@ -60,4 +61,33 @@ cc_library(
         "@com_google_absl//absl/synchronization",
         "@com_google_absl//absl/time",
     ],
+)
+
+tsl_cc_test(
+    name = "preemption_sync_manager_test",
+    size = "small",
+    srcs = ["preemption_sync_manager_test.cc"],
+    deps = [
+        ":preemption_notifier",
+        ":preemption_sync_manager",
+        "@com_google_absl//absl/memory",
+        "@com_google_absl//absl/time",
+        "//tsl/distributed_runtime/coordination:coordination_client",
+        "//tsl/distributed_runtime/coordination:coordination_service",
+        "//tsl/distributed_runtime/coordination:coordination_service_agent",
+        "//tsl/distributed_runtime/coordination:coordination_service_impl",
+        "//tsl/distributed_runtime/rpc:async_service_interface",
+        "//tsl/distributed_runtime/rpc/coordination:grpc_coordination_client",
+        "//tsl/distributed_runtime/rpc/coordination:grpc_coordination_service_impl",
+        "//tsl/platform:env",
+        "//tsl/platform:env_impl",
+        "//tsl/platform:errors",
+        "//tsl/platform:status",
+        "//tsl/platform:statusor",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+        "//tsl/protobuf:coordination_config_proto_cc_impl",
+        "//tsl/protobuf:coordination_service_proto_cc_impl",
+        "//tsl/protobuf:distributed_runtime_payloads_proto_cc_impl",
+    ] + tsl_grpc_cc_dependencies(),
 )
