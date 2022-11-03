@@ -540,13 +540,13 @@ filegroup(
         "threadpool.cc",
         "threadpool.h",
         "threadpool_interface.h",
+        "tracing.cc",
         "tracing.h",
     ] + selects.with_or({
         "//tsl:fuchsia": tf_google_mobile_srcs_no_runtime(),
         "//conditions:default": [
             "//tsl/platform/default:mobile_srcs_no_runtime",
             "file_system_helper.cc",
-            "tracing.cc",
         ],
     }),
     compatible_with = get_compatible_with_portable(),
