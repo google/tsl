@@ -33,10 +33,10 @@ docker run --name tsl -w /tf/tsl -itd --rm \
 
 # Build TSL
 docker exec tsl bazel build \
-    --deleted_packages="tsl/distributed_runtime/rpc,tsl/profiler/backends/cpu,tsl/profiler/utils,tsl/profiler/lib,tsl/profiler/convert" \
+    --deleted_packages="tsl/profiler/backends/cpu,tsl/profiler/utils,tsl/profiler/lib,tsl/profiler/convert" \
     --output_filter="" \
     --nocheck_visibility \
     --keep_going \
-    -- //tsl/... -//tsl/platform/cloud/... -//tsl/framework:allocator_registry_impl -//tsl/framework:bfc_allocator -//tsl/platform/default/build_config:platformlib -//tsl/platform/default/build_config:proto_parsing -//tsl/distributed_runtime:*
-
+    -- //tsl/... -//tsl/platform/cloud/... -//tsl/framework:allocator_registry_impl -//tsl/framework:bfc_allocator -//tsl/platform/default/build_config:platformlib -//tsl/platform/default/build_config:proto_parsing
+# Stop container
 docker stop tsl
