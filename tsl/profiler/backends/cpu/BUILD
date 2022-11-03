@@ -8,6 +8,7 @@ cc_library(
     hdrs = ["traceme_recorder.h"],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla/backends/profiler:friends",
         "//third_party/tensorflow/core/profiler:internal",
         "//tsl/profiler:internal",
     ],
@@ -109,6 +110,7 @@ cc_library(
     hdrs = ["host_tracer_utils.h"],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla/backends/profiler:friends",
         "//third_party/tensorflow/core/profiler:internal",
         "//tsl/profiler:internal",
     ],
