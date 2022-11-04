@@ -86,7 +86,7 @@ cc_library(
     ],
 )
 
-cc_library(
+cuda_library(
     name = "nccl",
     srcs = glob(
         include = [
