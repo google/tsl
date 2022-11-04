@@ -53,7 +53,7 @@ cc_library(
     name = "proto_parsing",
     copts = tsl_copts(),
     deps = [
-        "//third_party/tensorflow/core:protos_all_cc",
+        "//tsl/protobuf:protos_all_cc",
     ],
 )
 
