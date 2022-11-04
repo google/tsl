@@ -37,8 +37,8 @@ cc_library(
     hdrs = ["post_process_single_host_xplane.h"],
     copts = tf_profiler_copts(),
     deps = [
-        "//third_party/tensorflow/core/profiler/protobuf:xplane_proto_cc",
         "//tsl/platform:types",
+        "//tsl/profiler/protobuf:xplane_proto_cc",
         "//tsl/profiler/utils:xplane_schema",
         "//tsl/profiler/utils:xplane_utils",
     ],

@@ -790,6 +790,7 @@ def tsl_cc_test(
                 clean_dep("@com_google_protobuf//:protobuf"),
                 "//tsl/protobuf:error_codes_proto_impl_cc_impl",
                 "//tsl/protobuf:histogram_proto_cc_impl",
+                "//tsl/profiler/protobuf:xplane_proto_cc_impl",
             ],
         ),
         **kwargs

@@ -48,10 +48,10 @@ cc_library(
     ],
     deps = [
         ":profiler_interface",
-        "//third_party/tensorflow/core/profiler/protobuf:xplane_proto_cc",
         "//tsl/platform:errors",
         "//tsl/platform:logging",
         "//tsl/platform:status",
+        "//tsl/profiler/protobuf:xplane_proto_cc",
     ],
 )
 
@@ -84,8 +84,8 @@ cc_library(
     deps = [
         ":profiler_interface",
         "//third_party/tensorflow/core/profiler:profiler_options_proto_cc",
-        "//third_party/tensorflow/core/profiler/lib:profiler_controller",
         "//tsl/platform:mutex",
+        "//tsl/profiler/lib:profiler_controller",
     ],
     alwayslink = True,
 )
@@ -95,6 +95,7 @@ tf_cc_test(
     srcs = ["profiler_factory_test.cc"],
     deps = [
         ":profiler_factory",
+        ":profiler_factory_impl",
         ":profiler_interface",
         "//third_party/tensorflow/core:protos_all_cc",
         "//tsl/platform:macros",
