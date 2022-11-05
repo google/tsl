@@ -19,6 +19,7 @@ limitations under the License.
 #include <string>
 
 #include "tsl/platform/bfloat16.h"
+#include "tsl/platform/float8.h"
 #include "tsl/platform/platform.h"
 #include "tsl/platform/tstring.h"
 
