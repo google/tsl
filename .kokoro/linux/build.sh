@@ -37,6 +37,6 @@ docker exec tsl bazel build \
     --output_filter="" \
     --nocheck_visibility \
     --keep_going \
-    -- //tsl/... -//tsl/platform/cloud/... -//tsl/framework:allocator_registry_impl -//tsl/framework:bfc_allocator -//tsl/platform/default/build_config:platformlib -//tsl/platform/default/build_config:proto_parsing
+    -- //tsl/... -//tsl/platform/cloud/... -//tsl/framework:allocator_registry_impl -//tsl/framework:bfc_allocator
 # Stop container
 docker stop tsl
