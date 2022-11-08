@@ -695,10 +695,10 @@ def _tf_repositories():
     tf_http_archive(
         name = "cython",
         build_file = "//third_party:cython.BUILD",
-        sha256 = "d530216e015fd365bf3327a176e0073d0e5b8d48781f387336459f10032d776f",
-        strip_prefix = "cython-3.0.0a10",
+        sha256 = "08dbdb6aa003f03e65879de8f899f87c8c718cd874a31ae9c29f8726da2f5ab0",
+        strip_prefix = "cython-3.0.0a11",
         system_build_file = "//third_party/systemlibs:cython.BUILD",
-        urls = tf_mirror_urls("https://github.com/cython/cython/archive/3.0.0a10.tar.gz"),
+        urls = tf_mirror_urls("https://github.com/cython/cython/archive/3.0.0a11.tar.gz"),
     )
 
     # LINT.IfChange
