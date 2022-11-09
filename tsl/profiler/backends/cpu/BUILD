@@ -1,7 +1,7 @@
 load("//tsl/platform:build_config_root.bzl", "if_static")
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 load("//tsl/profiler/builds:build_config.bzl", "tf_profiler_copts")
-load("//third_party/tensorflow:tensorflow.bzl", "tf_cc_test")
+load("//tsl/platform:build_config.bzl", "tsl_cc_test")
 
 cc_library(
     name = "traceme_recorder",
@@ -50,11 +50,12 @@ cc_library(
     alwayslink = True,
 )
 
-tf_cc_test(
+tsl_cc_test(
     name = "traceme_recorder_test",
     srcs = ["traceme_recorder_test.cc"],
     deps = [
         ":traceme_recorder",
+        ":traceme_recorder_impl",
         "//tsl/platform:env",
         "//tsl/platform:env_impl",
         "//tsl/platform:logging",
@@ -64,6 +65,7 @@ tf_cc_test(
         "//tsl/platform:types",
         "//tsl/profiler/utils:math_utils",
         "//tsl/profiler/utils:time_utils",
+        "//tsl/profiler/utils:time_utils_impl",
         "@com_google_absl//absl/container:flat_hash_map",
         "@com_google_absl//absl/strings",
     ],
@@ -95,6 +97,7 @@ cc_library(
     visibility = [
         "//third_party/tensorflow/core/profiler/backends/cpu:__pkg__",
         "//tsl/profiler:__pkg__",
+        "//tsl/profiler/lib:__pkg__",
     ],
     deps = [
         "//tsl/platform:macros",
