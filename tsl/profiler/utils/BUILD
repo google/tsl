@@ -359,3 +359,26 @@ cc_library(
         "@com_google_absl//absl/strings",
     ],
 )
+
+cc_library(
+    name = "buffer_pool",
+    srcs = ["buffer_pool.cc"],
+    hdrs = ["buffer_pool.h"],
+    copts = tf_profiler_copts(),
+    deps = [
+        "//tsl/platform:logging",
+        "//tsl/platform:mutex",
+        "//tsl/platform:platform_port",
+        "//tsl/platform:thread_annotations",
+    ],
+)
+
+tsl_cc_test(
+    name = "buffer_pool_test",
+    srcs = ["buffer_pool_test.cc"],
+    deps = [
+        ":buffer_pool",
+        "//tsl/platform:test",
+        "//tsl/platform:test_main",
+    ],
+)
