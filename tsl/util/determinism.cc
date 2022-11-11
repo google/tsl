@@ -33,6 +33,7 @@ class DeterminismState {
       bool env_var_set = false;
       TF_CHECK_OK(tsl::ReadBoolFromEnvVar(env_var_,
                                           /*default_val=*/false, &env_var_set));
+      LOG(ERROR) << "WILSIN: env_var_set: " << env_var_set;
       state_ = env_var_set ? Value::ENABLED : Value::DISABLED;
     }
 
