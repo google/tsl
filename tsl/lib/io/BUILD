@@ -14,6 +14,7 @@ package(
         # tensorflow/core:lib effectively exposes all targets under tensorflow/core/lib/**
         "//third_party/tensorflow/core:__pkg__",
         "//third_party/tensorflow/core/lib/io:__subpackages__",
+        "//tsl/profiler:__subpackages__",
     ],
     licenses = ["notice"],
 )
