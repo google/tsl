@@ -15,6 +15,9 @@ limitations under the License.
 
 #include "tsl/util/determinism.h"
 
+#include <iostream>
+#include <ostream>
+
 #include "absl/strings/string_view.h"
 #include "tsl/platform/mutex.h"
 #include "tsl/util/env_var.h"
@@ -25,7 +28,11 @@ namespace {
 
 class DeterminismState {
  public:
-  explicit DeterminismState(absl::string_view env_var) : env_var_(env_var) {}
+  explicit DeterminismState(absl::string_view env_var) : env_var_(env_var) {
+    std::cout << "Initializing DeterminismState for env var " << env_var
+              << std::endl;
+  }
+
   bool Required() {
     mutex_lock l(*mutex_);
 
