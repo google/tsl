@@ -24,7 +24,7 @@ cc_library(
     textual_hdrs = glob(["cublas_*.inc"]),
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
+        "@local_config_cuda//cuda:cuda_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -34,7 +34,7 @@ alias(
     name = "cublas_lib",
     actual = select({
         "//tsl:oss": ":cublas_stub",
-        "//conditions:default": "//third_party/gpus/cuda:cublas_static",
+        "//conditions:default": "@local_config_cuda//cuda:cublas_static",
     }),
     visibility = ["//visibility:public"],
 )
@@ -45,7 +45,7 @@ cc_library(
     textual_hdrs = glob(["cublasLt_*.inc"]),
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
+        "@local_config_cuda//cuda:cuda_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -55,7 +55,7 @@ alias(
     name = "cublas_lt_lib",
     actual = select({
         "//tsl:oss": ":cublas_lt_stub",
-        "//conditions:default": "//third_party/gpus/cuda:cublas_lt_static",
+        "//conditions:default": "@local_config_cuda//cuda:cublas_lt_static",
     }),
     visibility = ["//visibility:public"],
 )
@@ -66,7 +66,7 @@ cc_library(
     textual_hdrs = glob(["cuda_*.inc"]),
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
+        "@local_config_cuda//cuda:cuda_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -84,7 +84,7 @@ cc_library(
     deps = select({
         "//tsl:is_cuda_enabled_and_oss": [
             ":cuda_stub",
-            "//third_party/gpus/cuda:cuda_headers",
+            "@local_config_cuda//cuda:cuda_headers",
             "//tsl/platform:dso_loader",
             "//tsl/platform:env",
         ],
@@ -146,7 +146,7 @@ cc_library(
     textual_hdrs = glob(["cufft_*.inc"]),
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
+        "@local_config_cuda//cuda:cuda_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -156,7 +156,7 @@ alias(
     name = "cufft_lib",
     actual = select({
         "//tsl:oss": ":cufft_stub",
-        "//conditions:default": "//third_party/gpus/cuda:cufft_static",
+        "//conditions:default": "@local_config_cuda//cuda:cufft_static",
     }),
     visibility = ["//visibility:public"],
 )
@@ -164,12 +164,12 @@ alias(
 cc_library(
     name = "cupti_stub",
     srcs = if_cuda_is_configured(["cupti_stub.cc"]),
-    data = if_cuda_is_configured(["//third_party/gpus/cuda:cupti_dsos"]),
+    data = if_cuda_is_configured(["@local_config_cuda//cuda:cupti_dsos"]),
     textual_hdrs = ["cupti_10_0.inc"],
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
-        "//third_party/gpus/cuda:cupti_headers",
+        "@local_config_cuda//cuda:cuda_headers",
+        "@local_config_cuda//cuda:cupti_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -181,7 +181,7 @@ cc_library(
     textual_hdrs = ["curand_10_0.inc"],
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
+        "@local_config_cuda//cuda:cuda_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -191,7 +191,7 @@ alias(
     name = "curand_lib",
     actual = select({
         "//tsl:oss": ":curand_stub",
-        "//conditions:default": "//third_party/gpus/cuda:curand_static",
+        "//conditions:default": "@local_config_cuda//cuda:curand_static",
     }),
     visibility = ["//visibility:public"],
 )
@@ -202,7 +202,7 @@ cc_library(
     textual_hdrs = glob(["cusolver_dense_*.inc"]),
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
+        "@local_config_cuda//cuda:cuda_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -212,7 +212,7 @@ alias(
     name = "cusolver_lib",
     actual = select({
         "//tsl:oss": ":cusolver_stub",
-        "//conditions:default": "//third_party/gpus/cuda:cusolver_static",
+        "//conditions:default": "@local_config_cuda//cuda:cusolver_static",
     }),
     visibility = ["//visibility:public"],
 )
@@ -223,7 +223,7 @@ cc_library(
     textual_hdrs = glob(["cusparse_*.inc"]),
     visibility = ["//visibility:public"],
     deps = if_cuda_is_configured([
-        "//third_party/gpus/cuda:cuda_headers",
+        "@local_config_cuda//cuda:cuda_headers",
         "//tsl/platform:dso_loader",
         "//tsl/platform:env",
     ]),
@@ -233,7 +233,7 @@ alias(
     name = "cusparse_lib",
     actual = select({
         "//tsl:oss": ":cusparse_stub",
-        "//conditions:default": "//third_party/gpus/cuda:cusparse_static",
+        "//conditions:default": "@local_config_cuda//cuda:cusparse_static",
     }),
     visibility = ["//visibility:public"],
 )

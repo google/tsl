@@ -68,8 +68,8 @@ function install_build_env_tools(){
   # see https://lxml.de/installation.html#using-lxml-with-python-libxml2
   export STATIC_DEPS=true
 
-  echo "===== Install junitparser and lxml ====="
-  python -m pip install junitparser lxml
+  # echo "===== Install junitparser and lxml ====="
+  # python -m pip install junitparser lxml
 }
 
 install_build_env_tools
