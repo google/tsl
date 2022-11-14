@@ -38,5 +38,12 @@ docker exec tsl bazel build \
     --nocheck_visibility \
     --keep_going \
     -- //tsl/... -//tsl/platform/cloud/... -//tsl/framework:allocator_registry_impl -//tsl/framework:bfc_allocator
+
+docker exec tsl bazel test \
+    --deleted_packages="tsl/profiler/backends/cpu,tsl/profiler/utils,tsl/profiler/lib,tsl/profiler/convert" \
+    --output_filter="" \
+    --nocheck_visibility \
+    --keep_going \
+    -- //tsl/... -//tsl/platform/cloud/... -//tsl/framework:allocator_registry_impl -//tsl/framework:bfc_allocator
 # Stop container
 docker stop tsl
