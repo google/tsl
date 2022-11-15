@@ -1,7 +1,7 @@
 # Build file for OpenMP library that is part of llvm
 
 load(
-    "@org_tensorflow//tsl:tensorflow.bzl",
+    "@org_tensorflow//tsl:tsl.bzl",
     "if_linux_x86_64",
     "if_macos",
     "if_windows",

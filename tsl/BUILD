@@ -436,6 +436,7 @@ package_group(
         "//third_party/tensorflow_decision_forests/...",
         "//third_party/tensorflow_federated/...",
         "//third_party/yggdrasil_decision_forests/...",
+        "//tsl/...",
     ],
 )
 

@@ -420,7 +420,7 @@ cc_library(
 cc_library(
     name = "stacktrace_handler",
     srcs = ["stacktrace_handler.cc"],
-    hdrs = ["//tsl/platform:stacktrace_handler.h"],
+    hdrs = ["//tsl/platform:stacktrace_handler_hdrs"],
     linkstatic = 1,
     deps = [
         "//tsl/platform",
