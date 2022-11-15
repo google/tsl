@@ -149,6 +149,59 @@ tsl_cc_test(
 )
 
 cc_library(
+    name = "profiler_session",
+    hdrs = ["profiler_session.h"],
+    visibility = ["//third_party/tensorflow:internal"],
+    deps = [
+        "//tsl/profiler/protobuf:xplane_proto_cc",
+        "//tsl/profiler/protobuf:profiler_options_proto_cc",
+        "//tsl/platform:thread_annotations",
+        "//tsl/platform:errors",
+        "//tsl/platform:mutex",
+        "//tsl/platform:platform",
+        "//tsl/platform:status",
+        "//tsl/platform:types",
+    ] + if_not_android([
+        ":profiler_interface",
+        ":profiler_lock",
+    ]) + if_static([
+        ":profiler_session_impl",
+    ]),
+)
+
+cc_library(
+    name = "profiler_session_impl",
+    srcs = [
+        "profiler_session.cc",
+        "profiler_session.h",
+    ],
+    copts = tf_profiler_copts(),
+    visibility = [
+        "//third_party/tensorflow/core/profiler/lib:__pkg__",
+        "//third_party/tensorflow/python:__pkg__",
+    ],
+    deps = [
+        "//tsl/platform:errors",
+        "//tsl/platform:mutex",
+        "//tsl/platform:logging",
+        "//tsl/platform:thread_annotations",
+        "//tsl/platform:types",
+        "//tsl/profiler/protobuf:xplane_proto_cc",
+        "//tsl/profiler/protobuf:profiler_options_proto_cc",
+        "@com_google_absl//absl/memory",
+    ] + if_not_android([
+        ":profiler_factory",
+        ":profiler_interface",
+        ":profiler_lock",
+        "//third_party/tensorflow/core:lib_internal",
+        "//third_party/tensorflow/core/profiler/lib:profiler_collection",
+        "//tsl/profiler/convert:post_process_single_host_xplane",
+        "//tsl/profiler/utils:time_utils",
+    ]),
+    alwayslink = True,
+)
+
+cc_library(
     name = "traceme_encode",
     hdrs = ["traceme_encode.h"],
     visibility = ["//visibility:public"],

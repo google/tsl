@@ -36,6 +36,7 @@ cc_library(
     srcs = ["post_process_single_host_xplane.cc"],
     hdrs = ["post_process_single_host_xplane.h"],
     copts = tf_profiler_copts(),
+    visibility = ["//tsl/profiler:internal"],
     deps = [
         "//tsl/platform:types",
         "//tsl/profiler/protobuf:xplane_proto_cc",
