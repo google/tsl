@@ -82,6 +82,7 @@ cc_library(
     ],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla:__pkg__",
         "//third_party/tensorflow/core/profiler:__pkg__",
         "//third_party/tensorflow/core/profiler/lib:__pkg__",
     ],
@@ -179,6 +180,7 @@ cc_library(
     ],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla:__pkg__",
         "//third_party/tensorflow/core/profiler/lib:__pkg__",
         "//third_party/tensorflow/python:__pkg__",
     ],

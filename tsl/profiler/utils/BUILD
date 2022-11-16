@@ -44,6 +44,7 @@ cc_library(
     ],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla:__pkg__",
         "//third_party/tensorflow/compiler/xla/stream_executor:__subpackages__",
         "//tsl/platform/cloud:__pkg__",
         "//tsl/profiler:internal",
