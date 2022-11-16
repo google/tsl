@@ -29,9 +29,9 @@ limitations under the License.
 #include "tsl/profiler/protobuf/xplane.pb.h"
 
 #if !defined(IS_MOBILE_PLATFORM)
-#include "third_party/tensorflow/core/profiler/lib/profiler_collection.h"
 #include "tsl/platform/host_info.h"
 #include "tsl/profiler/convert/post_process_single_host_xplane.h"
+#include "tsl/profiler/lib/profiler_collection.h"
 #include "tsl/profiler/lib/profiler_factory.h"
 #include "tsl/profiler/lib/profiler_interface.h"
 #include "tsl/profiler/lib/profiler_lock.h"
@@ -58,7 +58,7 @@ ProfileOptions GetOptions(const ProfileOptions& opts) {
   return absl::WrapUnique(new ProfilerSession(options));
 }
 
-tensorflow::Status ProfilerSession::Status() {
+Status ProfilerSession::Status() {
   mutex_lock l(mutex_);
   return status_;
 }
@@ -120,7 +120,7 @@ ProfilerSession::ProfilerSession(const ProfileOptions& options)
   start_time_ns_ = profiler::GetCurrentTimeNanos();
 
   DCHECK(profiler_lock_.Active());
-  profilers_ = std::make_unique<tensorflow::profiler::ProfilerCollection>(
+  profilers_ = std::make_unique<tsl::profiler::ProfilerCollection>(
       profiler::CreateProfilers(options_));
   profilers_->Start().IgnoreError();
 #endif
