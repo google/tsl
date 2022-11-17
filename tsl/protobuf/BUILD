@@ -8,6 +8,7 @@ load(
 )
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     default_visibility = [
         "//third_party/tensorflow/core:__subpackages__",
         "//third_party/tensorflow_models:__subpackages__",

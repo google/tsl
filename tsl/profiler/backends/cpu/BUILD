@@ -3,6 +3,8 @@ load("//tsl/platform:rules_cc.bzl", "cc_library")
 load("//tsl/profiler/builds:build_config.bzl", "tf_profiler_copts")
 load("//tsl/platform:build_config.bzl", "tsl_cc_test")
 
+# copybara:uncomment package(default_applicable_licenses = ["//third_party/tensorflow:license"])
+
 cc_library(
     name = "traceme_recorder",
     hdrs = ["traceme_recorder.h"],

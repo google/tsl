@@ -1,3 +1,5 @@
+# copybara:uncomment package(default_applicable_licenses = ["//third_party/tensorflow:license"])
+
 package_group(
     name = "friends",
     includes = ["//tsl:internal"],

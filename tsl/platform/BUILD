@@ -37,6 +37,7 @@ load(
 load("//tsl/platform:build_config_root.bzl", "if_static")
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     default_visibility = [
         "//visibility:public",
     ],

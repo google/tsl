@@ -6,6 +6,7 @@ load("//tsl:tsl.default.bzl", "filegroup", "get_compatible_with_portable")
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     default_visibility = [
         # tensorflow/core:lib effectively exposes all targets under tensorflow/core/lib/**
         "//third_party/tensorflow/core:__pkg__",

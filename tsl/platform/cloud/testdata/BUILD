@@ -3,6 +3,7 @@
 load("//tsl:tsl.default.bzl", "filegroup")
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     licenses = ["notice"],
 )
 

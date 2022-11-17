@@ -10,6 +10,7 @@ load(
 load("//tsl/platform:build_config.bzl", "tsl_cc_test")
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     default_visibility = [
         ":dependency_whitelist",
     ],

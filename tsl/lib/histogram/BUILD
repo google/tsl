@@ -9,6 +9,7 @@ load(
 )
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     default_visibility = [
         "//third_party/tensorflow/core/lib/histogram:__pkg__",
         "//tsl/lib/monitoring:__pkg__",

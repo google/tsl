@@ -5,6 +5,7 @@ load("//tsl:tsl.bzl", "if_not_fuchsia", "if_not_windows", "tsl_copts")
 load("//tsl/platform:rules_cc.bzl", "cc_library")
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     default_visibility = [
         "//third_party/tensorflow/core/platform:__pkg__",
         "//tsl/platform:__pkg__",

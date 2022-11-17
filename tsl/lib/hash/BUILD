@@ -14,6 +14,7 @@ load(
 )
 
 package(
+    # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
     default_visibility = [
         # tensorflow/tsl/lib/io/table_builder.cc uses crc functionality
         "//tsl/lib/io:__pkg__",
