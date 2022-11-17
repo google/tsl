@@ -344,20 +344,6 @@ config_setting(
     visibility = ["//visibility:public"],
 )
 
-# google-only
-config_setting(
-    name = "diorite_acc",
-    values = {"cpu": "diorite_acc"},
-    visibility = ["//visibility:public"],
-)
-
-# google-only
-config_setting(
-    name = "diorite_imc",
-    values = {"cpu": "diorite_imc"},
-    visibility = ["//visibility:public"],
-)
-
 selects.config_setting_group(
     name = "arm_any",
     match_any = [
@@ -365,8 +351,6 @@ selects.config_setting_group(
         ":armeabi",
         ":armeabi-v7a",
         ":arm64-v8a",
-        ":diorite_acc",  # google-only
-        ":diorite_imc",  # google-only
         ":linux_aarch64",
         ":linux_armhf",
     ],

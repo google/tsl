@@ -34,7 +34,7 @@ alias(
     name = "cublas_lib",
     actual = select({
         "//tsl:oss": ":cublas_stub",
-        "//conditions:default": "@local_config_cuda//cuda:cublas_static",
+        "//conditions:default": "@local_config_cuda//cuda:cublas",
     }),
     visibility = ["//visibility:public"],
 )
@@ -55,7 +55,7 @@ alias(
     name = "cublas_lt_lib",
     actual = select({
         "//tsl:oss": ":cublas_lt_stub",
-        "//conditions:default": "@local_config_cuda//cuda:cublas_lt_static",
+        "//conditions:default": "@local_config_cuda//cuda:cublasLt",
     }),
     visibility = ["//visibility:public"],
 )
@@ -156,7 +156,7 @@ alias(
     name = "cufft_lib",
     actual = select({
         "//tsl:oss": ":cufft_stub",
-        "//conditions:default": "@local_config_cuda//cuda:cufft_static",
+        "//conditions:default": "@local_config_cuda//cuda:cufft",
     }),
     visibility = ["//visibility:public"],
 )
@@ -191,7 +191,7 @@ alias(
     name = "curand_lib",
     actual = select({
         "//tsl:oss": ":curand_stub",
-        "//conditions:default": "@local_config_cuda//cuda:curand_static",
+        "//conditions:default": "@local_config_cuda//cuda:curand",
     }),
     visibility = ["//visibility:public"],
 )
@@ -212,7 +212,7 @@ alias(
     name = "cusolver_lib",
     actual = select({
         "//tsl:oss": ":cusolver_stub",
-        "//conditions:default": "@local_config_cuda//cuda:cusolver_static",
+        "//conditions:default": "@local_config_cuda//cuda:cusolver",
     }),
     visibility = ["//visibility:public"],
 )
@@ -233,7 +233,7 @@ alias(
     name = "cusparse_lib",
     actual = select({
         "//tsl:oss": ":cusparse_stub",
-        "//conditions:default": "@local_config_cuda//cuda:cusparse_static",
+        "//conditions:default": "@local_config_cuda//cuda:cusparse",
     }),
     visibility = ["//visibility:public"],
 )

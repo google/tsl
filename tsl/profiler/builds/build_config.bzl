@@ -1,7 +1,7 @@
 """Provides a redirection point for platform specific implementations of Starlark utilities."""
 
 load(
-    "//tsl/profiler/builds/google:build_config.bzl",
+    "//tsl/profiler/builds/oss:build_config.bzl",
     _tf_profiler_alias = "tf_profiler_alias",
     _tf_profiler_pybind_cc_library_wrapper = "tf_profiler_pybind_cc_library_wrapper",
 )
