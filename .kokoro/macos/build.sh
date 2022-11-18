@@ -77,7 +77,7 @@ install_build_env_tools
 python -m pip install numpy==1.21.4
 
 bazel build \
-    --deleted_packages="tsl/profiler/backends/cpu,tsl/profiler/utils,tsl/profiler/lib,tsl/profiler/convert" \
+    --deleted_packages="tsl/profiler/backends/cpu,tsl/profiler/utils,tsl/profiler/lib,tsl/profiler/convert,tsl/profiler/rpc,tsl/profiler/rpc/client" \
     --output_filter="" \
     --nocheck_visibility \
     --keep_going \
