@@ -376,6 +376,51 @@ check_deps = rule(
     },
 )
 
+def _my_check_deps_impl(ctx):
+    print("MY CHECK DEPS RUNNING")
+    print("MY CHECK DEPS RUNNING")
+    print("MY CHECK DEPS RUNNING")
+    print("MY CHECK DEPS RUNNING")
+    required_deps = ctx.attr.required_deps
+    disallowed_deps = ctx.attr.disallowed_deps
+    for input_dep in ctx.attr.deps:
+        if not hasattr(input_dep, "tf_collected_deps"):
+            continue
+        collected_deps = sets.make(input_dep.tf_collected_deps.to_list())
+        print(collected_deps)
+        for disallowed_dep in disallowed_deps:
+            if sets.contains(collected_deps, disallowed_dep.label):
+                fail(
+                    _dep_label(input_dep) + " cannot depend on " +
+                    _dep_label(disallowed_dep),
+                )
+        for required_dep in required_deps:
+            if not sets.contains(collected_deps, required_dep.label):
+                fail(
+                    _dep_label(input_dep) + " must depend on " +
+                    _dep_label(required_dep),
+                )
+    return struct()  # buildifier: disable=rule-impl-return
+
+my_check_deps = rule(
+    _my_check_deps_impl,
+    attrs = {
+        "deps": attr.label_list(
+            aspects = [collect_deps_aspect],
+            mandatory = True,
+            allow_files = True,
+        ),
+        "disallowed_deps": attr.label_list(
+            default = [],
+            allow_files = True,
+        ),
+        "required_deps": attr.label_list(
+            default = [],
+            allow_files = True,
+        ),
+    },
+)
+
 def get_compatible_with_portable():
     return []
 
