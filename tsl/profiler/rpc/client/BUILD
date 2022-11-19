@@ -56,6 +56,7 @@ cc_library(
     visibility = [
         "//third_party/tensorflow/core/profiler:internal",
         "//third_party/tensorflow/core/profiler/rpc/client:__pkg__",
+        "//tsl/profiler/rpc:__pkg__",
     ],
     deps = [
         "//third_party/tensorflow/core:framework",
