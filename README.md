@@ -12,6 +12,8 @@ This repo contains base utilities and cross-platform support for projects like
 
 ## Contacts
 
+Contacts TBD
+
 Discord TBA
 
 Community proposals TBA
