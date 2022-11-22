@@ -32,7 +32,7 @@ function install_build_env_tools(){
   # Install Bazelisk; Useful as it would automatically pick the correct
   # version of Bazel.
   echo "===== Installing Bazelisk ====="
-  wget --no-verbose -O "/usr/local/bin/bazel" \
+  sudo wget --no-verbose -O "/usr/local/bin/bazel" \
       "https://github.com/bazelbuild/bazelisk/releases/download/v1.11.0/bazelisk-darwin-amd64" \
       && chmod +x "/usr/local/bin/bazel"
 
@@ -45,16 +45,20 @@ function install_build_env_tools(){
   echo "===== Installing Pyenv ====="
   # Install pyenv; Set up a virtual environment to control dependencies and their
   # versions
-  git clone --branch v2.2.2 https://github.com/pyenv/pyenv.git /Users/kbuilder/.pyenv
-  export PYENV_ROOT=/Users/kbuilder/.pyenv
+  git clone --branch v2.2.2 https://github.com/pyenv/pyenv.git /Users/kbuilder/.tf_pyenv
+  export PYENV_ROOT=/Users/kbuilder/.tf_pyenv
   export PATH="$PYENV_ROOT/bin:$PATH"    # if `pyenv` is not already on PATH
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 
   echo "===== Installing Python ====="
   # Install Python and set the local python version
-  pyenv install -s "${PYENV_VERSION}"
-  pyenv local "${PYENV_VERSION}"
+  pyenv install -s "${TF_PYENV_VERSION}"
+  pyenv rehash
+  pyenv local "${TF_PYENV_VERSION}"
+  # Do a sanity check to make sure that we using the correct Python version
+  echo "===== Python version ====="
+  python --version
   # Set up virtual environment and activate it
   python -m venv /Users/kbuilder/.tf-venv && source /Users/kbuilder/.tf-venv/bin/activate
 
@@ -66,7 +70,7 @@ function install_build_env_tools(){
 
   # Set STATIC_DEPS=true for using lxml with Python.
   # see https://lxml.de/installation.html#using-lxml-with-python-libxml2
-  export STATIC_DEPS=true
+  # export STATIC_DEPS=true
 
   # echo "===== Install junitparser and lxml ====="
   # python -m pip install junitparser lxml
