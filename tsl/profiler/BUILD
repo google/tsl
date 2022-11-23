@@ -16,3 +16,15 @@ package_group(
         "//tsl/profiler/...",
     ],
 )
+
+package_group(
+    name = "xla_profiler_backends",
+    packages = ["//third_party/tensorflow/compiler/xla/backends/profiler/..."],
+)
+
+package_group(
+    name = "xla_internal",
+    packages = [
+        "//third_party/tensorflow/compiler/xla/...",
+    ],
+)

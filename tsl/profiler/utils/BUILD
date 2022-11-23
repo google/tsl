@@ -14,7 +14,6 @@ package(
 package_group(
     name = "friends",
     includes = [
-        "//third_party/tensorflow/core/profiler:friends",
         "//tsl/profiler:friends",
     ],
 )

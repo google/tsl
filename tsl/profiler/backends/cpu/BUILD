@@ -10,9 +10,8 @@ cc_library(
     hdrs = ["traceme_recorder.h"],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/tensorflow/compiler/xla/backends/profiler:friends",
-        "//third_party/tensorflow/core/profiler:internal",
         "//tsl/profiler:internal",
+        "//tsl/profiler:xla_profiler_backends",
     ],
     deps = [
         "@com_google_absl//absl/container:flat_hash_map",
@@ -33,12 +32,11 @@ cc_library(
     hdrs = ["traceme_recorder.h"],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/tensorflow/compiler/xla/stream_executor:__subpackages__",
-        "//third_party/tensorflow/core/profiler:__pkg__",
-        "//third_party/tensorflow/core/profiler/backends/cpu:__pkg__",
         "//third_party/tensorflow/python:__pkg__",
         "//tsl/platform/cloud:__pkg__",
         "//tsl/profiler:__pkg__",
+        "//tsl/profiler:internal",
+        "//tsl/profiler:xla_internal",
     ],
     deps = [
         "//tsl/platform:env",
@@ -97,9 +95,7 @@ cc_library(
     ],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/tensorflow/core/profiler/backends/cpu:__pkg__",
-        "//tsl/profiler:__pkg__",
-        "//tsl/profiler/lib:__pkg__",
+        "//tsl/profiler:internal",
     ],
     deps = [
         "//tsl/platform:macros",
@@ -115,9 +111,8 @@ cc_library(
     hdrs = ["host_tracer_utils.h"],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/tensorflow/compiler/xla/backends/profiler:friends",
-        "//third_party/tensorflow/core/profiler:internal",
         "//tsl/profiler:internal",
+        "//tsl/profiler:xla_internal",
     ],
     deps = [
         ":traceme_recorder",

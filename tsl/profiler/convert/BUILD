@@ -7,7 +7,7 @@ load("//tsl/profiler/builds:build_config.bzl", "tf_profiler_copts")
 
 package(
     # copybara:uncomment default_applicable_licenses = ["//third_party/tensorflow:license"],
-    default_visibility = ["//third_party/tensorflow/core/profiler:internal"],
+    default_visibility = ["//tsl/profiler:internal"],
     licenses = ["notice"],
 )
 
@@ -15,8 +15,8 @@ cc_library(
     name = "xla_op_utils",
     hdrs = ["xla_op_utils.h"],
     visibility = [
-        "//third_party/tensorflow/compiler/xla/backends/profiler:__subpackages__",
-        "//third_party/tensorflow/core/profiler:internal",
+        "//tsl/profiler:internal",
+        "//tsl/profiler:xla_profiler_backends",
     ],
     deps = ["@com_google_absl//absl/strings"],
 )
