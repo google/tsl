@@ -53,6 +53,7 @@ cc_library(
         ":preemption_notifier",
         "//tsl/distributed_runtime:call_options",
         "//tsl/distributed_runtime/coordination:coordination_service_agent",
+        "//tsl/lib/monitoring:gauge",
         "//tsl/platform:env",
         "//tsl/platform:mutex",
         "//tsl/platform:status",
