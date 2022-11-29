@@ -8,7 +8,7 @@ package(
     licenses = ["notice"],
 )
 
-# mkl_dnn license placeholder
+exports_files(["LICENSE"])
 
 config_setting(
     name = "build_with_mkl_opensource",
