@@ -28,7 +28,7 @@ export PATH="$PATH:/c/Python38"
   --output_filter="" \
   --nocheck_visibility \
   --keep_going \
-  -- //tsl/... -//tsl/platform/cloud/... -//tsl/framework:allocator -//tsl/framework:allocator_registry_impl -//tsl/framework:bfc_allocator\
+  -- //tsl/... \
   || { exit 1; }
 
 exit 0
