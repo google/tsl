@@ -30,4 +30,12 @@ export PATH="$PATH:/c/Python38"
   -- //tsl/... \
   || { exit 1; }
 
+/c/tools/bazel.exe test \
+  --output_filter="" \
+  --nocheck_visibility \
+  --keep_going \
+  -- //tsl/... \
+  || { exit 1; }
+
+
 exit 0

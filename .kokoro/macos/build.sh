@@ -85,3 +85,9 @@ bazel build \
     --nocheck_visibility \
     --keep_going \
     -- //tsl/...
+
+bazel test \
+    --output_filter="" \
+    --nocheck_visibility \
+    --keep_going \
+    -- //tsl/...
