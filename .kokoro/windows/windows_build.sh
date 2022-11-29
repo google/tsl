@@ -24,7 +24,6 @@ cd "${KOKORO_ARTIFACTS_DIR}/github/tsl"
 export PATH="$PATH:/c/Python38"
 
 /c/tools/bazel.exe build \
-  --deleted_packages="tsl/profiler/rpc,tsl/profiler/rpc/client" \
   --output_filter="" \
   --nocheck_visibility \
   --keep_going \

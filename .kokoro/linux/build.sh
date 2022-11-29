@@ -33,7 +33,6 @@ docker run --name tsl -w /tf/tsl -itd --rm \
 
 # Build TSL
 docker exec tsl bazel build \
-    --deleted_packages="tsl/profiler/rpc,tsl/profiler/rpc/client" \
     --output_filter="" \
     --nocheck_visibility \
     --keep_going \
