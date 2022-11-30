@@ -1,8 +1,8 @@
 path: "tensorflow.experimental.numpy.ndarray"
 tf_class {
-  is_instance: "<class \'google3.third_party.tensorflow.python.framework.ops.Tensor\'>"
-  is_instance: "<class \'google3.third_party.tensorflow.python.types.internal.NativeObject\'>"
-  is_instance: "<class \'google3.third_party.tensorflow.python.types.core.Tensor\'>"
+  is_instance: "<class \'tensorflow.python.framework.ops.Tensor\'>"
+  is_instance: "<class \'tensorflow.python.types.internal.NativeObject\'>"
+  is_instance: "<class \'tensorflow.python.types.core.Tensor\'>"
   is_instance: "<type \'object\'>"
   member {
     name: "OVERLOADABLE_OPERATORS"

@@ -6,7 +6,7 @@ def repo():
     # LINT.IfChange
     STABLEHLO_COMMIT = "f05f39cd59aa1232153312069fe35109b225c5df"
     STABLEHLO_SHA256 = "6cf305e04d2a58c7933c7c627ee911431811f5f9623eb210edc38918125fed6d"
-    # LINT.ThenChange(//depot/google3/third_party/stablehlo/METADATA)
+    # LINT.ThenChange(Google-internal path)
 
     tf_http_archive(
         name = "stablehlo",

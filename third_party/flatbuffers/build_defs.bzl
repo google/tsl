@@ -1,6 +1,6 @@
 """BUILD rules for generating flatbuffer files."""
 
-load("//tools/build_defs/android:rules.bzl", "android_library")
+load("@build_bazel_rules_android//android:rules.bzl", "android_library")
 
 flatc_path = "@flatbuffers//:flatc"
 zip_files = "//third_party/tensorflow/lite/tools:zip_files"
