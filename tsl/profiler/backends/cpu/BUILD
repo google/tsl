@@ -95,6 +95,7 @@ cc_library(
     ],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla/service/gpu/tests:__pkg__",
         "//tsl/profiler:internal",
     ],
     deps = [
