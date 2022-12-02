@@ -30,3 +30,44 @@ cc_library(
         "//third_party/python_runtime:headers",
     ],
 )
+
+cc_library(
+    name = "custom_float",
+    hdrs = [
+        "custom_float.h",
+    ],
+    deps = [
+        "//third_party/eigen3",
+        "//third_party/python_runtime:headers",  # build_cleaner: keep; DNR: b/35864863
+        "//tsl/platform:logging",
+        "//tsl/platform:types",
+        "//tsl/python/lib/core:numpy",
+        "@com_google_absl//absl/strings",
+    ],
+)
+
+cc_library(
+    name = "bfloat16_lib",
+    srcs = [
+        "bfloat16.cc",
+        "float8_e4m3b11.cc",
+    ],
+    hdrs = [
+        "bfloat16.h",
+        "float8_e4m3b11.h",
+    ],
+    deps = [
+        ":custom_float",
+        "//third_party/eigen3",
+        "//third_party/python_runtime:headers",  # build_cleaner: keep; DNR: b/35864863
+        "//tsl/platform:logging",
+        "//tsl/platform:types",
+        "//tsl/python/lib/core:numpy",
+        "@com_google_absl//absl/strings",
+    ],
+)
+
+filegroup(
+    name = "bfloat16_hdr",
+    srcs = ["bfloat16.h"],
+)
