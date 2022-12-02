@@ -53,6 +53,9 @@ tensorflow::grappler::graph_analyzer::GraphAnalyzerTool
 tensorflow::RegisterNumpyBfloat16
 tensorflow::Bfloat16Dtype
 tensorflow::Float8_E4M3B11Dtype
+tsl::RegisterNumpyBfloat16
+tsl::Bfloat16Dtype
+tsl::Float8_E4M3B11Dtype
 
 [//tensorflow/python:py_func_lib] # py_func
 tensorflow::InitializePyTrampoline
@@ -371,6 +374,9 @@ tsl::ProfilerSession::~ProfilerSession
 [//tensorflow/tsl/profiler/rpc:profiler_server_impl] # profiler
 tsl::profiler::ProfilerServer::StartProfilerServer
 tsl::profiler::ProfilerServer::~ProfilerServer
+
+[//tensorflow/core/profiler/convert:hlo_to_tools_data_impl] # profiler
+tensorflow::profiler::ConvertHloProtoToToolData
 
 [//tensorflow/core/profiler/rpc/client:profiler_client_impl] # profiler
 tensorflow::profiler::ProfileGrpc
