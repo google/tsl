@@ -232,6 +232,9 @@ class Status {
   State* NewStateFromNonOKStatus(const Status& s);
 };
 
+void f() { return; }
+
+// test
 // OkStatus()
 //
 // Returns an OK status, equivalent to a default constructed instance. Prefer
