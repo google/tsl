@@ -212,7 +212,7 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "//tsl/platform:logging",
-        "//tsl/platform:macros",
+        "@com_google_absl//absl/base:core_headers",
         "@com_google_absl//absl/strings",
     ],
 )
@@ -241,11 +241,10 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         ":traceme_encode",
+        "@com_google_absl//absl/base:core_headers",
         "@com_google_absl//absl/strings",
         "//tsl/platform",
         "//tsl/platform:logging",
-        "//tsl/platform:macros",
-        "//tsl/platform:types",
     ] + if_not_android([
         "//tsl/profiler/backends/cpu:traceme_recorder",
         "//tsl/profiler/utils:time_utils",
