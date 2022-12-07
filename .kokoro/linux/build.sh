@@ -37,5 +37,13 @@ docker exec tsl bazel build \
     --nocheck_visibility \
     --keep_going \
     -- //tsl/...
+
+# Test TSL
+docker exec tsl bazel test \
+    --output_filter="" \
+    --nocheck_visibility \
+    --keep_going \
+    -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test
+
 # Stop container
 docker stop tsl

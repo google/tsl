@@ -80,8 +80,16 @@ install_build_env_tools
 
 python -m pip install numpy==1.21.4
 
+# Build TSL
 bazel build \
     --output_filter="" \
     --nocheck_visibility \
     --keep_going \
     -- //tsl/...
+
+# Test TSL
+bazel test \
+    --output_filter="" \
+    --nocheck_visibility \
+    --keep_going \
+    -- //tsl/... -//tsl/distributed_runtime/rpc:grpc_util_test -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test
