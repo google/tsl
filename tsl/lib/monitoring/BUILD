@@ -18,6 +18,7 @@ package(
         # tensorflow/compiler/mlir/tfrt:tf_jitrt depends on this package
         "//third_party/tensorflow/compiler/mlir/tfrt:__subpackages__",
         "//third_party/tensorflow/compiler/xla/stream_executor:__subpackages__",
+        "//third_party/tensorflow/compiler/xla/hlo/experimental:__subpackages__",
         "//third_party/tensorflow/core/lib/monitoring:__subpackages__",
         "//third_party/tensorflow/compiler/xla/service:__subpackages__",
         "//tsl/framework:__subpackages__",
