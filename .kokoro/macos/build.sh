@@ -90,6 +90,7 @@ bazel build \
 # Test TSL
 bazel test \
     --output_filter="" \
+    --test_tag_filters=-no_mac \
     --nocheck_visibility \
     --keep_going \
-    -- //tsl/... -//tsl/distributed_runtime/rpc:grpc_util_test -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test
+    -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test
