@@ -76,6 +76,7 @@ cc_library(
     hdrs = ["annotation_stack.h"],
     copts = tf_profiler_copts(),
     visibility = [
+        "//third_party/tensorflow/compiler/xla:__subpackages__",
         "//tsl/profiler:internal",
     ],
     deps = [
@@ -95,7 +96,7 @@ cc_library(
     ],
     copts = tf_profiler_copts(),
     visibility = [
-        "//third_party/tensorflow/compiler/xla/service/gpu/tests:__pkg__",
+        "//third_party/tensorflow/compiler/xla:__subpackages__",
         "//tsl/profiler:internal",
     ],
     deps = [
