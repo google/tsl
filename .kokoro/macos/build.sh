@@ -93,4 +93,5 @@ bazel test \
     --test_tag_filters=-no_mac \
     --nocheck_visibility \
     --keep_going \
+    --flaky_test_attempts=3 \
     -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test

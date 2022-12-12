@@ -35,6 +35,7 @@ export PATH="$PATH:/c/Python38"
 /c/tools/bazel.exe test \
   --output_filter="" \
   --nocheck_visibility \
+  --flaky_test_attempts=3 \
   --keep_going \
   -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test \
   || { echo "Bazel Test Failed" && exit 1; }
