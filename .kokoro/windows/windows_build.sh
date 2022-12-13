@@ -24,7 +24,7 @@ cd "${KOKORO_ARTIFACTS_DIR}/github/tsl"
 export PATH="$PATH:/c/Python38"
 
 # Build TSL
-/c/tools/bazel.exe build \
+/c/tools/bazel.exe build -s \
   --output_filter="" \
   --nocheck_visibility \
   --keep_going \
@@ -32,7 +32,7 @@ export PATH="$PATH:/c/Python38"
   || { echo "Bazel Build Failed" && exit 1; }
 
 # Test TSL
-/c/tools/bazel.exe test \
+/c/tools/bazel.exe test -s \
   --output_filter="" \
   --nocheck_visibility \
   --flaky_test_attempts=3 \
