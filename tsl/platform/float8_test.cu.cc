@@ -124,8 +124,8 @@ TYPED_TEST(Float8Test, UpCasts) {
   for (int i = 0x00; i <= 0xFF; ++i) {
     // Cast up to each other floating-point type, and verify they are the same.
     Float8 f8 = Float8::FromRep(i);
-    double f64 = static_cast<double>(f8);
-    float f32 = static_cast<float>(f8);
+    double f64 = f8;
+    float f32 = f8;
     Eigen::bfloat16 bf16 = static_cast<Eigen::bfloat16>(f8);
     Eigen::half f16 = static_cast<Eigen::half>(f8);
 

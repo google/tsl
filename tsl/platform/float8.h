@@ -178,6 +178,11 @@ class float8_e4m3fn : public float8_base<float8_e4m3fn> {
   explicit EIGEN_DEVICE_FUNC float8_e4m3fn(const float8_e5m2& f8)
       : float8_e4m3fn(ConvertFrom(f8)) {}
 
+  // operator float() is implicit for consistency with Eigen::half and
+  // Eigen::bfloat16
+  // NOLINTNEXTLINE(google-explicit-constructor)
+  EIGEN_DEVICE_FUNC operator float() const { return ConvertTo<float>(*this); }
+
   template <typename T,
             typename EnableIf = std::enable_if<std::is_arithmetic_v<T>>>
   explicit EIGEN_DEVICE_FUNC operator T() const {
@@ -185,9 +190,6 @@ class float8_e4m3fn : public float8_base<float8_e4m3fn> {
   }
   explicit EIGEN_DEVICE_FUNC operator double() const {
     return ConvertTo<double>(*this);
-  }
-  explicit EIGEN_DEVICE_FUNC operator float() const {
-    return ConvertTo<float>(*this);
   }
   explicit EIGEN_DEVICE_FUNC operator Eigen::bfloat16() const {
     return ConvertTo<Eigen::bfloat16>(*this);
@@ -228,6 +230,11 @@ class float8_e5m2 : public float8_base<float8_e5m2> {
   explicit EIGEN_DEVICE_FUNC float8_e5m2(float8_e4m3fn f8)
       : float8_e5m2(ConvertFrom(f8)) {}
 
+  // operator float() is implicit for consistency with Eigen::half and
+  // Eigen::bfloat16
+  // NOLINTNEXTLINE(google-explicit-constructor)
+  EIGEN_DEVICE_FUNC operator float() const { return ConvertTo<float>(*this); }
+
   template <typename T,
             typename EnableIf = std::enable_if<std::is_arithmetic_v<T>>>
   explicit EIGEN_DEVICE_FUNC operator T() const {
@@ -235,9 +242,6 @@ class float8_e5m2 : public float8_base<float8_e5m2> {
   }
   explicit EIGEN_DEVICE_FUNC operator double() const {
     return ConvertTo<double>(*this);
-  }
-  explicit EIGEN_DEVICE_FUNC operator float() const {
-    return ConvertTo<float>(*this);
   }
   explicit EIGEN_DEVICE_FUNC operator Eigen::bfloat16() const {
     return ConvertTo<Eigen::bfloat16>(*this);
