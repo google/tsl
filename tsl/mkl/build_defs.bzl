@@ -14,6 +14,11 @@ mkl_repository depends on the following environment variables:
 
 _TF_MKL_ROOT = "TF_MKL_ROOT"
 
+# Sanitize a dependency so that it works correctly from code that includes
+# TSL as a submodule.
+def clean_dep(dep):
+    return str(Label(dep))
+
 def if_mkl(if_true, if_false = []):
     """Shorthand for select()'ing on whether we're building with oneDNN.
 
@@ -32,9 +37,9 @@ def if_mkl(if_true, if_false = []):
       may need it. It may be deleted in future with refactoring.
     """
     return select({
-        "@org_tensorflow//tsl/mkl:build_with_mkl_aarch64": if_true,
-        "@org_tensorflow//tsl:linux_x86_64": if_true,
-        "@org_tensorflow//tsl:windows": if_true,
+        clean_dep("//tsl/mkl:build_with_mkl_aarch64"): if_true,
+        clean_dep("//tsl:linux_x86_64"): if_true,
+        clean_dep("//tsl:windows"): if_true,
         "//conditions:default": if_false,
     })
 
@@ -51,7 +56,7 @@ def if_mkl_ml(if_true, if_false = []):
     """
     return select({
         "@org_tensorflow//third_party/mkl_dnn:build_with_mkl_opensource": if_false,
-        "@org_tensorflow//tsl/mkl:build_with_mkl": if_true,
+        clean_dep("//tsl/mkl:build_with_mkl"): if_true,
         "//conditions:default": if_false,
     })
 
@@ -68,7 +73,7 @@ def if_mkl_lnx_x64(if_true, if_false = []):
       a select evaluating to either if_true or if_false as appropriate.
     """
     return select({
-        "@org_tensorflow//tsl/mkl:build_with_mkl_lnx_x64": if_true,
+        clean_dep("//tsl/mkl:build_with_mkl_lnx_x64"): if_true,
         "//conditions:default": if_false,
     })
 
@@ -85,7 +90,7 @@ def if_enable_mkl(if_true, if_false = []):
       A select evaluating to either if_true or if_false as appropriate.
     """
     return select({
-        "@org_tensorflow//tsl/mkl:enable_mkl": if_true,
+        clean_dep("//tsl/mkl:enable_mkl"): if_true,
         "//conditions:default": if_false,
     })
 
@@ -101,9 +106,9 @@ def mkl_deps():
       inclusion in the deps attribute of rules.
     """
     return select({
-        "@org_tensorflow//tsl/mkl:build_with_mkl_aarch64": ["@mkl_dnn_acl_compatible//:mkl_dnn_acl"],
-        "@org_tensorflow//tsl:linux_x86_64": ["@mkl_dnn_v1//:mkl_dnn"],
-        "@org_tensorflow//tsl:windows": ["@mkl_dnn_v1//:mkl_dnn"],
+        clean_dep("//tsl/mkl:build_with_mkl_aarch64"): ["@mkl_dnn_acl_compatible//:mkl_dnn_acl"],
+        clean_dep("//tsl:linux_x86_64"): ["@mkl_dnn_v1//:mkl_dnn"],
+        clean_dep("//tsl:windows"): ["@mkl_dnn_v1//:mkl_dnn"],
         "//conditions:default": [],
     })
 
