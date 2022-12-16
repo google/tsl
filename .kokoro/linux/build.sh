@@ -44,6 +44,9 @@ docker exec tsl bazel test \
     --nocheck_visibility \
     --keep_going \
     --flaky_test_attempts=3 \
+    --test_output=errors \
+    --build_tests_only \
+    --verbose_failures=true \
     -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test
 
 # Stop container
