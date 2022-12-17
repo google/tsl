@@ -1,0 +1,6 @@
+LIBRARY bfloat16_lib
+EXPORTS
+        ?Bfloat16Dtype@tsl@@YAPEAU_object@@XZ
+        ?Bfloat16NumpyType@tsl@@YAHXZ
+        ?Float8_E4M3B11Dtype@tsl@@YAPEAU_object@@XZ
+        ?RegisterNumpyBfloat16@tsl@@YA_NXZ
