@@ -229,6 +229,8 @@ message CancelBarrierResponse {}
 // initialization, check the healthiness of tasks, and propagate error
 // messages to the cluster.
 service CoordinationService {
+  // Google-only option.
+
   // Register task to coordination service so that the service starts to track
   // liveness of the task. RPC blocks and returns only when it registers to
   // the service successfully, or error happens in the registering process.
