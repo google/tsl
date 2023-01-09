@@ -54,3 +54,5 @@ docker exec tsl bazel test \
 
 # Stop container
 docker stop tsl
+
+# Test PR
