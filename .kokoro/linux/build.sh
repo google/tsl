@@ -19,6 +19,9 @@
 # -o history: record shell history
 set -euo pipefail -o history
 
+# Generate a templated results file to make output accessible to everyone
+"$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
+
 # Pull the container (in case it was updated since the instance started) and
 # store its SHA in the Sponge log.
 docker pull "$DOCKER_IMAGE"

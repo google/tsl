@@ -21,6 +21,9 @@ set -euo pipefail
 
 cd "${KOKORO_ARTIFACTS_DIR}/github/tsl"
 
+# Generate a templated results file to make output accessible to everyone
+"$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
+
 export PATH="$PATH:/c/Python38"
 
 # Build TSL

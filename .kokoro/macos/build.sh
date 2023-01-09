@@ -80,6 +80,9 @@ install_build_env_tools
 
 python -m pip install numpy==1.21.4
 
+# Generate a templated results file to make output accessible to everyone
+"$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
+
 # Build TSL
 bazel build \
     --output_filter="" \
