@@ -19,7 +19,7 @@ limitations under the License.
 #include <limits>
 #include <vector>
 
-#include "grpcpp/impl/codegen/proto_utils.h"
+#include "grpcpp/impl/proto_utils.h"
 #include "tsl/platform/protobuf.h"
 #include "tsl/platform/random.h"
 
