@@ -29,6 +29,7 @@ limitations under the License.
 #include "absl/strings/cord.h"
 #include "absl/strings/string_view.h"
 #include "absl/types/optional.h"
+#include "absl/types/source_location.h"
 #include "tsl/platform/logging.h"
 #include "tsl/platform/macros.h"
 #include "tsl/platform/stack_frame.h"
@@ -41,32 +42,7 @@ namespace tsl {
 class [[nodiscard]] Status;
 #endif
 
-#if ABSL_HAVE_BUILTIN(__builtin_LINE) && ABSL_HAVE_BUILTIN(__builtin_FILE)
-#define TF_INTERNAL_HAVE_BUILTIN_LINE_FILE 1
-#endif
-
-struct SourceLocation {
-  uint32_t line;
-  const char* file_name;
-
-#ifdef TF_INTERNAL_HAVE_BUILTIN_LINE_FILE
-  static SourceLocation current(uint32_t line = __builtin_LINE(),
-                                const char* file_name = __builtin_FILE()) {
-    SourceLocation loc;
-    loc.line = line;
-    loc.file_name = file_name;
-    return loc;
-  }
-#else
-  static SourceLocation current(uint32_t line = 0,
-                                const char* file_name = nullptr) {
-    SourceLocation loc;
-    loc.line = line;
-    loc.file_name = file_name;
-    return loc;
-  }
-#endif
-};
+using SourceLocation = absl::SourceLocation;
 
 namespace errors {
 typedef ::tensorflow::error::Code Code;
@@ -208,6 +184,8 @@ class Status {
   absl::Span<const SourceLocation> GetSourceLocations() const;
 
  private:
+  friend Status FromAbslStatus(const absl::Status& s);
+
   void MaybeAddSourceLocation(SourceLocation loc);
 
   static const std::string& empty_string();

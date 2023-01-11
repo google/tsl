@@ -13,6 +13,7 @@ limitations under the License.
 #include "tsl/platform/status.h"
 
 #include <unordered_map>
+#include <utility>
 
 #include "absl/status/status.h"
 #include "absl/strings/cord.h"
@@ -150,6 +151,60 @@ TEST(Status, OkStatusForEachPayloadNoIteration) {
   });
 
   EXPECT_EQ(payloads.size(), 0);
+}
+
+TEST(Status, FromAbslStatus) {
+  const int stack_depth = 10;
+  absl::Status absl_s(absl::StatusCode::kInternal, "Error message");
+
+  // Add source locations and payloads.
+  while (absl_s.GetSourceLocations().size() < stack_depth) {
+    absl_s.AddSourceLocation();
+  }
+  absl_s.SetPayload("key1", absl::Cord("value1"));
+  absl_s.SetPayload("key2", absl::Cord("value2"));
+  absl_s.SetPayload("key3", absl::Cord("value3"));
+
+  Status s = FromAbslStatus(absl_s);
+
+  // Make sure the source locations and payloads are copied over.
+  ASSERT_EQ(s.GetSourceLocations().size(), stack_depth);
+  for (int i = 0; i < stack_depth; ++i) {
+    EXPECT_EQ(s.GetSourceLocations()[i].line(),
+              absl_s.GetSourceLocations()[i].line());
+    EXPECT_EQ(s.GetSourceLocations()[i].file_name(),
+              absl_s.GetSourceLocations()[i].file_name());
+  }
+  s.ForEachPayload([&](StringPiece key, StringPiece value) {
+    EXPECT_EQ(value, absl_s.GetPayload(key));
+  });
+}
+
+TEST(Status, ToAbslStatus) {
+  const int stack_depth = 10;
+  Status s(error::INTERNAL, "Error message");
+
+  // Add source locations and payloads.
+  while (s.GetSourceLocations().size() < stack_depth) {
+    s = Status(std::move(s), SourceLocation::current());
+  }
+  s.SetPayload("key1", "value1");
+  s.SetPayload("key2", "value2");
+  s.SetPayload("key3", "value3");
+
+  absl::Status absl_s = ToAbslStatus(s);
+
+  // Make sure the source locations and payloads are copied over.
+  ASSERT_EQ(absl_s.GetSourceLocations().size(), stack_depth);
+  for (int i = 0; i < stack_depth; ++i) {
+    EXPECT_EQ(s.GetSourceLocations()[i].line(),
+              absl_s.GetSourceLocations()[i].line());
+    EXPECT_EQ(s.GetSourceLocations()[i].file_name(),
+              absl_s.GetSourceLocations()[i].file_name());
+  }
+  s.ForEachPayload([&](StringPiece key, StringPiece value) {
+    EXPECT_EQ(value, absl_s.GetPayload(key));
+  });
 }
 
 }  // namespace tsl

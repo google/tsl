@@ -154,13 +154,13 @@ void Status::MaybeAddSourceLocation(SourceLocation loc) {
   if (state_ == nullptr) {
     return;
   }
-  if (loc.line <= 0) {
+  if (loc.line() <= 0) {
     return;
   }
-  if (loc.file_name == nullptr) {
+  if (loc.file_name() == nullptr) {
     return;
   }
-  if (loc.file_name[0] == '\0') {
+  if (loc.file_name()[0] == '\0') {
     return;
   }
   state_->source_locations.push_back(loc);
@@ -324,12 +324,18 @@ Status FromAbslStatus(const absl::Status& s) {
   if (s.ok()) {
     return Status();
   }
-  Status converted(static_cast<tsl::error::Code>(s.code()), s.message());
+  absl::Span<const SourceLocation> locs = s.GetSourceLocations();
+  const SourceLocation first_loc =
+      locs.empty() ? SourceLocation::current() : locs[0];
+  Status converted(static_cast<tsl::error::Code>(s.code()), s.message(),
+                   first_loc);
   s.ForEachPayload(
       [&converted](absl::string_view key, const absl::Cord& value) {
         converted.SetPayload(key, std::string(value));
       });
-
+  for (int i = 1; i < locs.size(); ++i) {
+    converted.MaybeAddSourceLocation(locs[i]);
+  }
   return converted;
 }
 
@@ -338,11 +344,17 @@ absl::Status ToAbslStatus(const ::tsl::Status& s) {
     return absl::OkStatus();
   }
 
+  absl::Span<const SourceLocation> locs = s.GetSourceLocations();
+  const SourceLocation first_loc =
+      locs.empty() ? SourceLocation::current() : locs[0];
   absl::Status converted(static_cast<absl::StatusCode>(s.code()),
-                         s.error_message());
+                         s.error_message(), first_loc);
   s.ForEachPayload([&converted](tsl::StringPiece key, tsl::StringPiece value) {
     converted.SetPayload(key, absl::Cord(value));
   });
+  for (int i = 1; i < locs.size(); ++i) {
+    converted.AddSourceLocation(locs[i]);
+  }
 
   return converted;
 }
