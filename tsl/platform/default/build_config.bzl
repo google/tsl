@@ -111,7 +111,7 @@ def pyx_library(
         native.cc_binary(
             name = shared_object_name,
             srcs = [stem + ".cpp"],
-            deps = cc_deps + ["@org_tensorflow//third_party/python_runtime:headers"],
+            deps = cc_deps + ["@tsl//third_party/python_runtime:headers"],
             linkshared = 1,
             testonly = testonly,
             copts = copts,

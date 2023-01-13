@@ -50,7 +50,7 @@ expand_template(
     name = "include_hwloc_autogen_config_h",
     out = "include/hwloc/autogen/config.h",
     substitutions = select({
-        "@org_tensorflow//tsl:linux_x86_64": _INCLUDE_HWLOC_AUTOIGEN_CONFIG_H_LINUX_SUBS,
+        "@tsl//tsl:linux_x86_64": _INCLUDE_HWLOC_AUTOIGEN_CONFIG_H_LINUX_SUBS,
         "//conditions:default": _INCLUDE_HWLOC_AUTOIGEN_CONFIG_H_COMMON_SUBS,
     }),
     template = "include/hwloc/autogen/config.h.in",
@@ -224,7 +224,7 @@ expand_template(
     name = "move_static_components_h",
     out = "hwloc/static-components.h",
     substitutions = {"&hwloc_linuxio_component": "//&hwloc_linuxio_component"},
-    template = "@org_tensorflow//third_party/hwloc:static-components.h",
+    template = "@tsl//third_party/hwloc:static-components.h",
 )
 
 cc_library(
@@ -259,21 +259,21 @@ cc_library(
         "include/private/private.h",
         "include/private/xml.h",
     ] + select({
-        "@org_tensorflow//tsl:linux_x86_64": [
+        "@tsl//tsl:linux_x86_64": [
             "hwloc/topology-linux.c",
             "include/hwloc/linux.h",
             "hwloc/topology-x86.c",
             "include/private/cpuid-x86.h",
         ],
-        "@org_tensorflow//tsl:linux_aarch64": [
+        "@tsl//tsl:linux_aarch64": [
             "hwloc/topology-linux.c",
             "include/hwloc/linux.h",
         ],
-        "@org_tensorflow//tsl:linux_ppc64le": [
+        "@tsl//tsl:linux_ppc64le": [
             "hwloc/topology-linux.c",
             "include/hwloc/linux.h",
         ],
-        "@org_tensorflow//tsl:freebsd": [
+        "@tsl//tsl:freebsd": [
             "hwloc/topology-freebsd.c",
             "hwloc/topology-x86.c",
             "include/private/cpuid-x86.h",

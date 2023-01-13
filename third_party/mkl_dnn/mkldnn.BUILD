@@ -1,7 +1,7 @@
 exports_files(["LICENSE"])
 
 load(
-    "@org_tensorflow//third_party:common.bzl",
+    "@tsl//third_party:common.bzl",
     "template_rule",
 )
 
@@ -50,7 +50,7 @@ cc_library(
     ]) + [":mkldnn_version_h"],
     hdrs = glob(["include/*"]),
     copts = select({
-        "@org_tensorflow//tsl:windows": [],
+        "@tsl//tsl:windows": [],
         "//conditions:default": ["-fexceptions"],
     }) + [
         "-DMKLDNN_THR=MKLDNN_THR_SEQ",  # Disables threading.
