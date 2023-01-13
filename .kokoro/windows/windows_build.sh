@@ -24,6 +24,18 @@ cd "${KOKORO_ARTIFACTS_DIR}/github/tsl"
 # Generate a templated results file to make output accessible to everyone
 "$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
 
+function is_continuous_job() {
+  [[ "$KOKORO_JOB_NAME" =~ tensorflow/xla/.*continuous.* ]]
+}
+
+ADDITIONAL_FLAGS=""
+
+if is_continuous_job ; then
+    ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --google_default_credentials"
+else
+    ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --remote_upload_local_results=false"
+fi
+
 export PATH="$PATH:/c/Python38"
 
 # Build TSL
@@ -31,6 +43,8 @@ export PATH="$PATH:/c/Python38"
   --output_filter="" \
   --nocheck_visibility \
   --keep_going \
+  --remote_cache="https://storage.googleapis.com/tensorflow-devinfra-bazel-cache/tsl/windows" \
+    $ADDITIONAL_FLAGS \
   -- //tsl/... \
   || { echo "Bazel Build Failed" && exit 1; }
 

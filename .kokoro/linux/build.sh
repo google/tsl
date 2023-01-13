@@ -22,6 +22,18 @@ set -euo pipefail -o history
 # Generate a templated results file to make output accessible to everyone
 "$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
 
+function is_continuous_job() {
+  [[ "$KOKORO_JOB_NAME" =~ tensorflow/xla/.*continuous.* ]]
+}
+
+ADDITIONAL_FLAGS=""
+
+if is_continuous_job ; then
+    ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --google_default_credentials"
+else
+    ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --remote_upload_local_results=false"
+fi
+
 # Pull the container (in case it was updated since the instance started) and
 # store its SHA in the Sponge log.
 docker pull "$DOCKER_IMAGE"
@@ -39,6 +51,8 @@ docker exec tsl bazel build \
     --output_filter="" \
     --nocheck_visibility \
     --keep_going \
+    --remote_cache="https://storage.googleapis.com/tensorflow-devinfra-bazel-cache/tsl/linux" \
+    $ADDITIONAL_FLAGS \
     -- //tsl/...
 
 # Test TSL
