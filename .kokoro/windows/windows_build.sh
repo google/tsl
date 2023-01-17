@@ -25,7 +25,7 @@ cd "${KOKORO_ARTIFACTS_DIR}/github/tsl"
 "$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
 
 function is_continuous_job() {
-  [[ "$KOKORO_JOB_NAME" =~ tensorflow/xla/.*continuous.* ]]
+  [[ "$KOKORO_JOB_NAME" =~ tensorflow/tsl/.*continuous.* ]]
 }
 
 ADDITIONAL_FLAGS=""
