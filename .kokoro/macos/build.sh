@@ -100,4 +100,4 @@ bazel test \
     --build_tests_only \
     --verbose_failures=true \
     --flaky_test_attempts=3 \
-    -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test
+    -- //tsl/...

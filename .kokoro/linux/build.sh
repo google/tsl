@@ -64,7 +64,7 @@ docker exec tsl bazel test \
     --test_output=errors \
     --build_tests_only \
     --verbose_failures=true \
-    -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test
+    -- //tsl/...
 
 # Stop container
 docker stop tsl

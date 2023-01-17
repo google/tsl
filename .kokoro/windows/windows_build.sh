@@ -48,7 +48,7 @@ export PATH="$PATH:/c/Python38"
   -- //tsl/... \
   || { echo "Bazel Build Failed" && exit 1; }
 
-# Test TSL
+# Test TSL TODO(ddunleavy) enable all tests
 /c/tools/bazel.exe test \
   --output_filter="" \
   --nocheck_visibility \
