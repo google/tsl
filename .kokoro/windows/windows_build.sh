@@ -29,6 +29,7 @@ function is_continuous_job() {
 }
 
 ADDITIONAL_FLAGS=""
+TAGS_FILTER="-no_oss,-gpu,-no_windows"
 
 if is_continuous_job ; then
     ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --google_default_credentials"
@@ -43,6 +44,8 @@ export PATH="$PATH:/c/Python38"
   --output_filter="" \
   --nocheck_visibility \
   --keep_going \
+  --build_tag_filters=$TAGS_FILTER  \
+  --test_tag_filters=$TAGS_FILTER \
   --remote_cache="https://storage.googleapis.com/tensorflow-devinfra-bazel-cache/tsl/windows" \
     $ADDITIONAL_FLAGS \
   -- //tsl/... \
@@ -56,6 +59,8 @@ export PATH="$PATH:/c/Python38"
   --test_output=errors \
   --build_tests_only \
   --verbose_failures=true \
+  --build_tag_filters=$TAGS_FILTER  \
+  --test_tag_filters=$TAGS_FILTER \
   --keep_going \
   -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test \
   || { echo "Bazel Test Failed" && exit 1; }

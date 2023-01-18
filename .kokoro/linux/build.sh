@@ -27,6 +27,7 @@ function is_continuous_job() {
 }
 
 ADDITIONAL_FLAGS=""
+TAGS_FILTER="-no_oss,-oss_serial,-gpu,-requires-gpu"
 
 if is_continuous_job ; then
     ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --google_default_credentials"
@@ -51,6 +52,8 @@ docker exec tsl bazel build \
     --output_filter="" \
     --nocheck_visibility \
     --keep_going \
+    --build_tag_filters=$TAGS_FILTER  \
+    --test_tag_filters=$TAGS_FILTER \
     --remote_cache="https://storage.googleapis.com/tensorflow-devinfra-bazel-cache/tsl/linux" \
     $ADDITIONAL_FLAGS \
     -- //tsl/...
@@ -63,6 +66,8 @@ docker exec tsl bazel test \
     --flaky_test_attempts=3 \
     --test_output=errors \
     --build_tests_only \
+    --build_tag_filters=$TAGS_FILTER  \
+    --test_tag_filters=$TAGS_FILTER \
     --verbose_failures=true \
     -- //tsl/...
 

@@ -83,10 +83,14 @@ python -m pip install numpy==1.21.4
 # Generate a templated results file to make output accessible to everyone
 "$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
 
+TAGS_FILTER="-no_oss,-gpu,-no_mac"
+
 # Build TSL
 bazel build \
     --output_filter="" \
     --nocheck_visibility \
+    --build_tag_filters=$TAGS_FILTER  \
+    --test_tag_filters=$TAGS_FILTER \
     --keep_going \
     -- //tsl/...
 
@@ -98,6 +102,8 @@ bazel test \
     --keep_going \
     --test_output=errors \
     --build_tests_only \
+    --build_tag_filters=$TAGS_FILTER  \
+    --test_tag_filters=$TAGS_FILTER \
     --verbose_failures=true \
     --flaky_test_attempts=3 \
     -- //tsl/...
