@@ -11,6 +11,7 @@ cc_library(
     srcs = ["proto_serialization.cc"],
     hdrs = ["proto_serialization.h"],
     visibility = [
+        "//learning/brain/research/pjrt:__pkg__",
         "//third_party/tensorflow/compiler/xla/python:__pkg__",
         "//third_party/tensorflow/compiler/xla/service:__pkg__",
         "//third_party/tensorflow/compiler/xla/stream_executor:__pkg__",
