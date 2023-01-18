@@ -83,7 +83,21 @@ python -m pip install numpy==1.21.4
 # Generate a templated results file to make output accessible to everyone
 "$KOKORO_ARTIFACTS_DIR"/github/tsl/.kokoro/generate_index_html.sh "$KOKORO_ARTIFACTS_DIR"/index.html
 
+function is_continuous_job() {
+  [[ "$KOKORO_JOB_NAME" =~ tensorflow/tsl/.*continuous.* ]]
+}
+
+# Set authentication for reading and writing cache from Google Cloud Storage
+export GOOGLE_APPLICATION_CREDENTIALS="$KOKORO_KEYSTORE_DIR/73361_tensorflow_bazel_cache_writer"
+
 TAGS_FILTER="-no_oss,-gpu,-no_mac"
+ADDITIONAL_FLAGS=""
+
+if is_continuous_job ; then
+    ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --google_default_credentials"
+else
+    ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --remote_upload_local_results=false"
+fi
 
 # Build TSL
 bazel build \
@@ -92,6 +106,8 @@ bazel build \
     --build_tag_filters=$TAGS_FILTER  \
     --test_tag_filters=$TAGS_FILTER \
     --keep_going \
+    --remote_cache="https://storage.googleapis.com/tensorflow-devinfra-bazel-cache/tsl/macos" \
+    $ADDITIONAL_FLAGS \
     -- //tsl/...
 
 # Test TSL
