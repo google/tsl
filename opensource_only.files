@@ -1,14 +1,9 @@
 third_party/BUILD:
 third_party/__init__:.py
 third_party/absl/com_google_absl.BUILD:
-third_party/android/BUILD:
-third_party/android/android.bzl.tpl:
-third_party/android/android_configure.BUILD.tpl:
-third_party/android/android_configure.bzl:
 third_party/arm_neon_2_x86_sse.BUILD:
 third_party/astor.BUILD:
 third_party/astunparse.BUILD:
-third_party/boringssl/BUILD:
 third_party/clang_toolchain/BUILD:
 third_party/clang_toolchain/cc_configure_clang.bzl:
 third_party/clang_toolchain/download_clang.bzl:
@@ -37,11 +32,6 @@ third_party/eigen3/unsupported/Eigen/CXX11/Tensor:
 third_party/eigen3/unsupported/Eigen/CXX11/ThreadPool:
 third_party/eigen3/unsupported/Eigen/MatrixFunctions:
 third_party/eigen3/unsupported/Eigen/SpecialFunctions:
-third_party/fft2d/BUILD:
-third_party/fft2d/LICENSE:
-third_party/fft2d/fft.h:
-third_party/fft2d/fft2d.BUILD:
-third_party/fft2d/fft2d.h:
 third_party/functools32.BUILD:
 third_party/gast.BUILD:
 third_party/gif.BUILD:
@@ -49,10 +39,6 @@ third_party/gif_fix_strtok_r.patch:
 third_party/git/BUILD.tpl:
 third_party/git/BUILD:
 third_party/git/git_configure.bzl:
-third_party/googleapis/BUILD:
-third_party/googleapis/build_rules.bzl:
-third_party/googleapis/googleapis.BUILD:
-third_party/googleapis/repository_rules.bzl:
 third_party/gpus/BUILD:
 third_party/gpus/crosstool/BUILD.rocm.tpl:
 third_party/gpus/crosstool/BUILD.tpl:
@@ -77,7 +63,6 @@ third_party/gpus/rocm/build_defs.bzl.tpl:
 third_party/gpus/rocm/rocm_config.h.tpl:
 third_party/gpus/rocm_configure.bzl:
 third_party/grpc/BUILD:
-third_party/icu/udata.patch:
 third_party/linenoise.BUILD:
 third_party/llvm_openmp/BUILD:
 third_party/llvm_openmp/cmake_vars.bzl:
@@ -91,7 +76,6 @@ third_party/mkl_dnn/build_defs.bzl:
 third_party/mkl_dnn/mkldnn.BUILD:
 third_party/mkl_dnn/mkldnn_acl.BUILD:
 third_party/mkl_dnn/mkldnn_v1.BUILD:
-third_party/mpi/.gitignore:
 third_party/nccl/BUILD:
 third_party/nccl/LICENSE:
 third_party/nccl/archive.BUILD:
@@ -101,9 +85,6 @@ third_party/nccl/nccl_configure.bzl:
 third_party/nccl/system.BUILD.tpl:
 third_party/nlohmann_json.BUILD:
 third_party/opt_einsum.BUILD:
-third_party/ortools/BUILD:
-third_party/ortools/glpk.BUILD:
-third_party/ortools/ortools.patch:
 third_party/png.BUILD:
 third_party/png_fix_rpi.patch:
 third_party/pprof.BUILD:
@@ -122,7 +103,6 @@ third_party/repo.bzl:
 third_party/six.BUILD:
 third_party/snappy.BUILD:
 third_party/sqlite.BUILD:
-third_party/stablehlo/BUILD:
 third_party/systemlibs/BUILD.tpl:
 third_party/systemlibs/BUILD:
 third_party/systemlibs/absl_py.BUILD:
