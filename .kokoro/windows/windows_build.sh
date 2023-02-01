@@ -37,19 +37,9 @@ else
     ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --remote_upload_local_results=false"
 fi
 
-export PATH="$PATH:/c/Python38"
-
-# Build TSL
-/c/tools/bazel.exe build \
-  --output_filter="" \
-  --nocheck_visibility \
-  --keep_going \
-  --build_tag_filters=$TAGS_FILTER  \
-  --test_tag_filters=$TAGS_FILTER \
-  --remote_cache="https://storage.googleapis.com/tensorflow-devinfra-bazel-cache/tsl/windows" \
-    $ADDITIONAL_FLAGS \
-  -- //tsl/... \
-  || { echo "Bazel Build Failed" && exit 1; }
+export PATH="$PATH:/c/Python39"
+export TMP="/t/tmp"
+export TRANSFORM_DIR="/t/tmp/tensor_flow"
 
 # Test TSL TODO(ddunleavy) enable all tests
 /c/tools/bazel.exe test \
@@ -61,6 +51,7 @@ export PATH="$PATH:/c/Python38"
   --verbose_failures=true \
   --build_tag_filters=$TAGS_FILTER  \
   --test_tag_filters=$TAGS_FILTER \
+  --remote_cache="https://storage.googleapis.com/tensorflow-devinfra-bazel-cache/tsl/windows" \
   --keep_going \
   -- //tsl/... -//tsl/platform:subprocess_test -//tsl/platform/cloud:google_auth_provider_test -//tsl/platform/cloud:oauth_client_test \
   || { echo "Bazel Test Failed" && exit 1; }
