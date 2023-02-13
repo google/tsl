@@ -44,11 +44,11 @@ cc_library(
         ":exact_uniform_int",
         ":philox_random",
         ":random_distributions_utils",
-        "//third_party/eigen3",
         "//tsl/platform:logging",
         "//tsl/platform:macros",
         "//tsl/platform:types",
         "@com_google_absl//absl/types:span",
+        "@eigen_archive//:eigen3",
     ],
     alwayslink = 1,
 )

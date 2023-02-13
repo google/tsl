@@ -44,7 +44,6 @@ cc_library(
     deps = [
         ":error_windows",
         ":wide_char",
-        "//third_party/eigen3",
         "//tsl/platform",
         "//tsl/platform:blocking_counter",
         "//tsl/platform:context",
@@ -74,6 +73,7 @@ cc_library(
         "//tsl/protobuf:error_codes_proto_impl_cc",
         "@com_google_absl//absl/time",
         "@com_google_absl//absl/types:optional",
+        "@eigen_archive//:eigen3",
     ],
 )
 

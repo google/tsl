@@ -83,7 +83,7 @@ cc_library(
     }),
     deps = [
         "@com_google_absl//absl/base",
-        "//third_party/eigen3",
+        "@eigen_archive//:eigen3",
         "//tsl/platform:dynamic_annotations",
         "//tsl/framework/fixedpoint",
     ] + select({
@@ -118,10 +118,10 @@ cc_library(
     #     "//tsl:internal",
     # ],
     deps = [
-        "//third_party/eigen3",
         "//tsl/framework/fixedpoint",
         "//tsl/platform:dynamic_annotations",
         "@com_google_absl//absl/base",
+        "@eigen_archive//:eigen3",
     ],
 )
 
