@@ -16,6 +16,11 @@ package(
 # -----------------------------------------------------------------------------
 # Public targets
 
+exports_files(
+    ["tsl_status.h"],
+    visibility = ["//third_party/tensorflow/python:__pkg__"],
+)
+
 filegroup(
     name = "headers",
     srcs = [
