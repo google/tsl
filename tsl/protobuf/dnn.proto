@@ -119,6 +119,8 @@ message AlgorithmProto {
     // See cuDNN's documentation for CUDNN_TENSOR_OP_MATH.
     TENSOR_OP_MATH = 1;
   }
+
+  // If algo_id == -1, then do runtime autotuning.
   int64 algo_id = 1;
   MathType math_type = 2;
   reserved 3;
