@@ -90,7 +90,7 @@ function is_continuous_job() {
 # Set authentication for reading and writing cache from Google Cloud Storage
 export GOOGLE_APPLICATION_CREDENTIALS="$KOKORO_KEYSTORE_DIR/73361_tensorflow_bazel_cache_writer"
 
-TAGS_FILTER="-no_oss,-gpu,-no_mac"
+TAGS_FILTER="-no_oss,-gpu,-no_mac,-nomac,-mac_excluded"
 ADDITIONAL_FLAGS=""
 
 if is_continuous_job ; then
@@ -113,7 +113,7 @@ bazel build \
 # Test TSL
 bazel test \
     --output_filter="" \
-    --test_tag_filters=-no_mac \
+    --test_tag_filters=-no_mac,-nomac,-mac_excluded \
     --nocheck_visibility \
     --keep_going \
     --test_output=errors \
