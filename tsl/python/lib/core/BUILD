@@ -64,6 +64,7 @@ cc_shared_library(
         "//third_party/" + "eigen3:__subpackages__",
         "@local_config_python//:__subpackages__",
         "@nsync//:__subpackages__",
+        "//tsl:__subpackages__",
     ],
 )
 
