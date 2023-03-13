@@ -697,3 +697,6 @@ build:tf_fuzztest --action_env=CXX=clang++
 build:tf_fuzztest --spawn_strategy=sandboxed
 build:tf_fuzztest --config=monolithic
 build:tf_fuzztest --@libjpeg_turbo//:noasm=yes
+
+# DO_NOT_SUBMIT
+build --experimental_ui_max_stdouterr_bytes=-1
