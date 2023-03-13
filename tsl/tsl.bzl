@@ -723,7 +723,7 @@ def tsl_pybind_extension_opensource(
         data = select({
             clean_dep("//tsl:windows"): [pyd_file],
             "//conditions:default": [so_file],
-        }) + pytype_srcs,
+        }) + pytype_srcs + dynamic_deps,
         deps = pytype_deps,
         srcs_version = srcs_version,
         licenses = licenses,

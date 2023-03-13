@@ -33,10 +33,10 @@ cc_library(
             "intel/intel_init.c",
             "intel/filter_sse2_intrinsics.c",
         ],
-        #"@tsl//tsl:linux_ppc64le": [
-        #    "powerpc/powerpc_init.c",
-        #    "powerpc/filter_vsx_intrinsics.c",
-        #],
+        "@tsl//tsl:linux_ppc64le": [
+            #"powerpc/powerpc_init.c",
+            #"powerpc/filter_vsx_intrinsics.c",
+        ],
         "//conditions:default": [
         ],
     }),
