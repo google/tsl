@@ -46,7 +46,7 @@ cc_library(
 )
 
 cc_shared_library(
-    name = "bfloat16.so",
+    name = "bfloat16_so",
     roots = [":bfloat16_lib"],
     # TODO(tlongeri): If this is not explicitly specified, dependent DLLs will expect "bfloat16.so"
     # and we will generate "bfloat16.so.dll", for some reason
@@ -64,13 +64,14 @@ cc_shared_library(
         "//third_party/" + "eigen3:__subpackages__",
         "@local_config_python//:__subpackages__",
         "@nsync//:__subpackages__",
+        "//tsl:__subpackages__",
     ],
 )
 
 tsl_pybind_extension(
     name = "pywrap_bfloat16",
     srcs = ["bfloat16_wrapper.cc"],
-    dynamic_deps = [":bfloat16.so"],
+    dynamic_deps = [":bfloat16_so"],
     static_deps = [
         "@pybind11//:__subpackages__",
         "@local_config_python//:__subpackages__",
