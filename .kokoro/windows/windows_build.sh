@@ -29,7 +29,7 @@ function is_continuous_job() {
 }
 
 ADDITIONAL_FLAGS=""
-TAGS_FILTER="-no_oss,-gpu,-no_windows,-windows_excluded"
+TAGS_FILTER="-no_oss,-oss_excluded,-gpu,-no_windows,-windows_excluded"
 
 if is_continuous_job ; then
     ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --google_default_credentials"
