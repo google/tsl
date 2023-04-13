@@ -50,7 +50,6 @@ docker run --name tsl -w /tf/tsl -itd --rm \
 # Build TSL
 docker exec tsl bazel build \
     --output_filter="" \
-    --nocheck_visibility \
     --keep_going \
     --build_tag_filters=$TAGS_FILTER  \
     --test_tag_filters=$TAGS_FILTER \
@@ -61,7 +60,6 @@ docker exec tsl bazel build \
 # Test TSL
 docker exec tsl bazel test \
     --output_filter="" \
-    --nocheck_visibility \
     --keep_going \
     --flaky_test_attempts=3 \
     --test_output=errors \

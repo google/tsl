@@ -42,7 +42,6 @@ export PATH="$PATH:/c/Python38"
 # Build TSL
 /c/tools/bazel.exe build \
   --output_filter="" \
-  --nocheck_visibility \
   --keep_going \
   --build_tag_filters=$TAGS_FILTER  \
   --test_tag_filters=$TAGS_FILTER \
@@ -54,7 +53,6 @@ export PATH="$PATH:/c/Python38"
 # Test TSL TODO(ddunleavy) enable all tests
 /c/tools/bazel.exe test \
   --output_filter="" \
-  --nocheck_visibility \
   --flaky_test_attempts=3 \
   --test_output=errors \
   --build_tests_only \

@@ -102,7 +102,6 @@ fi
 # Build TSL
 bazel build \
     --output_filter="" \
-    --nocheck_visibility \
     --build_tag_filters=$TAGS_FILTER  \
     --test_tag_filters=$TAGS_FILTER \
     --keep_going \
@@ -114,7 +113,6 @@ bazel build \
 bazel test \
     --output_filter="" \
     --test_tag_filters=-no_mac,-nomac,-mac_excluded \
-    --nocheck_visibility \
     --keep_going \
     --test_output=errors \
     --build_tests_only \
