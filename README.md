@@ -12,8 +12,6 @@ This repo contains base utilities and cross-platform support for projects like
 
 ## Contacts
 
-Discord TBA
-
 Community proposals TBA
 
 Community meetings TBA
