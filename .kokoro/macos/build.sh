@@ -27,7 +27,6 @@ cd "${KOKORO_ARTIFACTS_DIR}/github/tsl"
 # environment variable and we set STATIC_DEPS=true for installing lxml for
 # Python. Finally, we set up a symlink to the Python packages directory in
 # ".tf-venv" which is referenced in macos.bazelrc.
-
 function install_build_env_tools(){
   # Install Bazelisk; Useful as it would automatically pick the correct
   # version of Bazel.
@@ -36,16 +35,10 @@ function install_build_env_tools(){
       "https://github.com/bazelbuild/bazelisk/releases/download/v1.11.0/bazelisk-darwin-amd64" \
       && chmod +x "/usr/local/bin/bazel"
 
-  echo "===== Installing Bats ====="
-  # Install bats; bash unit testing framework
-  git clone --branch v1.5.0 https://github.com/bats-core/bats-core.git && \
-      sudo bats-core/install.sh /usr/local && \
-      rm -rf bats-core
-
   echo "===== Installing Pyenv ====="
   # Install pyenv; Set up a virtual environment to control dependencies and their
   # versions
-  git clone --branch v2.2.2 https://github.com/pyenv/pyenv.git /Users/kbuilder/.tf_pyenv
+  git clone --branch v2.3.17 https://github.com/pyenv/pyenv.git /Users/kbuilder/.tf_pyenv
   export PYENV_ROOT=/Users/kbuilder/.tf_pyenv
   export PATH="$PYENV_ROOT/bin:$PATH"    # if `pyenv` is not already on PATH
   eval "$(pyenv init --path)"
@@ -67,13 +60,6 @@ function install_build_env_tools(){
 
   echo "===== Upgrading to latest pip ====="
   python -m pip install --upgrade pip
-
-  # Set STATIC_DEPS=true for using lxml with Python.
-  # see https://lxml.de/installation.html#using-lxml-with-python-libxml2
-  # export STATIC_DEPS=true
-
-  # echo "===== Install junitparser and lxml ====="
-  # python -m pip install junitparser lxml
 }
 
 install_build_env_tools
@@ -102,6 +88,7 @@ fi
 # Build TSL
 bazel build \
     --output_filter="" \
+    --macos_minimum_os=10.15 \
     --build_tag_filters=$TAGS_FILTER  \
     --test_tag_filters=$TAGS_FILTER \
     --keep_going \
@@ -112,6 +99,7 @@ bazel build \
 # Test TSL
 bazel test \
     --output_filter="" \
+    --macos_minimum_os=10.15 \
     --test_tag_filters=-no_mac,-nomac,-mac_excluded \
     --keep_going \
     --test_output=errors \
