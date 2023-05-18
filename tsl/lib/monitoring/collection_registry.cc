@@ -78,9 +78,12 @@ CollectionRegistry::Register(const AbstractMetricDef* const metric_def,
 
   const auto found_it = registry_.find(metric_def->name());
   if (found_it != registry_.end()) {
-    LOG(ERROR) << "Cannot register 2 metrics with the same name: "
-               << metric_def->name();
-    return nullptr;
+    LOG(WARNING) << "Cannot register 2 metrics with the same name: "
+                 << metric_def->name()
+                 << ". Please check if you link the metric more than once, or "
+                    "if the name is already used by other metrics.";
+    // Erase the old value and insert the new value to registry.
+    registry_.erase(found_it);
   }
   registry_.insert(
       {metric_def->name(),
