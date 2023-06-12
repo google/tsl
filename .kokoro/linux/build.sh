@@ -27,7 +27,7 @@ function is_continuous_job() {
 }
 
 ADDITIONAL_FLAGS=""
-TAGS_FILTER="-no_oss,-oss_excluded,-oss_serial,-gpu,-requires-gpu"
+TAGS_FILTER="-no_oss,-oss_excluded,-oss_serial,-gpu,-requires-gpu-nvidia"
 
 if is_continuous_job ; then
     ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS --google_default_credentials"
