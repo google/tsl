@@ -44,6 +44,7 @@ cc_library(
         "//tsl/profiler/protobuf:profiler_options_proto_cc",
         "//tsl/profiler/protobuf:profiler_service_proto_cc",
         "//tsl/profiler/protobuf:xplane_proto_cc",
+        "//tsl/profiler/utils:file_system_utils",
         "//tsl/profiler/utils:session_manager",
         "@com_google_absl//absl/container:flat_hash_map",
         "@com_google_absl//absl/strings",

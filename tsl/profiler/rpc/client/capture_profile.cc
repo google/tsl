@@ -38,6 +38,7 @@ limitations under the License.
 #include "tsl/profiler/rpc/client/profiler_client.h"
 #include "tsl/profiler/rpc/client/remote_profiler_session_manager.h"
 #include "tsl/profiler/rpc/client/save_profile.h"
+#include "tsl/profiler/utils/file_system_utils.h"
 #include "tsl/profiler/utils/session_manager.h"
 
 namespace tsl {
@@ -249,11 +250,14 @@ Status Monitor(const std::string& service_addr, int duration_ms,
 }
 
 Status ExportToTensorBoard(const XSpace& xspace, const std::string& logdir,
-                           bool also_export_trace_json) {
+                           bool also_export_trace_json, std::string* rundir) {
   std::string repository_root =
       tsl::profiler::GetTensorBoardProfilePluginDir(logdir);
   std::string run = tsl::profiler::GetCurrentTimeStampAsString();
   std::string host = tsl::port::Hostname();
+  if (rundir != nullptr) {
+    *rundir = ProfilerJoinPath(repository_root, run);
+  }
   TF_RETURN_IF_ERROR(
       tsl::profiler::SaveXSpace(repository_root, run, host, xspace));
   if (also_export_trace_json) {
