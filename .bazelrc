@@ -31,9 +31,6 @@
 #     dynamic_kernels:  Try to link all kernels dynamically (experimental).
 #     dbg:              Build with debug info
 #
-# TF version options;
-#     v2: Build TF v2
-#
 # Feature and Third party library support options:
 #     xla:          Build TF with XLA
 #     tpu:          Build TF with TPU support
@@ -120,8 +117,8 @@ build --define=with_xla_support=true
 # TODO(mihaimaruseac): Document this option or remove if no longer needed
 build --config=short_logs
 
-# TODO(mihaimaruseac): Document this option or remove if no longer needed
-build --config=v2
+# Build TensorFlow v2
+build --define=tf_api_version=2 --action_env=TF2_BEHAVIOR=1
 
 # Disable AWS/HDFS support by default
 build --define=no_aws_support=true
@@ -396,10 +393,6 @@ build:avx_linux --copt=-mavx
 build:avx_linux --host_copt=-mavx
 build:avx_win --copt=/arch=AVX
 
-# Options to build TensorFlow 1.x or 2.x.
-# TODO(kanglan): Change v2's define to default behavior
-build:v2 --define=tf_api_version=2 --action_env=TF2_BEHAVIOR=1
-
 # Disable XLA on mobile.
 build:xla     --define=with_xla_support=true # TODO: remove, it's on by default.
 build:android --define=with_xla_support=false
@@ -413,6 +406,7 @@ build:ios     --define=with_xla_support=false
 common --experimental_repo_remote_exec
 
 build:rbe --repo_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+##
 build:rbe --google_default_credentials
 build:rbe --bes_backend=buildeventservice.googleapis.com
 build:rbe --bes_results_url="https://source.cloud.google.com/results/invocations"
@@ -422,10 +416,11 @@ build:rbe --jobs=800
 build:rbe --remote_executor=grpcs://remotebuildexecution.googleapis.com
 build:rbe --remote_timeout=3600
 build:rbe --spawn_strategy=remote,worker,standalone,local
-test:rbe --test_env=USER=anon
 # Attempt to minimize the amount of data transfer between bazel and the remote
 # workers:
 build:rbe --remote_download_toplevel
+##
+test:rbe --test_env=USER=anon
 
 build:rbe_linux_base --config=rbe
 build:rbe_linux_base --action_env=PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go/bin"
@@ -441,6 +436,7 @@ build:rbe_linux --host_linkopt=-lm
 
 # Use the GPU toolchain until the CPU one is ready.
 # https://github.com/bazelbuild/bazel/issues/13623
+# TODO(kanglan): Use Clang toolchain to compile
 build:rbe_cpu_linux_base --host_crosstool_top="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain"
 build:rbe_cpu_linux_base --crosstool_top="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain"
 build:rbe_cpu_linux_base --extra_toolchains="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain-linux-x86_64"
@@ -462,16 +458,14 @@ build:rbe_linux_cuda_base --repo_env=REMOTE_GPU_TESTING=1
 # TODO(b/187962120): Remove when upgrading to TensorRT 8.
 test:rbe_linux_cuda_base --test_env=LD_LIBRARY_PATH="/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/cuda-11.1/lib64"
 
+# TODO(kanglan): Use Clang toolchain to compile
 build:rbe_linux_cuda11.2_nvcc_base --config=rbe_linux_cuda_base
-build:rbe_linux_cuda11.2_nvcc_base --host_crosstool_top="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain"
-build:rbe_linux_cuda11.2_nvcc_base --crosstool_top="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain"
-build:rbe_linux_cuda11.2_nvcc_base --extra_toolchains="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain-linux-x86_64"
-build:rbe_linux_cuda11.2_nvcc_base --extra_execution_platforms="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_platform//:platform"
-build:rbe_linux_cuda11.2_nvcc_base --host_platform="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_platform//:platform"
-build:rbe_linux_cuda11.2_nvcc_base --platforms="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_platform//:platform"
+build:rbe_linux_cuda11.2_nvcc_base --config=rbe_cpu_linux_base
 build:rbe_linux_cuda11.2_nvcc_base --repo_env=TF_CUDA_CONFIG_REPO="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda"
 build:rbe_linux_cuda11.2_nvcc_base --repo_env=TF_TENSORRT_CONFIG_REPO="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_tensorrt"
 build:rbe_linux_cuda11.2_nvcc_base --repo_env=TF_NCCL_CONFIG_REPO="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_nccl"
+
+# TODO(kanglan): Why doesn't rbe_cpu_linux have TF_PYTHON_CONFIG_REPO set? Work with rbe_linux_py3? Update the toolchain.
 build:rbe_linux_cuda11.2_nvcc_py3.7 --config=rbe_linux_cuda11.2_nvcc_base --repo_env=TF_PYTHON_CONFIG_REPO="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_python3.7"
 build:rbe_linux_cuda11.2_nvcc_py3.9 --config=rbe_linux_cuda11.2_nvcc_base --repo_env=TF_PYTHON_CONFIG_REPO="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_python3.9"
 
@@ -493,6 +487,7 @@ build:rbe_linux_rocm_py3.9 --config=rbe_linux_rocm_base --repo_env=TF_PYTHON_CON
 # Linux CPU
 build:rbe_linux_py3 --config=rbe_linux
 build:rbe_linux_py3 --config=rbe_linux_py3_base
+# TODO(kanglan): Once using Clang toolchain, update it to "/usr/bin/python3"
 build:rbe_linux_py3_base --python_path="/usr/local/bin/python3.9"
 build:rbe_linux_py3_base --repo_env=TF_PYTHON_CONFIG_REPO="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_python3.9"
 
@@ -555,11 +550,11 @@ try-import %workspace%/.tf_configure.bazelrc
 try-import %workspace%/.bazelrc.user
 
 # Here are bazelrc configs for release builds
-build:release_base --config=v2
 test:release_base --test_size_filters=small,medium
 
 build:release_cpu_linux --config=release_base
 build:release_cpu_linux --config=avx_linux
+# TODO(kanglan): Use Clang toolchain to compile
 build:release_cpu_linux --crosstool_top="@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain"
 test:release_cpu_linux --test_env=LD_LIBRARY_PATH
 
@@ -577,6 +572,7 @@ build:release_gpu_linux --config=tensorrt
 build:release_gpu_linux --action_env=CUDA_TOOLKIT_PATH="/usr/local/cuda-11.2"
 build:release_gpu_linux --action_env=LD_LIBRARY_PATH="/usr/local/cuda:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/cuda-11.1/lib64:/usr/local/tensorrt/lib"
 build:release_gpu_linux --action_env=GCC_HOST_COMPILER_PATH="/dt9/usr/bin/gcc"
+# TODO(kanglan): Use Clang toolchain to compile
 build:release_gpu_linux --crosstool_top=@ubuntu20.04-gcc9_manylinux2014-cuda11.2-cudnn8.1-tensorrt7.2_config_cuda//crosstool:toolchain
 
 build:release_cpu_windows --config=release_base
