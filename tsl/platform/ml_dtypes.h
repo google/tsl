@@ -13,29 +13,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PYTHON_LIB_CORE_ML_DTYPES_H_
-#define TENSORFLOW_TSL_PYTHON_LIB_CORE_ML_DTYPES_H_
+#ifndef TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
+#define TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
 
-// Registers all custom types from the python ml_dtypes package.
-//   https://github.com/jax-ml/ml_dtypes
+#include "include/float8.h"  // from @ml_dtypes
+#include "include/int4.h"  // from @ml_dtypes
 
 namespace tsl {
-namespace ml_dtypes {
+using float8_e4m3fn = ml_dtypes::float8_e4m3fn;
+using float8_e4m3fnuz = ml_dtypes::float8_e4m3fnuz;
+using float8_e4m3b11fnuz = ml_dtypes::float8_e4m3b11fnuz;
+using float8_e4m3b11 = float8_e4m3b11fnuz;  // Deprecated: old name for
+                                            // backward-compatibility only.
+using float8_e5m2 = ml_dtypes::float8_e5m2;
+using float8_e5m2fnuz = ml_dtypes::float8_e5m2fnuz;
 
-struct NumpyDtypes {
-  int bfloat16;
-  int float8_e4m3fn;
-  int float8_e4m3b11fnuz;
-  int float8_e4m3fnuz;
-  int float8_e5m2;
-  int float8_e5m2fnuz;
-  int int4;
-  int uint4;
-};
-
-const NumpyDtypes& GetNumpyDtypes();
-
-}  // namespace ml_dtypes
+using int4 = ml_dtypes::int4;
+using uint4 = ml_dtypes::uint4;
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PYTHON_LIB_CORE_ML_DTYPES_H_
+#endif  // TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
