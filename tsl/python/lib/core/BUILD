@@ -57,6 +57,7 @@ cc_shared_library(
         "@local_config_python//:__subpackages__",
         "@pybind11//:__subpackages__",
         "@nsync//:__subpackages__",
+        "//tsl:__subpackages__",
     ],
 )
 
