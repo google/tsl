@@ -1,4 +1,4 @@
-load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
+load("//third_party/bazel_skylib/rules:common_settings.bzl", "string_flag")
 load("@local_config_cuda//cuda:build_defs.bzl", "enable_cuda_flag")
 
 package(default_visibility = ["//visibility:public"])
