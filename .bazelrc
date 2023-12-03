@@ -54,8 +54,7 @@
 #     rbe_win:   General RBE options used on all windows builds.
 #
 #     rbe_linux_cpu:                  RBE options to build with only CPU support.
-#     rbe_linux_cuda:                 RBE options to build with GPU support using clang.
-#     rbe_linux_cuda_nvcc:            RBE options to build with GPU support using nvcc.
+#     rbe_linux_cuda:                 RBE options to build with GPU support using clang and nvcc.
 #
 #     rbe_win_py39: Windows Python 3.9 RBE config
 #
@@ -524,11 +523,9 @@ build:rbe_linux_cuda --repo_env=REMOTE_GPU_TESTING=1
 build:rbe_linux_cuda --repo_env=TF_CUDA_CONFIG_REPO="@sigbuild-r2.16-clang_config_cuda"
 build:rbe_linux_cuda --repo_env=TF_TENSORRT_CONFIG_REPO="@sigbuild-r2.16-clang_config_tensorrt"
 build:rbe_linux_cuda --repo_env=TF_NCCL_CONFIG_REPO="@sigbuild-r2.16-clang_config_nccl"
+build:rbe_linux_cuda --repo_env TF_NCCL_USE_STUB=1
+build:rbe_linux_cuda --action_env=TF_NVCC_CLANG="1"
 test:rbe_linux_cuda --test_env=LD_LIBRARY_PATH="/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
-
-build:rbe_linux_cuda_nvcc --config=rbe_linux_cuda
-build:rbe_linux_cuda_nvcc --repo_env TF_NCCL_USE_STUB=1
-build:rbe_linux_cuda_nvcc --action_env=TF_NVCC_CLANG="1"
 
 # TODO(kanglan): Remove rbe_win and rbe_win_py3* after b/289091160 is fixed
 build:rbe_win --config=rbe_base
