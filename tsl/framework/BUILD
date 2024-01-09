@@ -154,11 +154,6 @@ cc_library(
         "cpu_allocator_impl.cc",
         "tracking_allocator.h",
     ],
-    visibility = set_external_visibility([
-        "//tensorflow/compiler/xla:__subpackages__",
-        "//tensorflow/core:__subpackages__",
-        "//tsl:__subpackages__",
-    ]),
     deps = [
         ":numeric_types",
         ":type_traits",
