@@ -178,6 +178,13 @@ cc_library(
 )
 
 cc_library(
+  name = "nvptxcompiler",
+  srcs = ["cuda/lib/libnvptxcompiler_static.a"],
+  data = ["cuda/lib/libnvptxcompiler_static.a"],
+  linkstatic = 1,
+)
+
+cc_library(
     name = "cuda",
     deps = [
         ":cublas",
