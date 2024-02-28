@@ -1,4 +1,4 @@
-/* Copyright 2022 Google LLC. All Rights Reserved.
+/* Copyright 2024 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -12,14 +12,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
+#include "tsl/framework/real_time_in_memory_metric.h"
 
-#ifndef TENSORFLOW_TSL_CONCURRENCY_CHAIN_H_
-#define TENSORFLOW_TSL_CONCURRENCY_CHAIN_H_
+#include <cstdint>
+
+#include "tsl/platform/test.h"
 
 namespace tsl {
+namespace {
 
-class Chain {};
+TEST(RealTimeInMemoryMetric, SetAndGet) {
+  RealTimeInMemoryMetric<int64_t> m;
+  EXPECT_EQ(m.Get(), 0);
+  m.Set(100);
+  EXPECT_EQ(m.Get(), 100);
+}
 
+}  // namespace
 }  // namespace tsl
-
-#endif  // TENSORFLOW_TSL_CONCURRENCY_CHAIN_H_
