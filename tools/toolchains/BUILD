@@ -1,4 +1,4 @@
-load("//tools/toolchains/remote_config:containers.bzl", "container_digests")
+load("//tensorflow/tools/toolchains/remote_config:containers.bzl", "container_digests")
 
 licenses(["restricted"])
 
