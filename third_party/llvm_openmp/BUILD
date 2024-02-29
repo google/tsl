@@ -16,7 +16,7 @@ load(
     "dict_add",
     "libiomp5_cc_binary",
 )
-load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+load("//tools/build_defs/testing:bzl_library.bzl", "bzl_library")
 
 package(
     default_visibility = [
