@@ -21,6 +21,11 @@ index c43ab727e285..7d848d2dffae 100644
 +        "cpu": "darwin",
 +    },
 +)
++py_library(
++    name = "lit_lib",
++    testonly = True,
++    srcs = ["utils/lit/lit.py"] + glob(["utils/lit/lit/**/*.py"]),
++)
 +
 +config_setting(
 +    name = "macos_x86_64",
