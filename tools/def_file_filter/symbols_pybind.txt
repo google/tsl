@@ -422,11 +422,11 @@ tsl::profiler::RemoteProfilerSession::WaitForCompletion
 tsl::profiler::RemoteProfilerSession::~RemoteProfilerSession
 
 [//external/local_xla/xla:status_macros] # tfcompile
-xla::status_macros::MakeErrorStream::Impl::Impl
-xla::status_macros::MakeErrorStream::Impl::~Impl
-xla::status_macros::MakeErrorStream::Impl::GetStatus
-xla::status_macros::MakeErrorStream::CheckNotDone
-xla::status_macros::MakeErrorStream::add_ret_check_failure
+absl::Status_macros::MakeErrorStream::Impl::Impl
+absl::Status_macros::MakeErrorStream::Impl::~Impl
+absl::Status_macros::MakeErrorStream::Impl::GetStatus
+absl::Status_macros::MakeErrorStream::CheckNotDone
+absl::Status_macros::MakeErrorStream::add_ret_check_failure
 
 [//external/local_xla/xla/hlo/ir:hlo] # tfcompile
 xla::DfsHloVisitorBase::SetVisited
