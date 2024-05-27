@@ -14,7 +14,6 @@ GPU_TEST_PROPERTIES = {
 def tf_gpu_tests_tags():
     return ["requires-gpu-nvidia", "gpu"] + gpu_test_tags()
 
-# terminology changes: saving tf_cuda_* for compatibility
 def tf_cuda_tests_tags():
     return tf_gpu_tests_tags()
 
