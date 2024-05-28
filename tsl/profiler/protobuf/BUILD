@@ -124,6 +124,8 @@ tf_proto_library(
 # )
 # copybara:uncomment_end
 
+alias("xplane_py_pb2", ":xplane_proto_py")  # copybara:comment
+
 tf_proto_library(
     name = "profiled_instructions_proto",
     srcs = ["profiled_instructions.proto"],
