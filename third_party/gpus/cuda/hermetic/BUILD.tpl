@@ -264,7 +264,7 @@ config_setting(
 # dependencies.
 bool_flag(
     name = "override_include_cuda_libs",
-    build_setting_default = False,
+    build_setting_default = True,
 )
 
 config_setting(
