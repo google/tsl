@@ -150,6 +150,9 @@ bool TestAarch64CPU(Aarch64CPU cpu);
 // Checks CPU registers to return hardware capabilities.
 bool TestCPUFeature(CPUFeature feature);
 
+// Checks whether the current processor is x86.
+bool IsX86CPU();
+
 // Returns CPU Vendor string (i.e. 'GenuineIntel', 'AuthenticAMD', etc.)
 std::string CPUVendorIDString();
 

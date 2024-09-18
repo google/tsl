@@ -490,6 +490,14 @@ void InitCPUIDInfo() {
 
 }  // namespace
 
+bool IsX86CPU() {
+#ifdef PLATFORM_IS_X86
+  return true;
+#else
+  return false;
+#endif
+}
+
 bool TestCPUFeature(CPUFeature feature) {
 #ifdef PLATFORM_IS_X86
   return CPUIDInfo::TestFeature(feature);
