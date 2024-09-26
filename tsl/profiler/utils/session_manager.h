@@ -46,9 +46,6 @@ GetRemoteSessionManagerOptionsLocked(
     const absl::flat_hash_map<std::string, std::variant<int, std::string>>&
         opts,
     bool* is_cloud_tpu_session);
-
-// Validate Host Port pair.
-absl::Status ValidateHostPortPair(absl::string_view host_port);
 }  // namespace profiler
 }  // namespace tsl
 

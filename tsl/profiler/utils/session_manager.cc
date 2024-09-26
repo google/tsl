@@ -183,18 +183,5 @@ absl::Status ValidateRemoteProfilerSessionManagerOptions(
   return absl::OkStatus();
 }
 
-absl::Status ValidateHostPortPair(absl::string_view host_port) {
-  tsl::uint32 port;
-  std::vector<absl::string_view> parts = absl::StrSplit(host_port, ':');
-  // Must be host:port, port must be a number, host must not contain a '/',
-  // host also must not be empty.
-  if (parts.size() != 2 || !absl::SimpleAtoi(parts[1], &port) ||
-      absl::StrContains(parts[0], "/") || parts[0].empty()) {
-    return tsl::errors::InvalidArgument("Could not interpret \"", host_port,
-                                        "\" as a host-port pair.");
-  }
-  return absl::OkStatus();
-}
-
 }  // namespace profiler
 }  // namespace tsl
