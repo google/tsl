@@ -228,6 +228,7 @@ tsl_cc_test(
     srcs = ["xplane_utils_test.cc"],
     deps = [
         ":math_utils",
+        ":tf_xplane_visitor",
         ":xplane_builder",
         ":xplane_schema",
         ":xplane_utils",
@@ -236,7 +237,6 @@ tsl_cc_test(
         "//tsl/platform:test_main",
         "//tsl/platform:types",
         "//tsl/profiler/protobuf:xplane_proto_cc",
-        "//tsl/profiler/utils:tf_xplane_visitor",
         "@com_google_absl//absl/container:flat_hash_map",
         "@com_google_absl//absl/strings",
         "@com_google_absl//absl/types:optional",
