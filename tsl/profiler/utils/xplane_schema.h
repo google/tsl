@@ -332,7 +332,9 @@ enum StatType {
   kCudaGraphOrigId,
   kStepIdleTimePs,
   kGpuDeviceName,
-  kLastStatType = kGpuDeviceName,
+  kDeviceOffsetPs,
+  kDeviceDurationPs,
+  kLastStatType = kDeviceDurationPs,
 };
 
 enum MegaScaleStatType : uint8_t {
