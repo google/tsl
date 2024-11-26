@@ -18,6 +18,11 @@ selects.config_setting_group(
     ],
 )
 
+alias(
+  name = "using_cuda_config",
+  actual = "@local_config_cuda//:is_cuda_enabled",
+)
+
 # Config setting whether TensorFlow is built with CUDA support using nvcc.
 #
 # TODO(b/174244321), DEPRECATED: this target will be removed when all users
