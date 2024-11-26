@@ -519,6 +519,13 @@ def _find_libs(repository_ctx, check_cuda_libs_script, cuda_config):
             cuda_config.cusparse_version,
             static = False,
         ),
+        "nvptxcompiler_static": _check_cuda_lib_params(
+            "nvptxcompiler_static",
+            cpu_value,
+            cuda_config.config["cuda_library_dir"],
+            version = None,
+            static = True,
+        ),
     }
 
     # Verify that the libs actually exist at their locations.
