@@ -49,6 +49,7 @@ filegroup(
     srcs = [
         "connected_traceme.h",
         "context_types.h",
+        "@xla//xla/tsl/profiler/utils:mobile_srcs_only_runtime",
     ],
     visibility = ["//visibility:public"],
 )
