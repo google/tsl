@@ -20,18 +20,23 @@ limitations under the License.
 #include <memory>
 
 #include "absl/types/optional.h"
+#include "Eigen/Configure"  // from @eigen_archive
 #include "tsl/platform/env.h"
 #include "tsl/platform/macros.h"
 #include "tsl/platform/threadpool_interface.h"
 #include "tsl/platform/types.h"
 
 namespace Eigen {
+EIGEN_INLINE_NAMESPACE_BEGIN
+
 class Allocator;
 class ThreadPoolInterface;
 struct ThreadPoolDevice;
 
 template <typename Environment>
 class ThreadPoolTempl;
+
+EIGEN_INLINE_NAMESPACE_END
 }  // namespace Eigen
 
 namespace tsl {
