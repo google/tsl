@@ -1,4 +1,4 @@
-load("@xla//xla/tsl:tsl.bzl", "if_not_android", "if_oss", "internal_visibility", "nvtx_headers")
+load("@xla//xla/tsl:tsl.bzl", "if_google", "if_not_android", "if_oss", "internal_visibility", "nvtx_headers")
 load("@xla//xla/tsl:tsl.default.bzl", "filegroup", "get_compatible_with_portable")
 load("@xla//xla/tsl/platform:build_config.bzl", "tsl_cc_test")
 load("@xla//xla/tsl/platform:build_config_root.bzl", "if_static")
@@ -289,6 +289,21 @@ cc_library(
 )
 
 cc_library(
+    name = "nvtx_utils_cpu_impl",
+    srcs = if_cuda_is_configured(
+        if_google(
+            ["nvtx_utils.cc"],
+            ["nvtx_utils_stub.cc"],
+        ),
+        ["nvtx_utils_stub.cc"],
+    ),
+    hdrs = ["nvtx_utils.h"],
+    local_defines = if_oss(["NVTX_VERSION_3_1=1"]),
+    visibility = ["//visibility:public"],
+    deps = if_cuda_is_configured(if_google(nvtx_headers())),
+)
+
+cc_library(
     name = "nvtx_utils_libtpu",
     srcs = ["nvtx_utils_stub.cc"],
     hdrs = ["nvtx_utils.h"],
@@ -313,20 +328,41 @@ cc_library(
 )
 
 cc_library(
+    name = "nvtx_utils_cpu",
+    hdrs = ["nvtx_utils.h"],
+    visibility = ["//visibility:public"],
+    deps = [":nvtx_utils_cpu_impl"],
+)
+
+SCOPED_ANNOTATION_DEPS = [
+    "@com_google_absl//absl/strings",
+    "//tsl/platform",
+    "//tsl/platform:macros",
+    "//tsl/platform:types",
+] + if_not_android([
+    "@xla//xla/tsl/profiler/backends/cpu:annotation_stack",
+])
+
+cc_library(
     name = "scoped_annotation",
     hdrs = [
         "scoped_annotation.h",
     ],
     visibility = ["//visibility:public"],
-    deps = [
+    deps = SCOPED_ANNOTATION_DEPS + [
         ":nvtx_utils",
-        "//tsl/platform",
-        "//tsl/platform:macros",
-        "//tsl/platform:types",
-        "@com_google_absl//absl/strings",
-    ] + if_not_android([
-        "@xla//xla/tsl/profiler/backends/cpu:annotation_stack",
-    ]),
+    ],
+)
+
+cc_library(
+    name = "scoped_annotation_cpu",
+    hdrs = [
+        "scoped_annotation.h",
+    ],
+    visibility = ["//visibility:public"],
+    deps = SCOPED_ANNOTATION_DEPS + [
+        ":nvtx_utils_cpu",
+    ],
 )
 
 tsl_cc_test(
@@ -335,6 +371,21 @@ tsl_cc_test(
     srcs = ["scoped_annotation_test.cc"],
     deps = [
         ":scoped_annotation",
+        "//tsl/platform:test",
+        "//tsl/platform:test_benchmark",
+        "//tsl/platform:test_main",
+        "@com_google_absl//absl/strings",
+        "@xla//xla/tsl/profiler/backends/cpu:annotation_stack",
+        "@xla//xla/tsl/profiler/backends/cpu:annotation_stack_impl",
+    ],
+)
+
+tsl_cc_test(
+    name = "scoped_annotation_cpu_test",
+    size = "small",
+    srcs = ["scoped_annotation_test.cc"],
+    deps = [
+        ":scoped_annotation_cpu",
         "//tsl/platform:test",
         "//tsl/platform:test_benchmark",
         "//tsl/platform:test_main",
