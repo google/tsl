@@ -615,6 +615,9 @@ build:elinux_armhf --copt -mfp16-format=ieee
 
 # Config-specific options should come above this line.
 
+# Load XLA's bazelrc if available
+try-import %workspace%/xla.bazelrc
+
 # Load rc file written by ./configure.
 try-import %workspace%/.tf_configure.bazelrc
 try-import %workspace%/xla_configure.bazelrc
