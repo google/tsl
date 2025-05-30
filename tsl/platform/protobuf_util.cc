@@ -13,40 +13,42 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
+#include <cstddef>
+#include <cstdio>
 #include <string>
 
-#include "tsl/platform/protobuf.h"
+#include "third_party/protobuf/message.h"
+#include "third_party/protobuf/message_lite.h"
+#include "third_party/protobuf/text_format.h"
 
 namespace tsl {
 
-bool ParseProtoUnlimited(protobuf::MessageLite* proto,
-                         const string& serialized) {
+bool ParseProtoUnlimited(proto2::MessageLite* proto,
+                         const std::string& serialized) {
   return proto->ParseFromString(serialized);
 }
 
-bool ParseProtoUnlimited(protobuf::MessageLite* proto, const void* serialized,
+bool ParseProtoUnlimited(proto2::MessageLite* proto, const void* serialized,
                          size_t size) {
   return proto->ParseFromArray(serialized, size);
 }
 
-std::string LegacyUnredactedDebugString(const tsl::protobuf::Message& message) {
+std::string LegacyUnredactedDebugString(const proto2::Message& message) {
   std::string debug_string;
-  tsl::protobuf::TextFormat::Printer printer;
+  proto2::TextFormat::Printer printer;
   printer.SetExpandAny(true);
 
   printer.PrintToString(message, &debug_string);
   return debug_string;
 }
 
-std::string LegacyUnredactedDebugString(
-    const tsl::protobuf::MessageLite& message) {
+std::string LegacyUnredactedDebugString(const proto2::MessageLite& message) {
   return message.DebugString();
 }
 
-std::string LegacyUnredactedShortDebugString(
-    const tsl::protobuf::Message& message) {
+std::string LegacyUnredactedShortDebugString(const proto2::Message& message) {
   std::string debug_string;
-  tsl::protobuf::TextFormat::Printer printer;
+  proto2::TextFormat::Printer printer;
   printer.SetSingleLineMode(true);
   printer.SetExpandAny(true);
 
