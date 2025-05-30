@@ -16,35 +16,23 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_PLATFORM_PROTOBUF_H_
 #define TENSORFLOW_TSL_PLATFORM_PROTOBUF_H_
 
+#include <cstddef>
 #include <cstdint>
+#include <string>
+#include <utility>
 
+#include "google/protobuf/descriptor.pb.h"
+#include "google/protobuf/arena.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/io/zero_copy_stream.h"
+#include "google/protobuf/message.h"
+#include "google/protobuf/repeated_field.h"
+#include "google/protobuf/repeated_ptr_field.h"
+#include "google/protobuf/util/field_comparator.h"
+#include "google/protobuf/util/message_differencer.h"
 #include "xla/tsl/platform/types.h"
-#include "tsl/platform/platform.h"
-
-// Import whatever namespace protobuf comes from into the
-// ::tsl::protobuf namespace.
-//
-// TensorFlow code should use the ::tensorflow::protobuf namespace to
-// refer to all protobuf APIs.
-
-#include "google/protobuf/descriptor.pb.h"         // IWYU pragma: export
-#include "google/protobuf/arena.h"                // IWYU pragma: export
-#include "google/protobuf/descriptor.h"           // IWYU pragma: export
-#include "google/protobuf/dynamic_message.h"      // IWYU pragma: export
-#include "google/protobuf/io/coded_stream.h"      // IWYU pragma: export
-#include "google/protobuf/io/tokenizer.h"         // IWYU pragma: export
-#include "google/protobuf/io/zero_copy_stream.h"  // IWYU pragma: export
-#include "google/protobuf/io/zero_copy_stream_impl_lite.h"  // IWYU pragma: export
-#include "google/protobuf/map.h"                 // IWYU pragma: export
-#include "google/protobuf/message.h"             // IWYU pragma: export
-#include "google/protobuf/repeated_field.h"      // IWYU pragma: export
-#include "google/protobuf/repeated_ptr_field.h"  // IWYU pragma: export
-#include "google/protobuf/text_format.h"         // IWYU pragma: export
-#include "google/protobuf/util/delimited_message_util.h"  // IWYU pragma: export
-#include "google/protobuf/util/field_comparator.h"  // IWYU pragma: export
-#include "google/protobuf/util/json_util.h"         // IWYU pragma: export
-#include "google/protobuf/util/message_differencer.h"  // IWYU pragma: export
-#include "google/protobuf/util/type_resolver_util.h"  // IWYU pragma: export
+#include "tsl/platform/tstring.h"
 
 #if !TSL_IS_IN_OSS
 #define TENSORFLOW_PROTOBUF_USES_CORD 1
@@ -52,7 +40,6 @@ limitations under the License.
 
 namespace tsl {
 
-namespace protobuf = ::google::protobuf;
 using protobuf_int64 = int64_t;
 using protobuf_uint64 = uint64_t;
 extern const char* kProtobufInt64Typename;
@@ -62,11 +49,11 @@ extern const char* kProtobufUint64Typename;
 // Returns true on success. Note: Unlike protobuf's builtin ParseFromString,
 // this function has no size restrictions on the total size of the encoded
 // protocol buffer.
-bool ParseProtoUnlimited(protobuf::MessageLite* proto,
+bool ParseProtoUnlimited(proto2::MessageLite* proto,
                          const std::string& serialized);
-bool ParseProtoUnlimited(protobuf::MessageLite* proto, const void* serialized,
+bool ParseProtoUnlimited(proto2::MessageLite* proto, const void* serialized,
                          size_t size);
-inline bool ParseProtoUnlimited(protobuf::MessageLite* proto,
+inline bool ParseProtoUnlimited(proto2::MessageLite* proto,
                                 const tstring& serialized) {
   return ParseProtoUnlimited(proto, serialized.data(), serialized.size());
 }
@@ -95,7 +82,7 @@ inline void SetProtobufStringSwapAllowed(std::string* src, absl::Cord* dest) {
 }
 #endif  // defined(TENSORFLOW_PROTOBUF_USES_CORD)
 
-inline bool SerializeToTString(const protobuf::MessageLite& proto,
+inline bool SerializeToTString(const proto2::MessageLite& proto,
                                tstring* output) {
   size_t size = proto.ByteSizeLong();
   output->resize_uninitialized(size);
@@ -103,13 +90,12 @@ inline bool SerializeToTString(const protobuf::MessageLite& proto,
       reinterpret_cast<uint8*>(output->data()));
 }
 
-inline bool ParseFromTString(const tstring& input,
-                             protobuf::MessageLite* proto) {
+inline bool ParseFromTString(const tstring& input, proto2::MessageLite* proto) {
   return proto->ParseFromArray(input.data(), static_cast<int>(input.size()));
 }
 
 // Analogue to StringOutputStream for tstring.
-class TStringOutputStream : public protobuf::io::ZeroCopyOutputStream {
+class TStringOutputStream : public proto2::io::ZeroCopyOutputStream {
  public:
   explicit TStringOutputStream(tstring* target);
   ~TStringOutputStream() override = default;
@@ -127,11 +113,9 @@ class TStringOutputStream : public protobuf::io::ZeroCopyOutputStream {
   tstring* target_;
 };
 
-std::string LegacyUnredactedDebugString(const tsl::protobuf::Message& message);
-std::string LegacyUnredactedDebugString(
-    const tsl::protobuf::MessageLite& message);
-std::string LegacyUnredactedShortDebugString(
-    const tsl::protobuf::Message& message);
+std::string LegacyUnredactedDebugString(const proto2::Message& message);
+std::string LegacyUnredactedDebugString(const proto2::MessageLite& message);
+std::string LegacyUnredactedShortDebugString(const proto2::Message& message);
 }  // namespace tsl
 
 #endif  // TENSORFLOW_TSL_PLATFORM_PROTOBUF_H_
