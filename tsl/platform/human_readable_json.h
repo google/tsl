@@ -20,8 +20,9 @@ limitations under the License.
 
 #include "absl/status/status.h"
 #include "absl/status/statusor.h"
+#include "third_party/protobuf/message.h"
+#include "third_party/protobuf/message_lite.h"
 #include "xla/tsl/platform/types.h"
-#include "tsl/platform/protobuf.h"
 
 namespace tsl {
 
@@ -34,16 +35,16 @@ namespace tsl {
 // When ignore_accuracy_loss = true, this function may ignore JavaScript
 // accuracy loss with large integers.
 absl::StatusOr<std::string> ProtoToHumanReadableJson(
-    const protobuf::Message& proto, bool ignore_accuracy_loss);
+    const proto2::Message& proto, bool ignore_accuracy_loss);
 absl::StatusOr<std::string> ProtoToHumanReadableJson(
-    const protobuf::MessageLite& proto, bool ignore_accuracy_loss);
+    const proto2::MessageLite& proto, bool ignore_accuracy_loss);
 
 // Converts a string produced by ProtoToHumanReadableJSON to a protobuf.  Not
 // guaranteed to work for general JSON.
 absl::Status HumanReadableJsonToProto(const string& str,
-                                      protobuf::Message* proto);
+                                      proto2::Message* proto);
 absl::Status HumanReadableJsonToProto(const string& str,
-                                      protobuf::MessageLite* proto);
+                                      proto2::MessageLite* proto);
 
 }  // namespace tsl
 
