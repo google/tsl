@@ -203,6 +203,7 @@ cc_library(
     hdrs = ["protobuf.h"],
     deps = [
         ":platform",
+        ":tstring",
         "@xla//xla/tsl/platform:types",
     ] + tsl_protobuf_deps(),
 )
