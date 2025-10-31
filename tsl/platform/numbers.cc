@@ -23,12 +23,16 @@ limitations under the License.
 #include <charconv>
 #include <cmath>
 #include <cstdint>
+#include <limits>
 #include <locale>
+#include <optional>
 #include <string>
 #include <system_error>  // NOLINT
 #include <unordered_map>
 
+#include "absl/base/nullability.h"
 #include "absl/strings/str_cat.h"
+#include "absl/strings/str_format.h"
 #include "absl/strings/string_view.h"
 #include "xla/tsl/platform/logging.h"
 #include "xla/tsl/platform/macros.h"
@@ -40,80 +44,18 @@ namespace tsl {
 namespace {
 
 template <typename T>
-const std::unordered_map<std::string, T>* GetSpecialNumsSingleton() {
-  static const std::unordered_map<std::string, T>* special_nums =
-      CHECK_NOTNULL((new const std::unordered_map<std::string, T>{
-          {"inf", std::numeric_limits<T>::infinity()},
-          {"+inf", std::numeric_limits<T>::infinity()},
-          {"-inf", -std::numeric_limits<T>::infinity()},
-          {"infinity", std::numeric_limits<T>::infinity()},
-          {"+infinity", std::numeric_limits<T>::infinity()},
-          {"-infinity", -std::numeric_limits<T>::infinity()},
-          {"nan", std::numeric_limits<T>::quiet_NaN()},
-          {"+nan", std::numeric_limits<T>::quiet_NaN()},
-          {"-nan", -std::numeric_limits<T>::quiet_NaN()},
-      }));
-  return special_nums;
-}
-
-template <typename T>
-T locale_independent_strtonum(const char* str, const char** endptr) {
-  auto special_nums = GetSpecialNumsSingleton<T>();
-  std::stringstream s(str);
-
-  // Check if str is one of the special numbers.
-  std::string special_num_str;
-  s >> special_num_str;
-
-  for (size_t i = 0; i < special_num_str.length(); ++i) {
-    special_num_str[i] =
-        std::tolower(special_num_str[i], std::locale::classic());
+std::optional<T> AsciiToFp(absl::string_view str) {
+  T value;
+  std::from_chars_result result =
+      std::from_chars(str.data(), str.data() + str.size(), value);
+  if (result.ec != std::errc{}) {
+    return std::nullopt;
   }
-
-  auto entry = special_nums->find(special_num_str);
-  if (entry != special_nums->end()) {
-    *endptr = str + (s.eof() ? static_cast<std::iostream::pos_type>(strlen(str))
-                             : s.tellg());
-    return entry->second;
-  } else {
-    // Perhaps it's a hex number
-    if (special_num_str.compare(0, 2, "0x") == 0 ||
-        special_num_str.compare(0, 3, "-0x") == 0) {
-      return strtol(str, const_cast<char**>(endptr), 16);
-    }
+  if (result.ptr != str.data() + str.size()) {
+    // Not all characters consumed.
+    return std::nullopt;
   }
-  // Reset the stream
-  s.str(str);
-  s.clear();
-  // Use the "C" locale
-  s.imbue(std::locale::classic());
-
-  T result;
-  s >> result;
-
-  // Set to result to what strto{f,d} functions would have returned. If the
-  // number was outside the range, the stringstream sets the fail flag, but
-  // returns the +/-max() value, whereas strto{f,d} functions return +/-INF.
-  if (s.fail()) {
-    if (result == std::numeric_limits<T>::max() ||
-        result == std::numeric_limits<T>::infinity()) {
-      result = std::numeric_limits<T>::infinity();
-      s.clear(s.rdstate() & ~std::ios::failbit);
-    } else if (result == -std::numeric_limits<T>::max() ||
-               result == -std::numeric_limits<T>::infinity()) {
-      result = -std::numeric_limits<T>::infinity();
-      s.clear(s.rdstate() & ~std::ios::failbit);
-    }
-  }
-
-  if (endptr) {
-    *endptr =
-        str +
-        (s.fail() ? static_cast<std::iostream::pos_type>(0)
-                  : (s.eof() ? static_cast<std::iostream::pos_type>(strlen(str))
-                             : s.tellg()));
-  }
-  return result;
+  return value;
 }
 
 }  // namespace
@@ -169,32 +111,54 @@ size_t FastUInt64ToBufferLeft(uint64_t i, char* buffer) {
   return buffer - start;
 }
 
-static const double kDoublePrecisionCheckMax = DBL_MAX / 1.000000000000001;
+namespace {
 
-size_t DoubleToBuffer(double value, char* buffer) {
-  // DBL_DIG is 15 for IEEE-754 doubles, which are used on almost all
-  // platforms these days.  Just in case some system exists where DBL_DIG
-  // is significantly larger -- and risks overflowing our buffer -- we have
-  // this assert.
-  static_assert(DBL_DIG < 20, "DBL_DIG is too big");
+constexpr int NumDecimalDigits(int n) {
+  int count = 0;
+  do {
+    ++count;
+    n /= 10;
+  } while (n != 0);
+  return count;
+}
 
+template <typename T>
+size_t FpToBuffer(T value, char* buffer) {
+  // Out of an abundance of caution, we ensure that the buffer is large enough
+  // to hold the worst-case formatting of any floating-point number.
+  constexpr size_t kMaxExponentDigits10 =
+      std::max(NumDecimalDigits(std::numeric_limits<T>::max_exponent10),
+               NumDecimalDigits(std::numeric_limits<T>::min_exponent10));
+  constexpr size_t kMaxCharsWritten =
+      1 +                                     // sign bit
+      std::numeric_limits<T>::max_digits10 +  // decimal digits
+      1 +                                     // decimal point
+      1 +                                     // exponent character
+      1 +                                     // exponent sign
+      kMaxExponentDigits10;                   // exponent digits
+  static_assert(kMaxCharsWritten < kFastToBufferSize);
   if (std::isnan(value)) {
-    int snprintf_result = snprintf(buffer, kFastToBufferSize, "%snan",
-                                   std::signbit(value) ? "-" : "");
+    int snprintf_result = absl::SNPrintF(buffer, kFastToBufferSize, "%snan",
+                                         std::signbit(value) ? "-" : "");
     // Paranoid check to ensure we don't overflow the buffer.
     DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
     return snprintf_result;
   }
 
-  if (std::abs(value) <= kDoublePrecisionCheckMax) {
+  constexpr T kPrecisionCheckMax = std::numeric_limits<T>::max() /
+                                   (T{1} + std::numeric_limits<T>::epsilon());
+  if (std::abs(value) <= kPrecisionCheckMax) {
     int snprintf_result =
-        snprintf(buffer, kFastToBufferSize, "%.*g", DBL_DIG, value);
+        absl::SNPrintF(buffer, kFastToBufferSize, "%.*g",
+                       std::numeric_limits<T>::digits10, value);
 
     // The snprintf should never overflow because the buffer is significantly
     // larger than the precision we asked for.
-    DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
+    DCHECK(snprintf_result > 0 && snprintf_result <= kMaxCharsWritten);
 
-    if (locale_independent_strtonum<double>(buffer, nullptr) == value) {
+    auto parsed_value = AsciiToFp<T>(buffer);
+    DCHECK(parsed_value.has_value());
+    if (*parsed_value == value) {
       // Round-tripping the string to double works; we're done.
       return snprintf_result;
     }
@@ -202,45 +166,23 @@ size_t DoubleToBuffer(double value, char* buffer) {
   }
 
   int snprintf_result =
-      snprintf(buffer, kFastToBufferSize, "%.*g", DBL_DIG + 2, value);
+      absl::SNPrintF(buffer, kFastToBufferSize, "%.*g",
+                     std::numeric_limits<T>::max_digits10, value);
 
   // Should never overflow; see above.
-  DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
+  DCHECK(snprintf_result > 0 && snprintf_result <= kMaxCharsWritten);
 
   return snprintf_result;
 }
 
+}  // namespace
+
+size_t DoubleToBuffer(double value, char* buffer) {
+  return FpToBuffer(value, buffer);
+}
+
 size_t FloatToBuffer(float value, char* buffer) {
-  // FLT_DIG is 6 for IEEE-754 floats, which are used on almost all
-  // platforms these days.  Just in case some system exists where FLT_DIG
-  // is significantly larger -- and risks overflowing our buffer -- we have
-  // this assert.
-  static_assert(FLT_DIG < 10, "FLT_DIG is too big");
-
-  if (std::isnan(value)) {
-    int snprintf_result = snprintf(buffer, kFastToBufferSize, "%snan",
-                                   std::signbit(value) ? "-" : "");
-    // Paranoid check to ensure we don't overflow the buffer.
-    DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
-    return snprintf_result;
-  }
-
-  int snprintf_result =
-      snprintf(buffer, kFastToBufferSize, "%.*g", FLT_DIG, value);
-
-  // The snprintf should never overflow because the buffer is significantly
-  // larger than the precision we asked for.
-  DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
-
-  float parsed_value;
-  if (!absl::SimpleAtof(buffer, &parsed_value) || parsed_value != value) {
-    snprintf_result =
-        snprintf(buffer, kFastToBufferSize, "%.*g", FLT_DIG + 3, value);
-
-    // Should never overflow; see above.
-    DCHECK(snprintf_result > 0 && snprintf_result < kFastToBufferSize);
-  }
-  return snprintf_result;
+  return FpToBuffer(value, buffer);
 }
 
 strings_internal::AlphaNumBuffer LegacyPrecision(double d) {
