@@ -18,6 +18,7 @@ limitations under the License.
 
 #include <cstddef>
 #include <cstdint>
+#include <memory>
 
 // TODO(cwhipkey): remove this when callers use annotations directly.
 #include "xla/tsl/platform/dynamic_annotations.h"
@@ -32,6 +33,23 @@ namespace port {
 void* AlignedMalloc(size_t size, int minimum_alignment);
 void AlignedFree(void* aligned_memory);
 void AlignedSizedFree(void* aligned_memory, size_t alignment, size_t size);
+
+// Deleter for aligned memory allocated by AlignedMalloc.
+struct AlignedDeleter {
+  void operator()(void* ptr) const { AlignedFree(ptr); }
+};
+
+/**
+ * @brief Allocates memory with specified alignment.
+ * @param alignment Specifies the alignment. Power of two.
+ * @param size The number of bytes to allocate. Integral multiple of alignment
+ * @return A unique_ptr managing the allocated memory.
+ */
+inline std::unique_ptr<void, AlignedDeleter> AlignedAllocRAII(
+    size_t size, int minimum_alignment) {
+  return std::unique_ptr<void, AlignedDeleter>(
+      AlignedMalloc(size, minimum_alignment));
+}
 
 // An allocator that allocates memory with the given minimum alignment.
 template <class T, size_t minimum_alignment>
