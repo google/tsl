@@ -103,6 +103,7 @@ cc_library(
         ":profiler_interface",
         "//tsl/profiler/protobuf:profiler_options_proto_cc",
         "@com_google_absl//absl/base:core_headers",
+        "@com_google_absl//absl/log",
         "@com_google_absl//absl/synchronization",
     ],
     alwayslink = True,

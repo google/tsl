@@ -19,6 +19,7 @@ limitations under the License.
 #include <vector>
 
 #include "absl/base/const_init.h"
+#include "absl/log/log.h"
 #include "absl/synchronization/mutex.h"
 #include "tsl/profiler/lib/profiler_controller.h"
 #include "tsl/profiler/lib/profiler_interface.h"
@@ -38,18 +39,26 @@ std::vector<ProfilerFactory>* GetFactories() {
 }  // namespace
 
 void RegisterProfilerFactory(ProfilerFactory factory) {
-  absl::MutexLock lock(mu);
+  absl::MutexLock lock(&mu);
   GetFactories()->push_back(std::move(factory));
+  LOG(INFO) << "Registering profiler factory. Total factories: "
+            << GetFactories()->size();
 }
 
 std::vector<std::unique_ptr<profiler::ProfilerInterface>> CreateProfilers(
     const tensorflow::ProfileOptions& options) {
+  LOG(INFO) << "Creating profilers";
   std::vector<std::unique_ptr<profiler::ProfilerInterface>> result;
-  absl::MutexLock lock(mu);
+  absl::MutexLock lock(&mu);
   for (const auto& factory : *GetFactories()) {
+    LOG(INFO) << "Calling factory to create profiler";
     auto profiler = factory(options);
     // A factory might return nullptr based on options.
-    if (profiler == nullptr) continue;
+    if (profiler == nullptr) {
+      LOG(INFO) << "Factory returned nullptr";
+      continue;
+    }
+    LOG(INFO) << "Created profiler";
     result.emplace_back(
         std::make_unique<ProfilerController>(std::move(profiler)));
   }
