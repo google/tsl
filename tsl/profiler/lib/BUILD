@@ -288,7 +288,7 @@ cc_library(
     ),
     hdrs = ["nvtx_utils.h"],
     visibility = ["//visibility:public"],
-    deps = if_cuda_is_configured(nvtx_headers()),
+    deps = if_cuda_is_configured(["//third_party/gpus/cuda:cuda_headers"]),
 )
 
 cc_library(
