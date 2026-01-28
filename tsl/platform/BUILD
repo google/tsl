@@ -120,6 +120,28 @@ cc_library(
 )
 
 cc_library(
+    name = "threadpool_async_executor",
+    hdrs = ["threadpool_async_executor.h"],
+    deps = [
+        ":env",
+        "@xla//xla/tsl/concurrency:async_value",
+    ],
+)
+
+tsl_cc_test(
+    name = "threadpool_async_executor_test",
+    srcs = ["threadpool_async_executor_test.cc"],
+    deps = [
+        ":env",
+        ":env_impl",
+        ":test",
+        ":test_main",
+        ":threadpool_async_executor",
+        "@com_google_absl//absl/synchronization",
+    ],
+)
+
+cc_library(
     name = "env_impl",
     deps = [
         "@xla//xla/tsl/platform:env_impl",
