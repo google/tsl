@@ -547,6 +547,7 @@ exports_files(
         "threadpool.h",
         "tracing.cc",
         "tracing.h",
+        "zip.h",
     ],
     visibility = internal_visibility([
         "//tensorflow:__subpackages__",
@@ -670,6 +671,48 @@ cc_library(
     deps = tf_windows_aware_platform_deps("net") + [
         "@com_google_absl//absl/base:core_headers",
         "@com_google_absl//absl/strings",
+    ],
+)
+
+cc_library(
+    name = "zip_interface",
+    hdrs = ["zip.h"],
+    visibility = ["@xla//xla/tsl/platform:__subpackages__"],
+    deps = [
+        "//third_party/protobuf/io",
+        "@com_google_absl//absl/status:statusor",
+        "@com_google_absl//absl/strings",
+    ],
+)
+
+cc_library(
+    name = "zip",
+    hdrs = ["zip.h"],
+    deps = tf_platform_deps("zip") + [
+        ":zip_interface",
+        "//third_party/protobuf/io",
+        "@com_google_absl//absl/status:statusor",
+        "@com_google_absl//absl/strings:string_view",
+    ],
+)
+
+tsl_cc_test(
+    name = "zip_test",
+    size = "small",
+    srcs = [
+        "zip_test.cc",
+    ],
+    deps = [
+        ":env",
+        ":path",
+        ":zip",
+        "//third_party/libzip:zip",
+        "//third_party/protobuf/io",
+        "@com_google_absl//absl/status",
+        "@com_google_absl//absl/status:status_matchers",
+        "@com_google_absl//absl/strings:string_view",
+        "@com_google_googletest//:gtest_main",
+        "@xla//xla/tsl/platform:statusor",
     ],
 )
 
