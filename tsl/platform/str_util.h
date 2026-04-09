@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_STR_UTIL_H_
-#define TENSORFLOW_TSL_PLATFORM_STR_UTIL_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STR_UTIL_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STR_UTIL_H_
 
 #include <cstdint>
 #include <string>
@@ -215,4 +215,4 @@ std::string ArgDefCase(absl::string_view s);
 }  // namespace str_util
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_STR_UTIL_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STR_UTIL_H_

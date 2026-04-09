@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_BFLOAT16_H_
-#define TENSORFLOW_TSL_PLATFORM_BFLOAT16_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_BFLOAT16_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_BFLOAT16_H_
 
 // clang-format off
 #include "Eigen/Core"  // from @eigen_archive
@@ -24,4 +24,4 @@ namespace tsl {
 typedef Eigen::bfloat16 bfloat16;
 }  // end namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_BFLOAT16_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_BFLOAT16_H_
