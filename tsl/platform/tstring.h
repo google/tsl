@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_TSTRING_H_
-#define TENSORFLOW_TSL_PLATFORM_TSTRING_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_TSTRING_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_TSTRING_H_
 
 #include <assert.h>
 
@@ -29,6 +29,7 @@ limitations under the License.
 #include "tsl/platform/platform.h"
 #include "tsl/platform/refcount.h"
 #include "tsl/platform/stringpiece.h"
+#include "waymo/onboard/util/mref.h"
 
 namespace tsl {
 
@@ -144,7 +145,7 @@ class tstring {
   tstring(const char* str, size_t len);
   tstring(const char* str);  // NOLINT TODO(b/147740521): Make explicit.
   tstring(size_t n, char c);
-  explicit tstring(const absl::string_view str);
+  explicit tstring(absl::string_view str);
 #ifdef PLATFORM_GOOGLE
   explicit tstring(const absl::Cord& cord);  // Zero-copy, holds reference.
 #endif  // PLATFORM_GOOGLE
@@ -164,7 +165,7 @@ class tstring {
   tstring& operator=(std::string&& str);  // Zero-copy, takes rvalue ownership.
   tstring& operator=(const char* str);
   tstring& operator=(char ch);
-  tstring& operator=(const absl::string_view str);
+  tstring& operator=(absl::string_view str);
 #ifdef PLATFORM_GOOGLE
   tstring& operator=(const absl::Cord& cord);  // Zero-copy, holds reference.
 #endif  // PLATFORM_GOOGLE
@@ -232,7 +233,7 @@ class tstring {
   // View Assignment
   tstring& assign_as_view(const tstring& str);
   tstring& assign_as_view(const std::string& str);
-  tstring& assign_as_view(const absl::string_view str);
+  tstring& assign_as_view(absl::string_view str);
   tstring& assign_as_view(const char* str, size_t len);
   tstring& assign_as_view(const char* str);
 
@@ -671,7 +672,7 @@ inline tstring& tstring::insert(size_t pos, size_t n, char c) {
 
 inline void tstring::swap(tstring& str) noexcept {
   // TODO(dero): Invalid for OFFSET (unimplemented).
-  std::swap(tstr_, str.tstr_);
+  std::swap(mref(tstr_), mref(str.tstr_));
 }
 
 inline void tstring::push_back(char ch) { append(1, ch); }
@@ -701,4 +702,4 @@ inline std::ostream& operator<<(std::ostream& o, const tstring& str) {
 
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_TSTRING_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_TSTRING_H_

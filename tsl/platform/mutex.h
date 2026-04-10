@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_MUTEX_H_
-#define TENSORFLOW_TSL_PLATFORM_MUTEX_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_MUTEX_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_MUTEX_H_
 
 #include <chrono>   // NOLINT
 #include <cstdint>  // NOLINT
@@ -27,6 +27,7 @@ limitations under the License.
 #include "absl/synchronization/mutex.h"
 #include "absl/time/time.h"
 #include "tsl/platform/thread_annotations.h"
+#include "waymo/onboard/util/mref.h"
 
 namespace tsl {
 
@@ -189,7 +190,7 @@ class ABSL_DEPRECATED("Use absl::CondVar instead.") condition_variable {
   template <class Predicate>
   void wait(mutex_lock& lock, Predicate stop_waiting) {
     while (!stop_waiting()) {
-      wait(lock);
+      wait(mref(lock));
     }
   }
 
@@ -213,7 +214,7 @@ class ABSL_DEPRECATED("Use absl::CondVar instead.") condition_variable {
 // return either kCond_Timeout or kCond_MaybeNotified
 inline ConditionResult WaitForMilliseconds(mutex_lock* mu,
                                            condition_variable* cv, int64_t ms) {
-  std::cv_status s = cv->wait_for(*mu, std::chrono::milliseconds(ms));
+  std::cv_status s = cv->wait_for(mref(*mu), std::chrono::milliseconds(ms));
   return (s == std::cv_status::timeout) ? kCond_Timeout : kCond_MaybeNotified;
 }
 
@@ -274,4 +275,4 @@ std::cv_status condition_variable::wait_for(
 
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_MUTEX_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_MUTEX_H_
