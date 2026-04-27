@@ -249,6 +249,7 @@ cc_library(
         "@com_google_absl//absl/strings",
         "@xla//xla/tsl/platform:logging",
         "@xla//xla/tsl/platform:macros",
+        "@xla//xla/tsl/profiler/backends/cpu:traceme_recorder_impl",
     ],
 )
 
