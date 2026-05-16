@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_CTSTRING_INTERNAL_H_
-#define TENSORFLOW_TSL_PLATFORM_CTSTRING_INTERNAL_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CTSTRING_INTERNAL_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CTSTRING_INTERNAL_H_
 
 #include <limits.h>
 #include <stdbool.h>  // IWYU pragma: keep, provides bool
@@ -495,4 +495,4 @@ static inline void TF_TString_Move(TF_TString *dst, TF_TString *src) {
   }
 }
 
-#endif  // TENSORFLOW_TSL_PLATFORM_CTSTRING_INTERNAL_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CTSTRING_INTERNAL_H_

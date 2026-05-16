@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
-#define TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
 
 #include "ml_dtypes/include/float8.h"  // from @ml_dtypes_py
 #include "ml_dtypes/include/intn.h"  // from @ml_dtypes_py
@@ -39,4 +39,4 @@ using int4 = ::ml_dtypes::int4;
 using uint4 = ::ml_dtypes::uint4;
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_ML_DTYPES_H_

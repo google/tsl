@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_MEM_H_
-#define TENSORFLOW_TSL_PLATFORM_MEM_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_MEM_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_MEM_H_
 
 #include <cstddef>
 #include <cstdint>
@@ -115,4 +115,4 @@ static inline int64_t AvailableRam() { return GetMemoryInfo().free; }
 }  // namespace port
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_MEM_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_MEM_H_

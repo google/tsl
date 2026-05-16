@@ -23,8 +23,8 @@ limitations under the License.
 // non-const method, all threads accessing the same StringPiece must use
 // external synchronization.
 
-#ifndef TENSORFLOW_TSL_PLATFORM_STRINGPIECE_H_
-#define TENSORFLOW_TSL_PLATFORM_STRINGPIECE_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STRINGPIECE_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STRINGPIECE_H_
 
 // IWYU pragma: private, include "absl/strings/string_view.h"
 
@@ -37,4 +37,4 @@ using StringPiece ABSL_DEPRECATE_AND_INLINE() = absl::string_view;
 
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_STRINGPIECE_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STRINGPIECE_H_
