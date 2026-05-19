@@ -113,9 +113,7 @@ cc_library(
         "file_system_helper.h",
         "threadpool.h",
     ],
-    deps = [
-        "@xla//xla/tsl/platform:env",
-    ],
+    deps = ["@xla//xla/tsl/platform:env"],
 )
 
 cc_library(
