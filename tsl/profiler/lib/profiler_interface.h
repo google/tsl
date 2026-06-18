@@ -15,6 +15,8 @@ limitations under the License.
 #ifndef TENSORFLOW_TSL_PROFILER_LIB_PROFILER_INTERFACE_H_
 #define TENSORFLOW_TSL_PROFILER_LIB_PROFILER_INTERFACE_H_
 
+#include "absl/status/status.h"
+#include "absl/strings/string_view.h"
 #include "xla/tsl/platform/status.h"
 #include "tsl/profiler/protobuf/xplane.pb.h"
 
@@ -41,6 +43,27 @@ class ProfilerInterface {
 
   // Saves collected profile data into XSpace.
   virtual absl::Status CollectData(tensorflow::profiler::XSpace* space) = 0;
+};
+
+// XProfMultipass manages multi-pass profiling. It plans the passes,
+// configures the profiler for each pass, and aggregates the results.
+class MultiPassProfilerInterface : public ProfilerInterface {
+ public:
+  // Returns true if there are more passes to profile.
+  virtual bool NeedMorePasses() = 0;
+
+  // Starts a new pass.
+  virtual absl::Status StartPass() = 0;
+
+  virtual absl::Status PushRange(absl::string_view name) = 0;
+
+  virtual absl::Status PopRange() = 0;
+
+  virtual absl::Status StopPass() = 0;
+
+  absl::Status Start() override { return absl::OkStatus(); }
+
+  absl::Status Stop() override { return absl::OkStatus(); }
 };
 
 }  // namespace profiler
