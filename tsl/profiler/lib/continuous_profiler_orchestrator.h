@@ -30,6 +30,7 @@ limitations under the License.
 #include "absl/time/time.h"
 #include "xla/tsl/platform/env.h"
 #include "xla/tsl/platform/errors.h"  // IWYU pragma: keep
+#include "xla/tsl/platform/logging.h"
 #include "tsl/profiler/lib/profiler_interface.h"
 #include "tsl/profiler/protobuf/xplane.pb.h"
 
@@ -74,6 +75,13 @@ class ContinuousProfilerOrchestrator : public ProfilerInterface {
   // Stops background thread and profiling.
   absl::Status Stop() override {
     StopIngestionThread();
+    auto result = profiler_->Consume();
+    if (result.ok()) {
+      absl::MutexLock lock(mutex_);
+      circular_buffer_.push_back(std::move(result->data));
+    } else if (!absl::IsUnimplemented(result.status())) {
+      LOG(WARNING) << "Final Consume failed during Stop: " << result.status();
+    }
     return profiler_->Stop();
   }
 
@@ -102,7 +110,6 @@ class ContinuousProfilerOrchestrator : public ProfilerInterface {
   ProfilerType* profiler() { return profiler_.get(); }
   const ProfilerType* profiler() const { return profiler_.get(); }
 
- private:
   std::vector<std::any> PopBuffer() {
     absl::MutexLock lock(mutex_);
     std::vector<std::any> chunks;
@@ -113,7 +120,10 @@ class ContinuousProfilerOrchestrator : public ProfilerInterface {
     circular_buffer_.clear();
     return chunks;
   }
+
+ private:
   void IngestionLoop() {
+    LOG(INFO) << "ContinuousProfilerOrchestrator::IngestionLoop started";
     while (true) {
       absl::StatusOr<ConsumeResult> result = profiler_->Consume();
 
