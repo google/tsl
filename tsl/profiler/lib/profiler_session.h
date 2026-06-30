@@ -67,6 +67,13 @@ class ProfilerSession {
   absl::Status CollectData(tensorflow::profiler::XSpace* space)
       TF_LOCKS_EXCLUDED(mutex_);
 
+  // Consumes profile data without stopping the profiler.
+  absl::StatusOr<profiler::ConsumeResult> Consume() TF_LOCKS_EXCLUDED(mutex_);
+
+  // Serializes consumed profile data into XSpace.
+  absl::Status Serialize(std::any data, tensorflow::profiler::XSpace* space)
+      TF_LOCKS_EXCLUDED(mutex_);
+
  private:
   // Constructs an instance of the class and starts profiling
   explicit ProfilerSession(const tensorflow::ProfileOptions& options);

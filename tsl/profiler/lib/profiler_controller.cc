@@ -85,5 +85,23 @@ absl::Status ProfilerController::CollectData(
   return status;
 }
 
+absl::StatusOr<ConsumeResult> ProfilerController::Consume() {
+  if (state_ == ProfilerState::kStart || state_ == ProfilerState::kStop) {
+    if (status_.ok()) {
+      return profiler_->Consume();
+    }
+    return status_;
+  }
+  return absl::AbortedError("Consume called in the wrong order.");
+}
+
+absl::Status ProfilerController::Serialize(
+    std::any data, tensorflow::profiler::XSpace* space) {
+  if (status_.ok()) {
+    return profiler_->Serialize(std::move(data), space);
+  }
+  return status_;
+}
+
 }  // namespace profiler
 }  // namespace tsl

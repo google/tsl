@@ -45,6 +45,11 @@ class ProfilerController : public ProfilerInterface {
 
   absl::Status CollectData(tensorflow::profiler::XSpace* space) override;
 
+  absl::StatusOr<ConsumeResult> Consume() override;
+
+  absl::Status Serialize(std::any data,
+                         tensorflow::profiler::XSpace* space) override;
+
  private:
   enum class ProfilerState {
     kInit = 0,
