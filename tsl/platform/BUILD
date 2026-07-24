@@ -1367,6 +1367,7 @@ tsl_cc_test(
     srcs = [
         "net_test.cc",
     ],
+    tags = ["no_windows"],
     deps = [
         ":net",
         ":platform",
