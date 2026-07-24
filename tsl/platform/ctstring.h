@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_CTSTRING_H_
-#define TENSORFLOW_TSL_PLATFORM_CTSTRING_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CTSTRING_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CTSTRING_H_
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -126,4 +126,4 @@ inline void TF_TString_Assign(TF_TString *dst, const TF_TString *src);
 // inputs.
 inline void TF_TString_Move(TF_TString *dst, TF_TString *src);
 
-#endif  // TENSORFLOW_TSL_PLATFORM_CTSTRING_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CTSTRING_H_

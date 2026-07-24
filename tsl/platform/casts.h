@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_CASTS_H_
-#define TENSORFLOW_TSL_PLATFORM_CASTS_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CASTS_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CASTS_H_
 
 #include "tsl/platform/platform.h"
 
@@ -28,4 +28,4 @@ limitations under the License.
 #error Define the appropriate PLATFORM_<foo> macro for this platform
 #endif
 
-#endif  // TENSORFLOW_TSL_PLATFORM_CASTS_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CASTS_H_
