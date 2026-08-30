@@ -26,6 +26,9 @@ package_group(
     includes = [
         "@xla//xla/tsl/profiler:friends",
     ],
+    packages = [
+        "//third_party/py/torch_tpu/...",
+    ],
 )
 
 tf_proto_library(
