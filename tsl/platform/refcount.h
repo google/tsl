@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_REFCOUNT_H_
-#define TENSORFLOW_TSL_PLATFORM_REFCOUNT_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_REFCOUNT_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_REFCOUNT_H_
 
 #include <atomic>
 #include <map>
@@ -24,6 +24,7 @@ limitations under the License.
 #include "absl/synchronization/mutex.h"
 #include "xla/tsl/platform/logging.h"
 #include "tsl/platform/thread_annotations.h"
+#include "waymo/onboard/util/mref.h"
 
 namespace tsl {
 namespace core {
@@ -318,7 +319,7 @@ inline bool RefCounted::TryRef() const {
   // old_ref == 0, as done in LLVM libstdc++.
   int_fast32_t old_ref = ref_.load();
   while (old_ref != 0) {
-    if (ref_.compare_exchange_weak(old_ref, old_ref + 1)) {
+    if (ref_.compare_exchange_weak(mref(old_ref), old_ref + 1)) {
       return true;
     }
   }
@@ -354,4 +355,4 @@ inline bool RefCounted::RefCountIsOne() const {
 }  // namespace core
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_REFCOUNT_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_REFCOUNT_H_

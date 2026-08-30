@@ -32,8 +32,8 @@ limitations under the License.
 // (e.g. &MyClass::mutex_) to refer to a mutex in some (unknown) object.
 //
 
-#ifndef TENSORFLOW_TSL_PLATFORM_THREAD_ANNOTATIONS_H_
-#define TENSORFLOW_TSL_PLATFORM_THREAD_ANNOTATIONS_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_THREAD_ANNOTATIONS_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_THREAD_ANNOTATIONS_H_
 
 // IWYU pragma: private, include "tsl/platform/thread_annotations.h"
 // IWYU pragma: friend third_party/tensorflow/tsl/platform/thread_annotations.h
@@ -162,4 +162,4 @@ limitations under the License.
 // annotations will be ignored by the analysis.
 #define TF_TS_UNCHECKED(x) ""
 
-#endif  // TENSORFLOW_TSL_PLATFORM_THREAD_ANNOTATIONS_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_THREAD_ANNOTATIONS_H_

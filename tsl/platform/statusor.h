@@ -13,9 +13,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_STATUSOR_H_
-#define TENSORFLOW_TSL_PLATFORM_STATUSOR_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STATUSOR_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STATUSOR_H_
 
 #include "xla/tsl/platform/statusor.h"
 
-#endif  // TENSORFLOW_TSL_PLATFORM_STATUSOR_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STATUSOR_H_

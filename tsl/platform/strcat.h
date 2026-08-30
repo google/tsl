@@ -17,8 +17,8 @@ limitations under the License.
 // #category: operations on strings
 // #summary: Merges strings or numbers with no delimiter.
 //
-#ifndef TENSORFLOW_TSL_PLATFORM_STRCAT_H_
-#define TENSORFLOW_TSL_PLATFORM_STRCAT_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STRCAT_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STRCAT_H_
 
 #include <string>
 
@@ -61,22 +61,22 @@ namespace tsl {
 namespace strings {
 
 using PadSpec ABSL_DEPRECATE_AND_INLINE() = absl::PadSpec;
-using absl::kNoPad;
-using absl::kZeroPad10;
-using absl::kZeroPad11;
-using absl::kZeroPad12;
-using absl::kZeroPad13;
-using absl::kZeroPad14;
-using absl::kZeroPad15;
-using absl::kZeroPad16;
-using absl::kZeroPad2;
-using absl::kZeroPad3;
-using absl::kZeroPad4;
-using absl::kZeroPad5;
-using absl::kZeroPad6;
-using absl::kZeroPad7;
-using absl::kZeroPad8;
-using absl::kZeroPad9;
+using ::absl::kNoPad;
+using ::absl::kZeroPad10;
+using ::absl::kZeroPad11;
+using ::absl::kZeroPad12;
+using ::absl::kZeroPad13;
+using ::absl::kZeroPad14;
+using ::absl::kZeroPad15;
+using ::absl::kZeroPad16;
+using ::absl::kZeroPad2;
+using ::absl::kZeroPad3;
+using ::absl::kZeroPad4;
+using ::absl::kZeroPad5;
+using ::absl::kZeroPad6;
+using ::absl::kZeroPad7;
+using ::absl::kZeroPad8;
+using ::absl::kZeroPad9;
 using Hex ABSL_DEPRECATE_AND_INLINE() = absl::Hex;
 using AlphaNum ABSL_DEPRECATE_AND_INLINE() = absl::AlphaNum;
 
@@ -185,4 +185,4 @@ inline void StrAppend(std::string* dest, const absl::AlphaNum& a,
 }  // namespace strings
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_STRCAT_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_STRCAT_H_
