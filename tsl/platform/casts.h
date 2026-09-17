@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_CASTS_H_
-#define TENSORFLOW_TSL_PLATFORM_CASTS_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CASTS_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CASTS_H_
 
 #include "absl/base/casts.h"
 #include "absl/base/macros.h"
@@ -39,4 +39,4 @@ namespace tsl {
 using ::tensorflow::down_cast;
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_CASTS_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CASTS_H_
