@@ -1542,3 +1542,13 @@ tsl_cc_test(
         "@xla//xla/tsl/platform:test",
     ],
 )
+
+cc_library(
+    name = "benchmark_memory_manager",
+    testonly = True,
+    hdrs = ["benchmark_memory_manager.h"],
+    deps = [
+        "@xla//xla/tsl/platform:benchmark_memory_manager",
+    ],
+    alwayslink = True,
+)
