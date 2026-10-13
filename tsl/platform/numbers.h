@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_NUMBERS_H_
-#define TENSORFLOW_TSL_PLATFORM_NUMBERS_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_NUMBERS_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_NUMBERS_H_
 
 #include <array>
 #include <cstddef>
@@ -168,4 +168,4 @@ std::string HumanReadableElapsedTime(double seconds);
 }  // namespace strings
 }  // namespace tsl
 
-#endif  // TENSORFLOW_TSL_PLATFORM_NUMBERS_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_NUMBERS_H_

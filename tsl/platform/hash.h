@@ -15,8 +15,8 @@ limitations under the License.
 
 // Simple hash functions used for internal data structures
 
-#ifndef TENSORFLOW_TSL_PLATFORM_HASH_H_
-#define TENSORFLOW_TSL_PLATFORM_HASH_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_HASH_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_HASH_H_
 
 #include <stddef.h>
 #include <stdint.h>
@@ -135,4 +135,4 @@ struct hash<tsl::tstring> {
 };
 }  // namespace std
 
-#endif  // TENSORFLOW_TSL_PLATFORM_HASH_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_HASH_H_
