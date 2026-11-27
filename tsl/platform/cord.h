@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_CORD_H_
-#define TENSORFLOW_TSL_PLATFORM_CORD_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CORD_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CORD_H_
 
 // It seems CORD doesn't work well with CUDA <= 10.2
 #if !defined(__CUDACC__) || ((defined(__CUDACC__) && CUDA_VERSION > 10020))
@@ -23,4 +23,4 @@ limitations under the License.
 
 #endif  // __CUDACC__
 
-#endif  // TENSORFLOW_TSL_PLATFORM_CORD_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_CORD_H_

@@ -13,8 +13,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-#ifndef TENSORFLOW_TSL_PLATFORM_PLATFORM_H_
-#define TENSORFLOW_TSL_PLATFORM_PLATFORM_H_
+#ifndef THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_PLATFORM_H_
+#define THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_PLATFORM_H_
 
 // Set one PLATFORM_* macro and set IS_MOBILE_PLATFORM if the platform is for
 // mobile.
@@ -101,4 +101,4 @@ inline constexpr bool kIsDebugBuild = true;
 }  // namespace tsl
 #endif
 
-#endif  // TENSORFLOW_TSL_PLATFORM_PLATFORM_H_
+#endif  // THIRD_PARTY_TENSORFLOW_TSL_PLATFORM_PLATFORM_H_
